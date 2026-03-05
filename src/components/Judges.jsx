@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 
-const judges = [
-    { name: 'Dr. Sarah Mitchell', role: 'AI Researcher, Stanford', imgSrc: '/assets/teamimage.png' },
-    { name: 'Raj Patel', role: 'CTO, TechVentures', imgSrc: '/assets/teamimage.png' },
-    { name: 'Elena Rodriguez', role: 'VP Engineering, Google', imgSrc: '/assets/teamimage.png' },
-    { name: 'Amit Sharma', role: 'Founder, CodeCraft Labs', imgSrc: '/assets/teamimage.png' },
-    { name: 'Prof. David Chen', role: 'CS Department Head, MIT', imgSrc: '/assets/teamimage.png' },
-    { name: 'Priya Nair', role: 'Lead Developer, Microsoft', imgSrc: '/assets/teamimage.png' },
+const judgesData = [
+    { name: 'Dr. Sarah Mitchell', role: 'AI Researcher, Stanford', imgSrc: '/assets/teamimage.png', desc: 'A recognized pioneer in the field of artificial thought. Her insights guide our technical evaluations with precise logic.' },
+    { name: 'Raj Patel', role: 'CTO, TechVentures', imgSrc: '/assets/teamimage.png', desc: 'An experienced captain of industry, overseeing wide-scale infrastructural feats across the globe. He seeks true substance.' },
+    { name: 'Elena Rodriguez', role: 'VP Engineering, Google', imgSrc: '/assets/teamimage.png', desc: 'The remarkable mind behind some of the most reliable networks of our modern era. She honors speed and flawless execution.' },
+    { name: 'Amit Sharma', role: 'Founder, CodeCraft', imgSrc: '/assets/teamimage.png', desc: 'A true artisan of the code. He meticulously inspects the craftsmanship of all software entries for their robust nature.' },
+    { name: 'Prof. David Chen', role: 'CS Head, MIT', imgSrc: '/assets/teamimage.png', desc: 'Providing exact academic scrutiny to ensure the theoretical soundness of every proposed engine and mechanism.' },
+    { name: 'Priya Nair', role: 'Lead Dev, Microsoft', imgSrc: '/assets/teamimage.png', desc: 'A seasoned architect whose daily work shapes the computing experiences of millions worldwide. She favors reliable design.' },
 ];
 
 export default function Judges() {
@@ -24,28 +24,42 @@ export default function Judges() {
     return (
         <section id="judges">
             <div className="section-wrapper fade-in" ref={ref}>
-                <img src="/assets/judges.png" alt="Judges" className="section-banner" />
-                <div style={{ height: '20px' }} />
-                <div className="cards-grid">
-                    {judges.map((j) => (
-                        <div className="card" key={j.name}>
-                            {j.imgSrc ? (
-                                <img src={j.imgSrc} alt={j.name} className="card-img-full" />
-                            ) : (
-                                <div className="card-img-full" style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    fontFamily: 'var(--font-heading)',
-                                    fontSize: '3rem',
-                                    color: 'var(--ink-dark)',
-                                }}>
-                                    {j.initial}
-                                </div>
-                            )}
+
+                <div className="vintage-judges-header">
+                    <div className="vintage-judges-left">MEET OUR DISTINGUISHED JUDGES</div>
+                    <div className="vintage-judges-right">
+                        <span>CHECK OUT THESE EXCELLENT PROFESSIONALS</span>
+                        <span>AVAILABLE FOR EXPERT EVALUATIONS</span>
+                    </div>
+                </div>
+
+                <div className="vintage-judges-divider"></div>
+
+                <div className="vintage-judges-grid">
+                    {judgesData.map((j) => (
+                        <div key={j.name} className="vintage-judge-col">
+                            <div className="vintage-judge-title">{j.name}</div>
+                            <div className="vintage-judge-img-wrap">
+                                {j.imgSrc ? (
+                                    <img src={j.imgSrc} alt={j.name} className="vintage-judge-img" />
+                                ) : (
+                                    <div className="vintage-judge-fallback">{j.name.charAt(0)}</div>
+                                )}
+                            </div>
+                            <p className="vintage-judge-desc">{j.desc}</p>
+                            <div className="vintage-judge-role">
+                                <span>Role</span>
+                                <span className="dots"></span>
+                                <span style={{ textAlign: 'right' }}>{j.role}</span>
+                            </div>
                         </div>
                     ))}
                 </div>
+
+                <div className="vintage-judges-footer">
+                    <span>==== HACKOLUTION 2K26 ====</span>
+                </div>
+
             </div>
         </section>
     );

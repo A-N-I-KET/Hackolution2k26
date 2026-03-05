@@ -29,23 +29,23 @@ export default function Team() {
     }, []);
 
     const renderCards = (members) => (
-        <div className="cards-grid">
+        <div className="vintage-team-grid">
             {members.map((m) => (
-                <div className="card" key={m.name}>
-                    {m.imgSrc ? (
-                        <img src={m.imgSrc} alt={m.name} className="card-img-full" />
-                    ) : (
-                        <div className="card-img-full" style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            fontFamily: 'var(--font-heading)',
-                            fontSize: '3rem',
-                            color: 'var(--ink-dark)',
-                        }}>
-                            {m.initial}
-                        </div>
-                    )}
+                <div className="vintage-team-col" key={m.name}>
+                    <div className="vintage-team-title">{m.name}</div>
+                    <div className="vintage-team-img-wrap">
+                        {m.imgSrc ? (
+                            <img src={m.imgSrc} alt={m.name} className="vintage-team-img" />
+                        ) : (
+                            <div className="vintage-team-fallback">{m.name.charAt(0)}</div>
+                        )}
+                    </div>
+                    <p className="vintage-team-desc">A highly dedicated professional managing the intricate efforts required for this scale.</p>
+                    <div className="vintage-team-role">
+                        <span>POST</span>
+                        <span className="dots"></span>
+                        <span style={{ textAlign: 'right' }}>{m.role}</span>
+                    </div>
                 </div>
             ))}
         </div>
@@ -54,13 +54,27 @@ export default function Team() {
     return (
         <section id="team" className="team-section">
             <div className="section-wrapper fade-in" ref={ref}>
-                <h2 className="section-heading">Our Team</h2>
 
-                <div className="team-subsection-title">Organizers</div>
+                <div className="vintage-judges-header" style={{ marginBottom: '25px' }}>
+                    <div className="vintage-judges-left" style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}>THE ORGANIZATION TEAM</div>
+                    <div className="vintage-judges-right">
+                        <span>THE DEDICATED INDIVIDUALS</span>
+                        <span>BEHIND THE SCENES</span>
+                    </div>
+                </div>
+
+                <div className="vintage-judges-divider"></div>
+
+                <div className="team-subsection-title" style={{ marginTop: '40px', fontSize: '2rem' }}>ORGANIZING BOARD</div>
                 {renderCards(organizers)}
 
-                <div className="team-subsection-title">Coordinators</div>
+                <div className="team-subsection-title" style={{ marginTop: '60px', fontSize: '2rem' }}>LOGISTICS &amp; COORDINATORS</div>
                 {renderCards(coordinators)}
+
+                <div className="vintage-judges-footer" style={{ marginTop: '40px' }}>
+                    <span>==== HACKOLUTION 2K26 ====</span>
+                </div>
+
             </div>
         </section>
     );

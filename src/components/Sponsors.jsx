@@ -1,15 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 
-const sponsors = [
-    { name: 'Devfolio', link: 'https://devfolio.co', imgSrc: '/assets/devfolio.png', tier: 'The Gold Sponsor' },
-    { name: 'ETHIndia', link: 'https://ethindia.co', imgSrc: '/assets/Eth india.png', tier: 'The Silver Sponsor' },
-    { name: 'PujoPlanner', link: 'https://pujoplanner.com', imgSrc: '/assets/pujoplanner.png', tier: 'The Silver Sponsor', style: { transform: 'scale(1.8)' } },
-    { name: 'Solana', link: 'https://solana.com', initial: 'S', tier: 'The Bronze Sponsor' },
-    { name: 'Replit', link: 'https://replit.com', initial: 'R', tier: 'The Bronze Sponsor' },
-    { name: 'GitHub', link: 'https://github.com', initial: 'G', tier: 'The Bronze Sponsor' },
-    { name: '.xyz Domains', link: 'https://gen.xyz', initial: 'X', tier: 'The Bronze Sponsor' },
-    { name: 'Wolfram', link: 'https://www.wolfram.com', initial: 'W', tier: 'The Bronze Sponsor' },
-    { name: 'Taipy', link: 'https://www.taipy.io', initial: 'T', tier: 'The Bronze Sponsor' },
+const sponsorsData = [
+    { name: 'Devfolio', link: 'https://devfolio.co', imgSrc: '/assets/devfolio.png', tier: 'The Gold Sponsor', desc: 'An undisputed leader in hackathon commerce. They supply only the most premium robust tools.' },
+    { name: 'ETHIndia', link: 'https://ethindia.co', imgSrc: '/assets/Eth india.png', tier: 'The Silver Sponsor', desc: 'A marvel of the modern decentralized world. Known across the continent for their outstanding chain.' },
+    { name: 'PujoPlanner', link: 'https://pujoplanner.com', imgSrc: '/assets/pujoplanner.png', tier: 'The Silver Sponsor', desc: 'Handling thousands of patrons daily, a few patterns stand out. The very best in local planning.', style: { transform: 'scale(1.5)' } },
+    { name: 'Solana', link: 'https://solana.com', initial: 'S', tier: 'The Bronze Sponsor', desc: 'Lightning fast transactions. A simple but effective engine that leaves all competitors in the dust.' },
+    { name: 'Replit', link: 'https://replit.com', initial: 'R', tier: 'The Bronze Sponsor', desc: 'The finest in cloud development. A complete environment consisting of everything a worker needs.' },
+    { name: 'GitHub', link: 'https://github.com', initial: 'G', tier: 'The Bronze Sponsor', desc: 'The world\'s most dependable repository housing. Built for endurance and true collaborative spirit.' },
+    { name: '.xyz Domains', link: 'https://gen.xyz', initial: 'X', tier: 'The Bronze Sponsor', desc: 'Secure your name in the expanding new frontier. Affordable, recognizable, and highly dependable.' },
+    { name: 'Wolfram', link: 'https://www.wolfram.com', initial: 'W', tier: 'The Bronze Sponsor', desc: 'Computation of the highest order. Thousands have benefited from their exact mathematical engines.' },
+    { name: 'Taipy', link: 'https://www.taipy.io', initial: 'T', tier: 'The Bronze Sponsor', desc: 'Build profound data applications with absolute ease. Tailored for the modern scientific engineer.' },
 ];
 
 export default function Sponsors() {
@@ -27,28 +27,40 @@ export default function Sponsors() {
     return (
         <section id="sponsors">
             <div className="section-wrapper fade-in" ref={ref}>
-                <img src="/assets/sponsor.png" alt="Our Sponsors" className="section-banner" />
-                <div className="sponsors-layout">
-                    {sponsors.map((s) => (
+
+                <div className="vintage-catalogue-header">
+                    <h2 className="vintage-title-main">OUR ESTEEMED EVENT SPONSORS</h2>
+                    <h3 className="vintage-title-sub">
+                        <span className="vintage-sub-left">CHECK OUT THESE</span>
+                        <span className="vintage-sub-large">EXCELLENT ORGANIZATIONS</span>
+                    </h3>
+                </div>
+
+                <div className="vintage-prizes-grid">
+                    {sponsorsData.map((s) => (
                         <a
                             key={s.name}
                             href={s.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className={`sponsor-card ${s.tier.toLowerCase().includes('gold') ? 'tier-gold' : s.tier.toLowerCase().includes('silver') ? 'tier-silver' : 'tier-bronze'}`}
+                            className="vintage-prize-col sponsor-override"
                         >
-                            <div className="sponsor-card-inner">
+                            <div className="vintage-col-title">{s.name}</div>
+                            <div className="vintage-img-wrapper sponsor-img-override">
                                 {s.imgSrc ? (
-                                    <img src={s.imgSrc} alt={s.name} className="sponsor-logo" style={s.style} />
+                                    <img src={s.imgSrc} alt={s.name} className="vintage-col-img" style={s.style} />
                                 ) : (
                                     <div className="sponsor-fallback">{s.initial}</div>
                                 )}
                             </div>
-                            <div className="sponsor-tier-label">{s.tier}</div>
+                            <p className="vintage-col-desc">{s.desc}</p>
+                            <div className="vintage-btn-wrap">
+                                <div className="vintage-btn">SUPPORT: {s.tier.replace('The ', '')}</div>
+                            </div>
                         </a>
                     ))}
                 </div>
-                <div className="sponsors-more">MORE TO COME</div>
+
             </div>
         </section>
     );
