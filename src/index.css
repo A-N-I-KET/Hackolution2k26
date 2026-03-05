@@ -193,11 +193,8 @@ body::after {
   justify-content: space-between;
   padding: 0 30px;
   height: 60px;
-  background-image: url('/assets/BACKGROUNDIMG.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-bottom: 5px solid #b00304;
+  background: #9A0302;
+  border-bottom: 5px solid #7a0202;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
@@ -224,7 +221,7 @@ body::after {
 .navbar-title {
   font-family: var(--font-heading);
   font-size: 1rem;
-  color: var(--ink-dark);
+  color: #D8D1B3;
   text-transform: uppercase;
   letter-spacing: 1.5px;
   white-space: nowrap;
@@ -242,7 +239,7 @@ body::after {
   font-family: 'Special Elite', cursive;
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--ink-dark);
+  color: #D8D1B3;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -254,7 +251,7 @@ body::after {
 }
 
 .navbar-links li .nav-link:hover {
-  color: var(--accent-red);
+  color: #ffffff;
 }
 
 .navbar-links li .nav-link::after {
@@ -264,7 +261,7 @@ body::after {
   left: 50%;
   width: 0;
   height: 2px;
-  background: var(--accent-red);
+  background: #D8D1B3;
   transition: width 0.3s ease, left 0.3s ease;
 }
 
@@ -359,7 +356,7 @@ body::after {
 .hamburger-line {
   width: 28px;
   height: 3px;
-  background: var(--ink-dark);
+  background: #D8D1B3;
   transition: all 0.3s ease;
   border-radius: 2px;
 }
