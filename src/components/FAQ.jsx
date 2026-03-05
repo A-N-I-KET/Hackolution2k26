@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const faqs = [
     {
@@ -36,7 +36,6 @@ const faqs = [
 ];
 
 export default function FAQ() {
-    const [openIndex, setOpenIndex] = useState(null);
     const ref = useRef();
 
     useEffect(() => {
@@ -54,22 +53,27 @@ export default function FAQ() {
                 <h2 className="section-heading">Frequently Asked Questions</h2>
                 <div style={{ height: '20px' }} />
                 <div className="faq-container">
-                    {faqs.map((faq, i) => (
-                        <div className="faq-item" key={i}>
-                            <div
-                                className="faq-question"
-                                onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                            >
-                                {faq.q}
-                                <span className={`faq-arrow${openIndex === i ? ' open' : ''}`}>▼</span>
-                            </div>
-                            <div className={`faq-answer${openIndex === i ? ' open' : ''}`}>
-                                {faq.a}
-                            </div>
-                        </div>
-                    ))}
+                    <table className="faq-table">
+                        <thead>
+                            <tr>
+                                <th className="faq-th faq-th-num">#</th>
+                                <th className="faq-th faq-th-question">Question</th>
+                                <th className="faq-th faq-th-answer">Answer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {faqs.map((faq, i) => (
+                                <tr className="faq-row" key={i}>
+                                    <td className="faq-td faq-td-num">{i + 1}</td>
+                                    <td className="faq-td faq-td-question">{faq.q}</td>
+                                    <td className="faq-td faq-td-answer">{faq.a}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </section>
     );
 }
+

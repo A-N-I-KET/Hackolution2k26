@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 const sponsors = [
     { name: 'Devfolio', link: 'https://devfolio.co', imgSrc: '/assets/devfolio.png', tier: 'The Gold Sponsor' },
     { name: 'ETHIndia', link: 'https://ethindia.co', imgSrc: '/assets/Eth india.png', tier: 'The Silver Sponsor' },
-    { name: 'Polygon', link: 'https://polygon.technology', initial: 'P', tier: 'The Silver Sponsor' },
+    { name: 'PujoPlanner', link: 'https://pujoplanner.com', imgSrc: '/assets/pujoplanner.png', tier: 'The Silver Sponsor', style: { transform: 'scale(1.8)' } },
     { name: 'Solana', link: 'https://solana.com', initial: 'S', tier: 'The Bronze Sponsor' },
     { name: 'Replit', link: 'https://replit.com', initial: 'R', tier: 'The Bronze Sponsor' },
     { name: 'GitHub', link: 'https://github.com', initial: 'G', tier: 'The Bronze Sponsor' },
@@ -35,11 +35,11 @@ export default function Sponsors() {
                             href={s.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="sponsor-card"
+                            className={`sponsor-card ${s.tier.toLowerCase().includes('gold') ? 'tier-gold' : s.tier.toLowerCase().includes('silver') ? 'tier-silver' : 'tier-bronze'}`}
                         >
                             <div className="sponsor-card-inner">
                                 {s.imgSrc ? (
-                                    <img src={s.imgSrc} alt={s.name} className="sponsor-logo" />
+                                    <img src={s.imgSrc} alt={s.name} className="sponsor-logo" style={s.style} />
                                 ) : (
                                     <div className="sponsor-fallback">{s.initial}</div>
                                 )}

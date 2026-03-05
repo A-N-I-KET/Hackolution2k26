@@ -9,6 +9,7 @@ import Judges from './components/Judges';
 import CommunityPartners from './components/CommunityPartners';
 import FAQ from './components/FAQ';
 import Team from './components/Team';
+import Socials from './components/Socials';
 import Footer from './components/Footer';
 
 export default function App() {
@@ -31,6 +32,7 @@ export default function App() {
             <PageBreaker />
             <Team />
             <PageBreaker />
+            <Socials />
             <Footer />
         </>
     );

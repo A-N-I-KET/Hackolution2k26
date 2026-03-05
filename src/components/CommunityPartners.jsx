@@ -25,29 +25,23 @@ export default function CommunityPartners() {
         <section id="community">
             <div className="section-wrapper fade-in" ref={ref}>
                 <img src="/assets/communitypartner.png" alt="Community Partners" className="section-banner" />
-                <div className="cards-grid">
+                <div className="sponsors-layout">
                     {partners.map((p) => (
                         <a
                             key={p.name}
                             href={p.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="card"
+                            className="sponsor-card"
                         >
-                            {p.imgSrc ? (
-                                <img src={p.imgSrc} alt={p.name} className="card-img-full" />
-                            ) : (
-                                <div className="card-img-full" style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    fontFamily: 'var(--font-heading)',
-                                    fontSize: '3rem',
-                                    color: 'var(--ink-dark)',
-                                }}>
-                                    {p.initial}
-                                </div>
-                            )}
+                            <div className="sponsor-card-inner">
+                                {p.imgSrc ? (
+                                    <img src={p.imgSrc} alt={p.name} className="sponsor-logo" />
+                                ) : (
+                                    <div className="sponsor-fallback">{p.initial || p.name[0]}</div>
+                                )}
+                            </div>
+                            <div className="sponsor-tier-label">Partner</div>
                         </a>
                     ))}
                 </div>

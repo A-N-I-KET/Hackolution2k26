@@ -5,19 +5,19 @@ const prizes = [
         rank: '2nd',
         place: 'Silver',
         amount: '₹ XX,XXX',
-        img: '/assets/silver.png',
+        img: '/assets/bronze.png',
     },
     {
         rank: '1st',
         place: 'Gold',
         amount: '₹ XX,XXX',
-        img: '/assets/gold.png',
+        img: '/assets/silver.png',
     },
     {
         rank: '3rd',
         place: 'Bronze',
         amount: '₹ X,XXX',
-        img: '/assets/bronze.png',
+        img: '/assets/gold.png',
     },
 ];
 
