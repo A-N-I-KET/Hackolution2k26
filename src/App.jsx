@@ -1,0 +1,37 @@
+import React from 'react';
+import Navbar from './components/Navbar';
+import HeroSection from './components/HeroSection';
+import PageBreaker from './components/PageBreaker';
+import AboutUs from './components/AboutUs';
+import Prizes from './components/Prizes';
+import Sponsors from './components/Sponsors';
+import Judges from './components/Judges';
+import CommunityPartners from './components/CommunityPartners';
+import FAQ from './components/FAQ';
+import Team from './components/Team';
+import Footer from './components/Footer';
+
+export default function App() {
+    return (
+        <>
+            <Navbar />
+            <HeroSection />
+            <PageBreaker />
+            <AboutUs />
+            <PageBreaker />
+            <Prizes />
+            <PageBreaker />
+            <Sponsors />
+            <PageBreaker />
+            <Judges />
+            <PageBreaker />
+            <CommunityPartners />
+            <PageBreaker />
+            <FAQ />
+            <PageBreaker />
+            <Team />
+            <PageBreaker />
+            <Footer />
+        </>
+    );
+}
