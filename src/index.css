@@ -49,9 +49,6 @@ html {
 body {
   font-family: var(--font-body);
   color: var(--ink-brown);
-  
-  /* Vintage Letterpress / Ink-bleed Effect */
-  filter: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxmaWx0ZXIgaWQ9InJvdWdoIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC41IiBudW1PY3RhdmVzPSIzIiByZXN1bHQ9Im5vaXNlIiAvPjxmZURpc3BsYWNlbWVudE1hcCBpbj0iU291cmNlR3JhcGhpYyIgaW4yPSJub2lzZSIgc2NhbGU9IjEuNSIgeENoYW5uZWxTZWxlY3Rvcj0iUiIgeUNoYW5uZWxTZWxlY3Rvcj0iRyIgLz48L2ZpbHRlcj48L3N2Zz4=#rough');
 
   /* Layered backgrounds: gradient overlays hide the tile seam.
      Image aspect ratio 2500:3553 → each tile = 142.12vw tall.
@@ -486,6 +483,7 @@ body::after {
   width: min(70%, 500px);
   filter: drop-shadow(0 0 25px rgba(0, 0, 0, 0.7));
   animation: pulse 3s ease-in-out infinite;
+  will-change: transform;
 }
 
 /* Catalogue banner below the poster */
@@ -852,8 +850,6 @@ body::after {
   /* Use a thinner transparent double-border effect */
   box-shadow: 1px 1px 0px var(--parchment-light), inset 0 0 0 3px transparent, inset 0 0 0 4px var(--ink-dark);
   margin-bottom: 20px;
-  /* Subtly differentiate the framed section using filters */
-  backdrop-filter: contrast(1.03) brightness(0.99);
 }
 
 .vintage-catalogue-header {
@@ -2070,11 +2066,25 @@ body::after {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform;
 }
 
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+  will-change: auto;
+}
+
+/* Respect reduced-motion user preference */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .hero-logo {
+    animation: none;
+  }
 }
 
 /* --- Responsive refinements --- */
