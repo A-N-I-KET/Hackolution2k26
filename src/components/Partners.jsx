@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 
 const partnersData = [
-    { name: 'Polygon', link: 'https://polygon.technology', initial: 'P', desc: 'A formidable scaling network ensuring rapid and reliable deliveries across the entire realm.' },
-    { name: 'Filecoin', link: 'https://filecoin.io', initial: 'F', desc: 'Secure, resilient, and permanent storage. Your digital ledgers remain untouched by time.' },
-    { name: 'Balsamiq', link: 'https://balsamiq.com', initial: 'B', desc: 'The architect\'s choice. Rapid wireframing tools of the highest quality and simplicity.' },
-    { name: 'Echo3D', link: 'https://www.echo3d.com', initial: 'E', desc: 'A modern wonder of three-dimensional asset administration. Seamlessly bridging domains.' },
+    { name: 'Polygon', link: 'https://polygon.technology', imgSrc: '/assets/pujoplanner.png', style: { transform: 'scale(1.5)' }, desc: 'A formidable scaling network ensuring rapid and reliable deliveries across the entire realm.' },
+    { name: 'Filecoin', link: 'https://filecoin.io', imgSrc: '/assets/pujoplanner.png', style: { transform: 'scale(1.5)' }, desc: 'Secure, resilient, and permanent storage. Your digital ledgers remain untouched by time.' },
+    { name: 'Balsamiq', link: 'https://balsamiq.com', imgSrc: '/assets/pujoplanner.png', style: { transform: 'scale(1.5)' }, desc: 'The architect\'s choice. Rapid wireframing tools of the highest quality and simplicity.' },
+    { name: 'Echo3D', link: 'https://www.echo3d.com', imgSrc: '/assets/pujoplanner.png', style: { transform: 'scale(1.5)' }, desc: 'A modern wonder of three-dimensional asset administration. Seamlessly bridging domains.' },
 ];
 
 export default function Partners() {
@@ -43,7 +43,7 @@ export default function Partners() {
                             <div className="vintage-col-title">{p.name}</div>
                             <div className="vintage-img-wrapper sponsor-img-override">
                                 {p.imgSrc ? (
-                                    <img src={p.imgSrc} alt={p.name} className="vintage-col-img" />
+                                    <img src={p.imgSrc} alt={p.name} className="vintage-col-img" style={p.style} />
                                 ) : (
                                     <div className="sponsor-fallback">{p.initial}</div>
                                 )}

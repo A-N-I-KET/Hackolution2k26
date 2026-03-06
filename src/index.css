@@ -937,16 +937,12 @@ body::after {
 
 .vintage-col-img {
   width: 100%;
-  max-width: 180px;
+  max-width: 240px; /* Increased size of coin images */
   object-fit: contain;
-  /* Add an etched, monochrome vintage filter similar to the catalogue images */
-  filter: grayscale(1) sepia(0.6) contrast(1.2) brightness(0.85);
-  transition: filter 0.3s ease, transform 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .vintage-prize-col:hover .vintage-col-img {
-  /* Bring some color back on hover for interactive feel */
-  filter: grayscale(0.5) sepia(0.3) contrast(1.1) brightness(1);
   transform: scale(1.05);
 }
 
