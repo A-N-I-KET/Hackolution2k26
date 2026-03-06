@@ -5,6 +5,7 @@ import PageBreaker from './components/PageBreaker';
 import AboutUs from './components/AboutUs';
 import Prizes from './components/Prizes';
 import Sponsors from './components/Sponsors';
+import Partners from './components/Partners';
 import Judges from './components/Judges';
 import CommunityPartners from './components/CommunityPartners';
 import Team from './components/Team';
@@ -22,6 +23,8 @@ export default function App() {
             <Prizes />
             <PageBreaker />
             <Sponsors />
+            <PageBreaker />
+            <Partners />
             <PageBreaker />
             <Judges />
             <PageBreaker />

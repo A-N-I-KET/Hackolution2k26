@@ -126,7 +126,6 @@ export default function AboutUs() {
     return (
         <section id="about" className="about-section">
             <div className="section-wrapper fade-in" ref={ref}>
-                <h2 className="section-heading">About</h2>
 
                 {/* ── Newspaper-style card ── */}
                 <div className="newspaper-card">
@@ -134,42 +133,43 @@ export default function AboutUs() {
                     {/* Top decorative border */}
                     <div className="newspaper-border-top"></div>
 
+                    <h2 className="section-heading" style={{ marginTop: '10px' }}>About</h2>
+
                     {/* Subheading banner */}
-                    <div className="newspaper-header">
+                    <div className="newspaper-header" style={{ borderTop: '1px solid var(--ink-brown)', borderBottom: '1px solid var(--ink-brown)', margin: '10px 0' }}>
                         <span className="newspaper-header-text">
                             The Most Anticipated Hackathon of the Year
                         </span>
                     </div>
 
-                    <hr className="newspaper-hr" />
-
                     {/* Two-column body */}
                     <div className="newspaper-body">
-                        {/* Left column — headline + text */}
+                        {/* Left column — The Article */}
                         <div className="newspaper-col-text">
-                            <h3 className="newspaper-headline">
-                                It Is the Solemn Promise of Our Hackathon to Supply
-                                the Innovator on Every Aspect of Their Craft &amp; Reward
-                                Them Handsomely
+
+                            <h3 className="newspaper-headline" style={{ borderBottom: '2px solid var(--ink-dark)', paddingBottom: '15px', marginBottom: '20px', textAlign: 'center' }}>
+                                A SOLEMN PROMISE TO SUPPLY THE INNOVATOR ON EVERY ASPECT OF THEIR CRAFT & REWARD THEM HANDSOMELY
                             </h3>
 
-                            <p className="newspaper-text newspaper-dropcap">
-                                Welcome to <strong>Hackolution 2K26</strong> — where innovation meets the spirit of the frontier!
-                                Born from the passion of coders, designers, and dreamers, Hackolution has grown into one of the
-                                most anticipated hackathons of the year. Our journey began with a simple idea: bring together
-                                the brightest minds to solve real-world problems, one line of code at a time.
-                            </p>
-                            <p className="newspaper-text">
-                                Since its inception, Hackolution has attracted thousands of participants from across the nation,
-                                fostering collaboration, creativity, and technological breakthroughs. From AI-powered solutions
-                                to blockchain innovations, our participants have built projects that push the boundaries of what's
-                                possible. This year, we embrace the wild west spirit — bold, fearless, and pioneering.
-                            </p>
-                            <p className="newspaper-text">
-                                Whether you're a seasoned developer or a first-time hacker, Hackolution 2K26 offers you the
-                                stage to showcase your skills, learn from industry leaders, win incredible prizes, and forge
-                                connections that last a lifetime.
-                            </p>
+                            <div style={{ columnCount: 2, columnGap: '30px', columnRule: '1px solid var(--ink-brown)', textAlign: 'justify' }}>
+                                <p className="newspaper-text newspaper-dropcap" style={{ marginTop: 0 }}>
+                                    Welcome to <strong>Hackolution 2K26</strong> — where innovation meets the spirit of the frontier!
+                                    Born from the passion of coders, designers, and dreamers, Hackolution has grown into one of the
+                                    most anticipated hackathons of the year. Our journey began with a simple idea: bring together
+                                    the brightest minds to solve real-world problems, one line of code at a time.
+                                </p>
+                                <p className="newspaper-text">
+                                    Since its inception, Hackolution has attracted thousands of participants from across the nation,
+                                    fostering collaboration, creativity, and technological breakthroughs. From AI-powered solutions
+                                    to blockchain innovations, our participants have built projects that push the boundaries of what's
+                                    possible. This year, we embrace the wild west spirit — bold, fearless, and pioneering.
+                                </p>
+                                <p className="newspaper-text">
+                                    Whether you're a seasoned developer or a first-time hacker, Hackolution 2K26 offers you the
+                                    stage to showcase your skills, learn from industry leaders, win incredible prizes, and forge
+                                    connections that last a lifetime.
+                                </p>
+                            </div>
                         </div>
 
                         {/* Right column — vintage illustration */}
@@ -181,8 +181,6 @@ export default function AboutUs() {
                             />
                         </div>
                     </div>
-
-                    <hr className="newspaper-hr" />
 
                     {/* Tagline */}
                     <div className="newspaper-tagline">
