@@ -8,7 +8,6 @@ const navItems = [
     { label: 'Partners', to: 'partners' },
     { label: 'Judges', to: 'judges' },
     { label: 'Community Partners', to: 'community' },
-    { label: 'FAQ', to: 'faq' },
     { label: 'Team', to: 'team' },
     { label: 'Contact Us', to: 'footer' },
 ];

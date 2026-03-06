@@ -135,6 +135,11 @@ body::after {
   margin: 0 auto;
   padding: 25px 20px;
   position: relative;
+  
+  /* Vintage paper noise overlay */
+  background-image: radial-gradient(var(--ink-brown) 5%, transparent 10%);
+  background-size: 3px 3px;
+  background-attachment: local;
 }
 
 .section-heading {
@@ -838,8 +843,17 @@ body::after {
 }
 
 /* --- Vintage Catalogue Prizes --- */
-#prizes .section-wrapper {
-  padding: 30px 20px;
+/* --- Vintage Catalogue Frame Classes --- */
+#prizes .section-wrapper,
+#team .section-wrapper {
+  padding: 45px 30px; /* Increased padding to separate text from borders */
+  background-color: transparent;
+  border: 2px solid var(--ink-dark);
+  /* Use a thinner transparent double-border effect */
+  box-shadow: 1px 1px 0px var(--parchment-light), inset 0 0 0 3px transparent, inset 0 0 0 4px var(--ink-dark);
+  margin-bottom: 20px;
+  /* Subtly differentiate the framed section using filters */
+  backdrop-filter: contrast(1.03) brightness(0.99);
 }
 
 .vintage-catalogue-header {
@@ -964,7 +978,7 @@ body::after {
 .vintage-btn {
   border: 2px solid var(--ink-dark);
   text-align: center;
-  padding: 8px;
+  padding: 8px 12px;
   font-family: 'Playfair Display', serif;
   font-size: clamp(1rem, 1.5vw, 1.1rem);
   font-weight: 800;
@@ -972,11 +986,17 @@ body::after {
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.2s ease;
+  position: relative;
+  /* Make the background transparent so the parchment shows through */
+  background: transparent;
+  /* Distressed stamp effect */
+  box-shadow: inset 0 0 0 1px var(--parchment), inset 0 0 0 2px var(--ink-brown);
 }
 
 .vintage-btn:hover {
   background-color: var(--ink-dark);
   color: var(--parchment);
+  box-shadow: inset 0 0 0 1px var(--ink-dark), inset 0 0 0 2px var(--parchment);
 }
 
 @media (max-width: 900px) {
@@ -1045,13 +1065,12 @@ body::after {
   padding: 10px 20px;
 }
 
+/* --- Sponsor card link reset --- */
 .sponsor-override {
   text-decoration: none;
   color: inherit;
   border: 4px solid var(--ink-dark);
-  border-radius: 2px;
-  background-color: rgba(212, 184, 150, 0.2); 
-  mix-blend-mode: multiply;
+  background-color: rgba(212, 184, 150, 0.2);
   box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
 }
 
@@ -1075,6 +1094,168 @@ body::after {
   color: var(--ink-dark);
   text-shadow: 1px 1px 0px rgba(255,255,255,0.3);
   transform: scaleY(1.2);
+}
+
+/* --- Partner Cards (Redesigned Vintage Catalogue) --- */
+#partners .vintage-prizes-grid {
+  display: none; /* old grid, no longer used */
+}
+
+.partner-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 25px auto 0;
+  padding: 0 10px;
+}
+
+.partner-card {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  border: 3px solid var(--ink-dark);
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  overflow: visible;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.partner-card::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  border: 1px solid var(--ink-brown);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.partner-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 5px 7px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Partner Title Ribbon --- */
+.partner-ribbon {
+  width: 100%;
+  background: var(--ink-dark);
+  padding: 6px 10px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.partner-ribbon::before,
+.partner-ribbon::after {
+  content: '✦';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.6rem;
+  color: var(--parchment);
+  opacity: 0.6;
+}
+
+.partner-ribbon::before {
+  left: 8px;
+}
+
+.partner-ribbon::after {
+  right: 8px;
+}
+
+.partner-ribbon-text {
+  font-family: 'Special Elite', cursive;
+  font-size: clamp(0.8rem, 1.3vw, 1rem);
+  color: var(--parchment);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 400;
+}
+
+/* --- Logo Area --- */
+.partner-logo-area {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px 20px;
+  min-height: 140px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.partner-logo-img {
+  max-width: 260px;
+  max-height: 180px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.partner-card:hover .partner-logo-img {
+  transform: scale(1.08);
+}
+
+.partner-logo-fallback {
+  font-family: 'UnifrakturMaguntia', cursive;
+  font-size: 4rem;
+  color: var(--ink-dark);
+  text-shadow: 1px 1px 0px rgba(255,255,255,0.3);
+}
+
+/* --- Name Plate --- */
+.partner-name-plate {
+  width: 100%;
+  border-top: 2px solid var(--ink-dark);
+  padding: 10px 8px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Decorative double-line above name */
+.partner-name-plate::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: var(--ink-brown);
+}
+
+.partner-name-text {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  font-weight: 900;
+  color: var(--ink-dark);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transform: scaleY(1.1);
+  display: inline-block;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .partner-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+
+@media (max-width: 550px) {
+  .partner-cards-grid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+    gap: 16px;
+  }
 }
 
 /* --- Vintage Judges Catalogue --- */
@@ -1240,91 +1421,98 @@ body::after {
 
 .vintage-partners-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns for compactness */
+  gap: 15px; /* Tighter gap */
 }
 
 .vintage-partner-col {
-  border: 2px solid var(--ink-dark);
-  padding: 20px;
   display: flex;
   flex-direction: column;
+  align-items: center; /* Center everything */
+  padding: 15px 10px; /* Refined padding */
+  border: 1px solid var(--ink-dark); 
+  background-color: transparent;
   text-decoration: none;
   color: inherit;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  background-color: transparent;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  min-height: auto; /* Remove forced height */
 }
 
 .vintage-partner-col:hover {
-  transform: translateY(-4px);
-  background-color: rgba(92, 64, 51, 0.05);
-}
-
-.vintage-partner-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
-  font-weight: 800;
-  color: var(--ink-dark);
-  text-transform: uppercase;
-  text-align: center;
-  margin-bottom: 20px;
-  transform: scaleY(1.1);
+  background-color: var(--ink-dark);
+  color: var(--parchment);
+  transform: translateY(-2px);
 }
 
 .vintage-partner-img-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 160px;
-  margin-bottom: 20px;
+  margin-bottom: 15px; /* Space between logo and name */
+  min-height: 50px; 
+}
+
+.vintage-partner-title {
+  font-family: var(--font-heading);
+  font-size: 0.85rem; 
+  font-weight: 800;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 1px;
+  margin: 0; /* Remove borders/margins */
 }
 
 .vintage-partner-img {
-  width: 100%;
-  max-width: 140px;
+  max-width: 60px; /* Much smaller logo */
+  max-height: 50px;
   object-fit: contain;
-  filter: grayscale(1) sepia(0.6) contrast(1.2) brightness(0.85);
-  transition: filter 0.3s ease, transform 0.3s ease;
+  /* No filter — show original logo colors */
 }
 
 .vintage-partner-col:hover .vintage-partner-img {
-  filter: grayscale(0.5) sepia(0.3) contrast(1.1) brightness(1);
-  transform: scale(1.05);
+  filter: none; /* Keep original logo colors on hover */
 }
 
 .vintage-partner-fallback {
   font-family: 'UnifrakturMaguntia', cursive;
-  font-size: 3.5rem;
-  font-weight: 400;
+  font-size: 2rem;
   color: var(--ink-dark);
+}
+
+.vintage-partner-col:hover .vintage-partner-fallback {
+  color: var(--parchment);
 }
 
 .vintage-partner-desc {
   font-family: var(--font-body);
-  font-size: clamp(0.75rem, 0.9vw, 0.9rem);
-  line-height: 1.5;
-  color: var(--ink-dark);
+  font-size: 0.7rem; /* Tiny description text */
+  line-height: 1.2;
   text-align: justify;
-  margin-bottom: 25px;
-  flex-grow: 1;
+  margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limit to 3 lines max */
+  line-clamp: 3; /* Standard property for compatibility */
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
 }
 
 .vintage-partner-action {
-  border: 2px solid var(--ink-dark);
-  padding: 12px;
+  border: 1px solid var(--ink-dark);
+  padding: 5px;
   text-align: center;
   font-family: 'Playfair Display', serif;
-  font-size: 1rem;
+  font-size: 0.7rem;
   font-weight: 800;
   text-transform: uppercase;
   color: var(--ink-dark);
   letter-spacing: 1px;
+  margin-top: auto;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .vintage-partner-col:hover .vintage-partner-action {
-  background-color: var(--ink-dark);
-  color: var(--parchment);
+  background-color: var(--parchment);
+  color: var(--ink-dark);
 }
 
 @media (max-width: 1024px) {

@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 
 const partnersData = [
-    { name: 'Polygon', link: 'https://polygon.technology', imgSrc: '/assets/pujoplanner.png', style: { transform: 'scale(1.5)' }, desc: 'A formidable scaling network ensuring rapid and reliable deliveries across the entire realm.' },
-    { name: 'Filecoin', link: 'https://filecoin.io', imgSrc: '/assets/pujoplanner.png', style: { transform: 'scale(1.5)' }, desc: 'Secure, resilient, and permanent storage. Your digital ledgers remain untouched by time.' },
-    { name: 'Balsamiq', link: 'https://balsamiq.com', imgSrc: '/assets/pujoplanner.png', style: { transform: 'scale(1.5)' }, desc: 'The architect\'s choice. Rapid wireframing tools of the highest quality and simplicity.' },
-    { name: 'Echo3D', link: 'https://www.echo3d.com', imgSrc: '/assets/pujoplanner.png', style: { transform: 'scale(1.5)' }, desc: 'A modern wonder of three-dimensional asset administration. Seamlessly bridging domains.' },
+    { name: 'Polygon', link: 'https://polygon.technology', imgSrc: '/assets/pujoplanner.png', title: 'Platform Partner' },
+    { name: 'Filecoin', link: 'https://filecoin.io', imgSrc: '/assets/pujoplanner.png', title: 'Storage Partner' },
+    { name: 'Balsamiq', link: 'https://balsamiq.com', imgSrc: '/assets/pujoplanner.png', title: 'Design Partner' },
+    { name: 'Echo3D', link: 'https://www.echo3d.com', imgSrc: '/assets/pujoplanner.png', title: 'Media Partner' },
 ];
 
 export default function Partners() {
@@ -31,26 +31,32 @@ export default function Partners() {
                     </h3>
                 </div>
 
-                <div className="vintage-prizes-grid">
+                <div className="partner-cards-grid">
                     {partnersData.map((p) => (
                         <a
                             key={p.name}
                             href={p.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="vintage-prize-col sponsor-override"
+                            className="partner-card"
                         >
-                            <div className="vintage-col-title">{p.name}</div>
-                            <div className="vintage-img-wrapper sponsor-img-override">
+                            {/* Ribbon banner for the partner title */}
+                            <div className="partner-ribbon">
+                                <span className="partner-ribbon-text">{p.title}</span>
+                            </div>
+
+                            {/* Logo area */}
+                            <div className="partner-logo-area">
                                 {p.imgSrc ? (
-                                    <img src={p.imgSrc} alt={p.name} className="vintage-col-img" style={p.style} />
+                                    <img src={p.imgSrc} alt={p.name} className="partner-logo-img" />
                                 ) : (
-                                    <div className="sponsor-fallback">{p.initial}</div>
+                                    <div className="partner-logo-fallback">{p.name.charAt(0)}</div>
                                 )}
                             </div>
-                            <p className="vintage-col-desc">{p.desc}</p>
-                            <div className="vintage-btn-wrap">
-                                <div className="vintage-btn">OFFICIAL PARTNER</div>
+
+                            {/* Partner name */}
+                            <div className="partner-name-plate">
+                                <span className="partner-name-text">{p.name}</span>
                             </div>
                         </a>
                     ))}

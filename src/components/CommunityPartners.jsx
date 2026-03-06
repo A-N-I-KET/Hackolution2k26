@@ -1,12 +1,26 @@
 import React, { useEffect, useRef } from 'react';
 
 const partnersData = [
-    { name: 'GDG on Campus', link: 'https://gdg.community.dev', imgSrc: '/assets/teamimage.png', desc: 'Fostering environments where ambitious students learn, build, and connect under top-tier mentorship.' },
-    { name: 'MLH', link: 'https://mlh.io', imgSrc: '/assets/teamimage.png', desc: 'Major League Hacking. Providing the standard structure and tremendous support for student developers across the globe.' },
-    { name: 'GeeksforGeeks', link: 'https://www.geeksforgeeks.org', imgSrc: '/assets/teamimage.png', desc: 'An undisputed vault of computer science knowledge. Their comprehensive archives have aided countless engineers.' },
-    { name: 'HackerEarth', link: 'https://www.hackerearth.com', imgSrc: '/assets/teamimage.png', desc: 'A premier platform for enterprise hackathons and technical assessments. They bring industry-proven scale.' },
-    { name: 'CodeChef', link: 'https://www.codechef.com', imgSrc: '/assets/teamimage.png', desc: 'The fierce competitive programming arena. Training minds to calculate efficiently under severe pressure.' },
-    { name: 'Dev Community', link: 'https://dev.to', imgSrc: '/assets/teamimage.png', desc: 'A constructive and inclusive social network for software developers. The modern builder\'s tavern.' },
+    { name: 'GDG on Campus', link: 'https://gdg.community.dev', imgSrc: '/assets/teamimage.png' },
+    { name: 'MLH', link: 'https://mlh.io', imgSrc: '/assets/teamimage.png' },
+    { name: 'GeeksforGeeks', link: 'https://www.geeksforgeeks.org', imgSrc: '/assets/teamimage.png' },
+    { name: 'HackerEarth', link: 'https://www.hackerearth.com', imgSrc: '/assets/teamimage.png' },
+    { name: 'CodeChef', link: 'https://www.codechef.com', imgSrc: '/assets/teamimage.png' },
+    { name: 'Dev Community', link: 'https://dev.to', imgSrc: '/assets/teamimage.png' },
+    { name: 'Vercel', link: '#', imgSrc: '/assets/teamimage.png' },
+    { name: 'Netlify', link: '#', imgSrc: '/assets/teamimage.png' },
+    { name: 'GitHub', link: '#', imgSrc: '/assets/teamimage.png' },
+    { name: 'Postman', link: '#', imgSrc: '/assets/teamimage.png' },
+    { name: 'Figma', link: '#', imgSrc: '/assets/teamimage.png' },
+    { name: 'Notion', link: '#', imgSrc: '/assets/teamimage.png' },
+    { name: 'Auth0', link: '#', imgSrc: '/assets/teamimage.png' },
+    { name: 'Twilio', link: '#', imgSrc: '/assets/teamimage.png' },
+    { name: 'Stripe', link: '#', imgSrc: '/assets/teamimage.png' },
+    { name: 'DigitalOcean', link: '#', imgSrc: '/assets/teamimage.png' },
+    { name: 'Supabase', link: '#', imgSrc: '/assets/teamimage.png' },
+    { name: 'MongoDB', link: '#', imgSrc: '/assets/teamimage.png' },
+    { name: 'Docker', link: '#', imgSrc: '/assets/teamimage.png' },
+    { name: 'AWS', link: '#', imgSrc: '/assets/teamimage.png' }
 ];
 
 export default function CommunityPartners() {
@@ -42,9 +56,8 @@ export default function CommunityPartners() {
                             href={p.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="vintage-partner-col"
+                            className="vintage-partner-col text-only"
                         >
-                            <div className="vintage-partner-title">{p.name}</div>
                             <div className="vintage-partner-img-wrap">
                                 {p.imgSrc ? (
                                     <img src={p.imgSrc} alt={p.name} className="vintage-partner-img" />
@@ -52,8 +65,7 @@ export default function CommunityPartners() {
                                     <div className="vintage-partner-fallback">{p.name.charAt(0)}</div>
                                 )}
                             </div>
-                            <p className="vintage-partner-desc">{p.desc}</p>
-                            <div className="vintage-partner-action">VIEW PARTNER</div>
+                            <div className="vintage-partner-title">{p.name}</div>
                         </a>
                     ))}
                 </div>
