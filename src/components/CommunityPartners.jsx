@@ -1,26 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 
 const partnersData = [
-    { name: 'GDG on Campus', link: 'https://gdg.community.dev', imgSrc: '/assets/teamimage.png' },
-    { name: 'MLH', link: 'https://mlh.io', imgSrc: '/assets/teamimage.png' },
-    { name: 'GeeksforGeeks', link: 'https://www.geeksforgeeks.org', imgSrc: '/assets/teamimage.png' },
-    { name: 'HackerEarth', link: 'https://www.hackerearth.com', imgSrc: '/assets/teamimage.png' },
-    { name: 'CodeChef', link: 'https://www.codechef.com', imgSrc: '/assets/teamimage.png' },
-    { name: 'Dev Community', link: 'https://dev.to', imgSrc: '/assets/teamimage.png' },
-    { name: 'Vercel', link: '#', imgSrc: '/assets/teamimage.png' },
-    { name: 'Netlify', link: '#', imgSrc: '/assets/teamimage.png' },
-    { name: 'GitHub', link: '#', imgSrc: '/assets/teamimage.png' },
-    { name: 'Postman', link: '#', imgSrc: '/assets/teamimage.png' },
-    { name: 'Figma', link: '#', imgSrc: '/assets/teamimage.png' },
-    { name: 'Notion', link: '#', imgSrc: '/assets/teamimage.png' },
-    { name: 'Auth0', link: '#', imgSrc: '/assets/teamimage.png' },
-    { name: 'Twilio', link: '#', imgSrc: '/assets/teamimage.png' },
-    { name: 'Stripe', link: '#', imgSrc: '/assets/teamimage.png' },
-    { name: 'DigitalOcean', link: '#', imgSrc: '/assets/teamimage.png' },
-    { name: 'Supabase', link: '#', imgSrc: '/assets/teamimage.png' },
-    { name: 'MongoDB', link: '#', imgSrc: '/assets/teamimage.png' },
-    { name: 'Docker', link: '#', imgSrc: '/assets/teamimage.png' },
-    { name: 'AWS', link: '#', imgSrc: '/assets/teamimage.png' }
+    { name: 'INNOFUSION', link: 'https://www.innofusion.tech/', imgSrc: '/assets/COMMUNITY/innofusion.png' },
+   
 ];
 
 export default function CommunityPartners() {

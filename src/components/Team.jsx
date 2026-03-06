@@ -1,19 +1,20 @@
 import React, { useEffect, useRef } from 'react';
 
 const organizers = [
-    { name: 'John Doe', role: 'Lead Organizer', imgSrc: '/assets/teamimage.png' },
-    { name: 'Jane Smith', role: 'Co-Organizer', imgSrc: '/assets/teamimage.png' },
-    { name: 'Mike Johnson', role: 'Technical Lead', imgSrc: '/assets/teamimage.png' },
-    { name: 'Emily Davis', role: 'Design Lead', imgSrc: '/assets/teamimage.png' },
+    { name: 'ANIKET CHAKRABORTY', role: 'Organizer', imgSrc: '/assets/teamimage.png' },
+    { name: 'ROHAN SINHA', role: 'Organizer', imgSrc: '/assets/teamimage.png' },
+    { name: 'SOUMODIP DAS', role: 'Organizer', imgSrc: '/assets/teamimage.png' },
+    { name: 'SAIKAT DEBNATH', role: 'Organizer', imgSrc: '/assets/teamimage.png' },
+    { name: 'SOUVIK GHOSH', role: 'Organizer', imgSrc: '/assets/teamimage.png' },
 ];
 
 const coordinators = [
-    { name: 'Alex Turner', role: 'Logistics', imgSrc: '/assets/teamimage.png' },
-    { name: 'Sophia Lee', role: 'Marketing', imgSrc: '/assets/teamimage.png' },
-    { name: 'Daniel Brown', role: 'Sponsorship', imgSrc: '/assets/teamimage.png' },
-    { name: 'Olivia Wilson', role: 'Operations', imgSrc: '/assets/teamimage.png' },
-    { name: 'Ethan Garcia', role: 'Content', imgSrc: '/assets/teamimage.png' },
-    { name: 'Mia Martinez', role: 'Social Media', imgSrc: '/assets/teamimage.png' },
+    { name: 'ANIRBAN DAS', role: 'GRAPHICS', imgSrc: '/assets/teamimage.png' },
+    { name: 'SUBHRADEEP ROY CHOWDHURY', role: 'Marketing', imgSrc: '/assets/teamimage.png' },
+    { name: 'ASAD HUSSAIN', role: 'Sponsorship', imgSrc: '/assets/teamimage.png' },
+    { name: 'MD.HAMMAD SHARIQ ', role: 'Operations', imgSrc: '/assets/teamimage.png' },
+    { name: 'SIRSHA KUMAR', role: 'Content', imgSrc: '/assets/teamimage.png' },
+    { name: 'SHUBHAM RAJ', role: 'Social Media', imgSrc: '/assets/teamimage.png' },
 ];
 
 export default function Team() {
@@ -65,10 +66,10 @@ export default function Team() {
 
                 <div className="vintage-judges-divider"></div>
 
-                <div className="team-subsection-title" style={{ marginTop: '40px', fontSize: '2rem' }}>ORGANIZING BOARD</div>
+                <div className="team-subsection-title" style={{ marginTop: '40px', fontSize: '2rem' }}>ORGANIZERS</div>
                 {renderCards(organizers)}
 
-                <div className="team-subsection-title" style={{ marginTop: '60px', fontSize: '2rem' }}>LOGISTICS &amp; COORDINATORS</div>
+                <div className="team-subsection-title" style={{ marginTop: '60px', fontSize: '2rem' }}>COORDINATORS</div>
                 {renderCards(coordinators)}
 
                 <div className="vintage-judges-footer" style={{ marginTop: '40px' }}>

@@ -1,10 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 
 const partnersData = [
-    { name: 'Polygon', link: 'https://polygon.technology', imgSrc: '/assets/pujoplanner.png', title: 'Platform Partner' },
-    { name: 'Filecoin', link: 'https://filecoin.io', imgSrc: '/assets/pujoplanner.png', title: 'Storage Partner' },
-    { name: 'Balsamiq', link: 'https://balsamiq.com', imgSrc: '/assets/pujoplanner.png', title: 'Design Partner' },
-    { name: 'Echo3D', link: 'https://www.echo3d.com', imgSrc: '/assets/pujoplanner.png', title: 'Media Partner' },
+    { name: 'Eventopia', link: 'https://eventopia.in/', imgSrc: '/assets/PARTNER/eventopia.png', title: 'Media Partner' },
+    { name: 'Hacknest', link: 'https://hacknest.in/', imgSrc: '/assets/SPONSOR/hacknest.png', title: 'Technical Partner' },
+   
 ];
 
 export default function Partners() {

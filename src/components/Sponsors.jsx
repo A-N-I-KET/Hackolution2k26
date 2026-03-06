@@ -1,15 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 
 const sponsorsData = [
-    { name: 'Devfolio', link: 'https://devfolio.co', imgSrc: '/assets/devfolio.png', tier: 'The Gold Sponsor', desc: 'An undisputed leader in hackathon commerce. They supply only the most premium robust tools.' },
-    { name: 'ETHIndia', link: 'https://ethindia.co', imgSrc: '/assets/Eth india.png', tier: 'The Silver Sponsor', desc: 'A marvel of the modern decentralized world. Known across the continent for their outstanding chain.' },
-    { name: 'PujoPlanner', link: 'https://pujoplanner.com', imgSrc: '/assets/pujoplanner.png', tier: 'The Silver Sponsor', desc: 'Handling thousands of patrons daily, a few patterns stand out. The very best in local planning.', style: { transform: 'scale(1.5)' } },
-    { name: 'Solana', link: 'https://solana.com', initial: 'S', tier: 'The Bronze Sponsor', desc: 'Lightning fast transactions. A simple but effective engine that leaves all competitors in the dust.' },
-    { name: 'Replit', link: 'https://replit.com', initial: 'R', tier: 'The Bronze Sponsor', desc: 'The finest in cloud development. A complete environment consisting of everything a worker needs.' },
-    { name: 'GitHub', link: 'https://github.com', initial: 'G', tier: 'The Bronze Sponsor', desc: 'The world\'s most dependable repository housing. Built for endurance and true collaborative spirit.' },
-    { name: '.xyz Domains', link: 'https://gen.xyz', initial: 'X', tier: 'The Bronze Sponsor', desc: 'Secure your name in the expanding new frontier. Affordable, recognizable, and highly dependable.' },
-    { name: 'Wolfram', link: 'https://www.wolfram.com', initial: 'W', tier: 'The Bronze Sponsor', desc: 'Computation of the highest order. Thousands have benefited from their exact mathematical engines.' },
-    { name: 'Taipy', link: 'https://www.taipy.io', initial: 'T', tier: 'The Bronze Sponsor', desc: 'Build profound data applications with absolute ease. Tailored for the modern scientific engineer.' },
+    { name: 'Devfolio', link: 'https://devfolio.co', imgSrc: '/assets/SPONSOR/Devfolio.png', tier: 'The Gold Sponsor', desc: 'An undisputed leader in hackathon commerce. They supply only the most premium robust tools.' },
+    { name: 'ETHIndia', link: 'https://ethindia.co', imgSrc: '/assets/SPONSOR/ETHIndia.png', tier: 'The Silver Sponsor', desc: 'A marvel of the modern decentralized world. Known across the continent for their outstanding chain.' },
+    { name: 'PujoPlanner', link: 'https://pujoplanner.com', imgSrc: '/assets/SPONSOR/pujoplanner.png', tier: 'The Silver Sponsor', desc: 'Handling thousands of patrons daily, a few patterns stand out. The very best in local planning.', style: { transform: 'scale(1.5)' } },
+    { name: 'Mastra.ai', link: 'https://mastra.ai/', imgSrc: '/assets/SPONSOR/mastra.png', tier: 'The Bronze Sponsor', desc: 'Handling thousands of patrons daily, a few patterns stand out. The very best in local planning.', style: { transform: 'scale(1.5)' } },
+    { name: 'Featherless.ai', link: 'https://featherless.ai/', imgSrc: '/assets/SPONSOR/featherlessai.png', tier: 'The Silver Sponsor', desc: 'Handling thousands of patrons daily, a few patterns stand out. The very best in local planning.', style: { transform: 'scale(1.5)' } },
+    { name: 'XYZ', link: 'https://gen.xyz/', imgSrc: '/assets/SPONSOR/xyz.png', tier: 'The Bronze Sponsor', desc: 'Handling thousands of patrons daily, a few patterns stand out. The very best in local planning.', style: { transform: 'scale(1.0)' } },
+    { name: 'Hacknest', link: 'https://hacknest.in/', imgSrc: '/assets/SPONSOR/hacknest.png', tier: 'The Silver Sponsor', desc: 'Handling thousands of patrons daily, a few patterns stand out. The very best in local planning.', style: { transform: 'scale(1.0)' } },
 ];
 
 export default function Sponsors() {

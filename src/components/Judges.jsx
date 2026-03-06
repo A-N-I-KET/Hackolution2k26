@@ -1,12 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 
 const judgesData = [
-    { name: 'Dr. Sarah Mitchell', role: 'AI Researcher, Stanford', imgSrc: '/assets/teamimage.png', desc: 'A recognized pioneer in the field of artificial thought. Her insights guide our technical evaluations with precise logic.' },
-    { name: 'Raj Patel', role: 'CTO, TechVentures', imgSrc: '/assets/teamimage.png', desc: 'An experienced captain of industry, overseeing wide-scale infrastructural feats across the globe. He seeks true substance.' },
-    { name: 'Elena Rodriguez', role: 'VP Engineering, Google', imgSrc: '/assets/teamimage.png', desc: 'The remarkable mind behind some of the most reliable networks of our modern era. She honors speed and flawless execution.' },
-    { name: 'Amit Sharma', role: 'Founder, CodeCraft', imgSrc: '/assets/teamimage.png', desc: 'A true artisan of the code. He meticulously inspects the craftsmanship of all software entries for their robust nature.' },
-    { name: 'Prof. David Chen', role: 'CS Head, MIT', imgSrc: '/assets/teamimage.png', desc: 'Providing exact academic scrutiny to ensure the theoretical soundness of every proposed engine and mechanism.' },
-    { name: 'Priya Nair', role: 'Lead Dev, Microsoft', imgSrc: '/assets/teamimage.png', desc: 'A seasoned architect whose daily work shapes the computing experiences of millions worldwide. She favors reliable design.' },
+    { name: 'AVIK AGARWALA', role: 'SYSTEM ENGINEER @ TCS', imgSrc: '/assets/JUDGES/AVIK.jpeg', desc: 'A recognized pioneer in the field of artificial thought. Her insights guide our technical evaluations with precise logic.' },
+    { name: 'KRISHNENDU DASGUPTA', role: 'CTO, TechVentures', imgSrc: '/assets/teamimage.png', desc: 'An experienced captain of industry, overseeing wide-scale infrastructural feats across the globe. He seeks true substance.' },
+    { name: 'SUBHAM BHATTACHARYA', role: 'SWE @ ABP', imgSrc: '/assets/JUDGES/SUBHAM.jpeg', desc: 'The remarkable mind behind some of the most reliable networks of our modern era. She honors speed and flawless execution.' },
+    
 ];
 
 export default function Judges() {
