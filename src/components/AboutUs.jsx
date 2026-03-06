@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
+import { motion } from 'framer-motion';
 
 const features = [
     {
@@ -112,20 +113,15 @@ const features = [
 ];
 
 export default function AboutUs() {
-    const ref = useRef();
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => { if (entry.isIntersecting) entry.target.classList.add('visible'); },
-            { threshold: 0.15 }
-        );
-        if (ref.current) observer.observe(ref.current);
-        return () => observer.disconnect();
-    }, []);
-
     return (
         <section id="about" className="about-section">
-            <div className="section-wrapper fade-in" ref={ref}>
+            <motion.div
+                className="section-wrapper"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
 
                 {/* ── Newspaper-style card ── */}
                 <div className="newspaper-card">
@@ -207,7 +203,7 @@ export default function AboutUs() {
                         </div>
                     ))}
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import PageBreaker from './components/PageBreaker';
@@ -13,6 +13,21 @@ import Socials from './components/Socials';
 import Footer from './components/Footer';
 
 export default function App() {
+    useEffect(() => {
+        const handleScroll = () => {
+            // Hero section is 100vh, we toggle the class when we are within it.
+            if (window.scrollY < window.innerHeight - 60) {
+                document.documentElement.classList.add('hero-scroll');
+            } else {
+                document.documentElement.classList.remove('hero-scroll');
+            }
+        };
+
+        handleScroll();
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
         <>
             <Navbar />

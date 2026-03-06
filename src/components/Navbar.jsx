@@ -19,10 +19,7 @@ export default function Navbar() {
         <nav className="navbar">
             {/* Left Side: Logo + Title */}
             <div className="navbar-left">
-                <Link to="hero" smooth={true} duration={800} offset={-70} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <img src="/assets/hackolutionshortlogo.png" alt="Hackolution 2K26" className="navbar-logo" />
-                    <span className="navbar-title">Hackolution 2K26</span>
-                </Link>
+                {/* Logo and Title removed as requested */}
             </div>
 
             {/* Right Side: All Section Links */}

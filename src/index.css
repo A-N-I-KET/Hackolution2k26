@@ -55,15 +55,13 @@ body {
      Two gradient layers fade to parchment near tile edges
      so the seam where two tiles meet is invisible. */
   background-image:
-    linear-gradient(
-      180deg,
+    linear-gradient(180deg,
       rgba(212, 184, 150, 0.7) 0%,
       rgba(212, 184, 150, 0.3) 5%,
       transparent 12%,
       transparent 88%,
       rgba(212, 184, 150, 0.3) 95%,
-      rgba(212, 184, 150, 0.7) 100%
-    ),
+      rgba(212, 184, 150, 0.7) 100%),
     url('/assets/BACKGROUNDIMG.jpg');
   background-size: 100% 142.12vw, 100% auto;
   background-attachment: scroll, scroll;
@@ -85,15 +83,13 @@ body::after {
   width: 100%;
   height: 100%;
   background:
-    repeating-linear-gradient(
-      180deg,
+    repeating-linear-gradient(180deg,
       transparent 0px,
       transparent calc(142.12vw - 80px),
       rgba(212, 184, 150, 0.45) calc(142.12vw - 30px),
       rgba(212, 184, 150, 0.6) 142.12vw,
       rgba(212, 184, 150, 0.45) calc(142.12vw + 30px),
-      transparent calc(142.12vw + 80px)
-    );
+      transparent calc(142.12vw + 80px));
   pointer-events: none;
   z-index: 0;
 }
@@ -105,30 +101,46 @@ body::after {
 }
 
 /* --- Scrollbar Styling --- */
+:root {
+  --scrollbar-track-bg: #9A0302;
+  --scrollbar-thumb-bg: #b00304;
+  --scrollbar-thumb-hover-bg: #c40405;
+}
+
+html.hero-scroll {
+  --scrollbar-track-bg: #9A0302;
+  --scrollbar-thumb-bg: #9A0302;
+  --scrollbar-thumb-hover-bg: #9A0302;
+}
+
+html {
+  scrollbar-color: var(--scrollbar-thumb-bg) transparent;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background-image: url('/assets/BACKGROUNDIMG.jpg');
+  background: var(--scrollbar-track-bg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #b00304;
+  background: var(--scrollbar-thumb-bg);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #c40405;
+  background: var(--scrollbar-thumb-hover-bg);
 }
 
 /* --- Rough Borders & Lines Styling --- */
 /* Add rough/noisy effect to prominent borders and lines to simulate vintage printing */
-#root > * {
-  filter: url(#roughpaper);
+#root>* {
+  /* filter: url(#roughpaper); */
 }
 
 /* --- Utility --- */
@@ -138,7 +150,7 @@ body::after {
   margin: 0 auto;
   padding: 25px 20px;
   position: relative;
-  
+
   /* Vintage paper noise overlay */
   background-image: radial-gradient(var(--ink-brown) 5%, transparent 10%);
   background-size: 3px 3px;
@@ -206,8 +218,7 @@ body::after {
   padding: 0 30px;
   height: 60px;
   background: #9A0302;
-  border-bottom: 5px solid #7a0202;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  /* Removed border and shadow to seamlessly merge */
 }
 
 
@@ -254,31 +265,22 @@ body::after {
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  padding: 8px 14px;
+  padding: 8px 18px;
+  margin: 0 4px;
   cursor: pointer;
   position: relative;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   white-space: nowrap;
+
+  /* Capsule styling */
+  border: 2px solid #D8D1B3;
+  border-radius: 50px;
 }
 
 .navbar-links li .nav-link:hover {
-  color: #ffffff;
-}
-
-.navbar-links li .nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 4px;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background: #D8D1B3;
-  transition: width 0.3s ease, left 0.3s ease;
-}
-
-.navbar-links li .nav-link:hover::after {
-  width: 70%;
-  left: 15%;
+  background-color: #D8D1B3;
+  color: #9A0302;
+  border-color: #D8D1B3;
 }
 
 /* Register Now button in navbar */
@@ -432,112 +434,178 @@ body::after {
   }
 }
 
-/* --- Hero Section --- */
-.hero-section {
-  padding-top: 80px;
-  padding-bottom: 10px;
+/* --- Hero Section - Cutout Revamp --- */
+.hero-revamped {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin-top: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  animation: fadeInUp 1s ease-out;
-}
-
-/* Outer poster frame */
-.hero-frame {
-  width: 90%;
-  max-width: 1000px;
-  background: var(--ink-dark);
-  padding: 8px;
-  box-shadow:
-    0 0 0 2px var(--ink-brown),
-    0 0 0 6px var(--parchment-dark),
-    0 0 0 8px var(--ink-brown),
-    6px 8px 30px rgba(0, 0, 0, 0.5);
-}
-
-/* Inner frame border */
-.hero-frame-inner {
-  position: relative;
-  width: 100%;
+  background-color: #000;
   overflow: hidden;
-  border: 3px solid var(--ink-brown);
 }
 
-.hero-video {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-}
-
-/* Logo centered over the video */
-.hero-logo-overlay {
+.hero-bg-video {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Container for the white mask + cutout text */
+.hero-cutout-container {
+  flex: 1;
+  /* Takes up most of the screen */
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.45) 100%);
-  pointer-events: none;
+  overflow: hidden;
+  padding-top: 60px;
+  /* Navbar padding */
+  background-color: transparent;
+  /* Outer mask now handled by SVG */
+
+  /* Blends Black Text (Source) and White Mask with the Video (Backdrop). black becomes transparent, white stays opaque. */
+  position: relative;
+  z-index: 1;
 }
 
-.hero-logo {
-  width: min(70%, 500px);
-  filter: drop-shadow(0 0 25px rgba(0, 0, 0, 0.7));
-  animation: pulse 3s ease-in-out infinite;
-  will-change: transform;
+/* The giant cutout text using modern background-clip trick */
+.hero-cutout-text {
+  font-family: 'Bebas Neue', 'Oswald', sans-serif;
+  font-size: min(12vw, 22vh);
+  /* Strictly bound the size to the viewport so the long word fits */
+  font-weight: 900;
+  line-height: 0.8;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  position: relative;
+  transform: scaleY(3.0);
+
+  color: #D8D1B3;
+  /* Match navbar text color */
+  white-space: nowrap;
 }
 
-/* Catalogue banner below the poster */
-.hero-catalogue {
-  margin-top: 30px;
-  width: 95%;
-  max-width: 1400px;
-  text-align: center;
+.hero-version {
+  font-family: 'Bebas Neue', 'Oswald', sans-serif;
+  font-size: 0.15em;
+  vertical-align: top;
+  margin-left: 2px;
+  /* Placed at the corner of the N */
+  color: #D8D1B3;
 }
 
-.hero-catalogue-img {
-  width: 100%;
-  height: auto;
-  filter: drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.3));
+/* The bottom bar showing the forest clearly */
+.hero-bottom-bar {
+  height: 25vh;
+  /* Taking the bottom portion of the screen */
+  min-height: 150px;
+  background-color: transparent;
+  /* No background, just showing the underlying .hero-revamped background */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  position: relative;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
+/* Bottom shadow to make bottom text readable */
+.hero-bottom-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+  z-index: 1;
+}
+
+.hero-bottom-left,
+.hero-bottom-center,
+.hero-bottom-right {
+  position: relative;
+  z-index: 2;
+  /* Keep above the shadow gradient */
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+
+/* Align left and right text */
+.hero-bottom-left {
+  width: 200px;
+}
+
+.hero-bottom-right {
+  width: 200px;
+  text-align: right;
+}
+
+.hero-bottom-center {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+/* Discord Button styling to match Devfolio button */
+.discord-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: #5865F2;
+  /* Discord blurple */
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  height: 44px;
+  /* matching devfolio */
+  padding: 0 24px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  border: 1px solid #5865F2;
+}
+
+.discord-button img {
+  height: 20px;
+  margin-right: 10px;
+}
+
+.discord-button:hover {
+  background-color: #f6f6f6;
+}
+
+@media (max-width: 900px) {
+  .hero-bottom-bar {
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+    height: auto;
   }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes pulse {
-
-  0%,
-  100% {
-    transform: scale(1);
+  .hero-bottom-left,
+  .hero-bottom-right {
+    width: auto;
+    text-align: center;
   }
 
-  50% {
-    transform: scale(1.02);
-  }
-}
-
-@media (max-width: 600px) {
-  .hero-section {
-    padding-top: 70px;
+  .hero-bottom-center {
+    flex-direction: column;
   }
 
-  .hero-frame {
-    width: 95%;
-    padding: 5px;
+  .hero-cutout-text {
+    transform: scaleY(1.1);
+    font-size: clamp(4rem, 15vw, 10rem);
   }
 }
 
@@ -750,7 +818,8 @@ body::after {
 
 .about-feature-card {
   border: 4px solid var(--ink-dark);
-  padding: 5px; /* Outer frame padding */
+  padding: 5px;
+  /* Outer frame padding */
   text-align: center;
   position: relative;
   background: transparent;
@@ -771,7 +840,7 @@ body::after {
   z-index: 0;
 }
 
-.about-feature-card > * {
+.about-feature-card>* {
   z-index: 1;
   position: relative;
 }
@@ -801,7 +870,7 @@ body::after {
 .about-feature-icon svg {
   width: 70px;
   height: 70px;
-  filter: drop-shadow(1px 1px 0px rgba(0,0,0,0.2));
+  filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.2));
 }
 
 .about-feature-desc {
@@ -850,7 +919,8 @@ body::after {
 /* --- Vintage Catalogue Frame Classes --- */
 #prizes .section-wrapper,
 #team .section-wrapper {
-  padding: 45px 30px; /* Increased padding to separate text from borders */
+  padding: 45px 30px;
+  /* Increased padding to separate text from borders */
   background-color: transparent;
   border: 2px solid var(--ink-dark);
   /* Use a thinner transparent double-border effect */
@@ -927,7 +997,7 @@ body::after {
 
 .vintage-prize-col:hover {
   transform: translateY(-5px);
-  box-shadow: 4px 6px 15px rgba(0,0,0,0.15);
+  box-shadow: 4px 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .vintage-col-title {
@@ -953,7 +1023,8 @@ body::after {
 
 .vintage-col-img {
   width: 100%;
-  max-width: 240px; /* Increased size of coin images */
+  max-width: 240px;
+  /* Increased size of coin images */
   object-fit: contain;
   transition: transform 0.3s ease;
 }
@@ -1006,9 +1077,11 @@ body::after {
     grid-template-columns: 1fr;
     max-width: 450px;
   }
+
   .vintage-title-main {
     margin-bottom: 15px;
   }
+
   .vintage-title-sub {
     flex-direction: column;
     gap: 8px;
@@ -1073,13 +1146,13 @@ body::after {
   color: inherit;
   border: 4px solid var(--ink-dark);
   background-color: rgba(212, 184, 150, 0.2);
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
 .sponsor-override:hover {
   background-color: rgba(212, 184, 150, 0.4);
   transform: translateY(-2px);
-  box-shadow: 4px 6px 12px rgba(0,0,0,0.2), inset 0 0 10px rgba(0,0,0,0.05);
+  box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
 .sponsor-img-override {
@@ -1094,13 +1167,14 @@ body::after {
   font-size: 4.5rem;
   font-weight: 400;
   color: var(--ink-dark);
-  text-shadow: 1px 1px 0px rgba(255,255,255,0.3);
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.3);
   transform: scaleY(1.2);
 }
 
 /* --- Partner Cards (Redesigned Vintage Catalogue) --- */
 #partners .vintage-prizes-grid {
-  display: none; /* old grid, no longer used */
+  display: none;
+  /* old grid, no longer used */
 }
 
 .partner-cards-grid {
@@ -1209,7 +1283,7 @@ body::after {
   font-family: 'UnifrakturMaguntia', cursive;
   font-size: 4rem;
   color: var(--ink-dark);
-  text-shadow: 1px 1px 0px rgba(255,255,255,0.3);
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.3);
 }
 
 /* --- Name Plate --- */
@@ -1335,7 +1409,8 @@ body::after {
 }
 
 .vintage-judge-col:hover {
-  background-color: rgba(92, 64, 51, 0.05); /* Slight tint on hover */
+  background-color: rgba(92, 64, 51, 0.05);
+  /* Slight tint on hover */
 }
 
 .vintage-judge-title {
@@ -1423,21 +1498,26 @@ body::after {
 
 .vintage-partners-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 columns for compactness */
-  gap: 15px; /* Tighter gap */
+  grid-template-columns: repeat(5, 1fr);
+  /* 5 columns for compactness */
+  gap: 15px;
+  /* Tighter gap */
 }
 
 .vintage-partner-col {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center everything */
-  padding: 15px 10px; /* Refined padding */
-  border: 1px solid var(--ink-dark); 
+  align-items: center;
+  /* Center everything */
+  padding: 15px 10px;
+  /* Refined padding */
+  border: 1px solid var(--ink-dark);
   background-color: transparent;
   text-decoration: none;
   color: inherit;
   transition: background-color 0.2s ease, transform 0.2s ease;
-  min-height: auto; /* Remove forced height */
+  min-height: auto;
+  /* Remove forced height */
 }
 
 .vintage-partner-col:hover {
@@ -1450,29 +1530,33 @@ body::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 15px; /* Space between logo and name */
-  min-height: 50px; 
+  margin-bottom: 15px;
+  /* Space between logo and name */
+  min-height: 50px;
 }
 
 .vintage-partner-title {
   font-family: var(--font-heading);
-  font-size: 0.85rem; 
+  font-size: 0.85rem;
   font-weight: 800;
   text-transform: uppercase;
   text-align: center;
   letter-spacing: 1px;
-  margin: 0; /* Remove borders/margins */
+  margin: 0;
+  /* Remove borders/margins */
 }
 
 .vintage-partner-img {
-  max-width: 60px; /* Much smaller logo */
+  max-width: 60px;
+  /* Much smaller logo */
   max-height: 50px;
   object-fit: contain;
   /* No filter — show original logo colors */
 }
 
 .vintage-partner-col:hover .vintage-partner-img {
-  filter: none; /* Keep original logo colors on hover */
+  filter: none;
+  /* Keep original logo colors on hover */
 }
 
 .vintage-partner-fallback {
@@ -1487,14 +1571,17 @@ body::after {
 
 .vintage-partner-desc {
   font-family: var(--font-body);
-  font-size: 0.7rem; /* Tiny description text */
+  font-size: 0.7rem;
+  /* Tiny description text */
   line-height: 1.2;
   text-align: justify;
   margin-bottom: 10px;
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* Limit to 3 lines max */
-  line-clamp: 3; /* Standard property for compatibility */
-  -webkit-box-orient: vertical;  
+  -webkit-line-clamp: 3;
+  /* Limit to 3 lines max */
+  line-clamp: 3;
+  /* Standard property for compatibility */
+  -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
@@ -1534,15 +1621,21 @@ body::after {
   .vintage-judges-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .vintage-judge-col:nth-child(3n) {
-    border-right: 2px solid var(--ink-dark); /* Reset */
+    border-right: 2px solid var(--ink-dark);
+    /* Reset */
   }
+
   .vintage-judge-col:nth-last-child(-n+3) {
-    border-bottom: 2px solid var(--ink-dark); /* Reset */
+    border-bottom: 2px solid var(--ink-dark);
+    /* Reset */
   }
+
   .vintage-judge-col:nth-child(2n) {
     border-right: none;
   }
+
   .vintage-judge-col:nth-last-child(-n+2) {
     border-bottom: none;
   }
@@ -1555,16 +1648,20 @@ body::after {
     text-align: center;
     gap: 15px;
   }
+
   .vintage-judges-right {
     align-items: center;
   }
+
   .vintage-judges-grid {
     grid-template-columns: 1fr;
   }
+
   .vintage-judge-col {
     border-right: none !important;
     border-bottom: 2px solid var(--ink-dark) !important;
   }
+
   .vintage-judge-col:last-child {
     border-bottom: none !important;
   }
@@ -1813,15 +1910,19 @@ body::after {
   .vintage-team-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .vintage-team-col:nth-child(4n) {
     border-right: 2px solid var(--ink-dark);
   }
+
   .vintage-team-col:nth-child(2n) {
     border-right: none;
   }
+
   .vintage-team-col:nth-last-child(-n+4) {
     border-bottom: 2px solid var(--ink-dark);
   }
+
   .vintage-team-col:nth-last-child(-n+2) {
     border-bottom: none;
   }
@@ -1831,10 +1932,12 @@ body::after {
   .vintage-team-grid {
     grid-template-columns: 1fr;
   }
+
   .vintage-team-col {
     border-right: none !important;
     border-bottom: 2px solid var(--ink-dark) !important;
   }
+
   .vintage-team-col:last-child {
     border-bottom: none !important;
   }
@@ -1846,7 +1949,8 @@ body::after {
   width: 100%;
   padding: 60px 20px;
   box-sizing: border-box;
-  overflow: hidden; /* prevent any text from bleeding out */
+  overflow: hidden;
+  /* prevent any text from bleeding out */
 }
 
 /* ── Top row: title + icons ── */
@@ -1956,7 +2060,8 @@ body::after {
   /* double-rule effect kept, but use border shorthand consistently */
   border-top: 3px solid var(--ink-dark);
   border-bottom: 1px solid var(--ink-dark);
-  padding-bottom: 2px; /* space between the two rules */
+  padding-bottom: 2px;
+  /* space between the two rules */
 }
 
 .vintage-ammo-box-text {
@@ -2088,9 +2193,11 @@ body::after {
     transform: none;
     transition: none;
   }
+
   .hero-logo {
     animation: none;
   }
+
   * {
     /* Disable the rough border turbulence for accessibility */
     filter: none !important;
@@ -2120,32 +2227,29 @@ body::after {
 @media (max-width: 768px) {
   body {
     background-image:
-      linear-gradient(
-        180deg,
+      linear-gradient(180deg,
         rgba(212, 184, 150, 0.8) 0%,
         rgba(212, 184, 150, 0.4) 8%,
         transparent 16%,
         transparent 84%,
         rgba(212, 184, 150, 0.4) 92%,
-        rgba(212, 184, 150, 0.8) 100%
-      ),
+        rgba(212, 184, 150, 0.8) 100%),
       url('/assets/BACKGROUNDIMG.jpg');
     background-size: 100% 142.12vw, 100% auto;
   }
 
   body::after {
     background:
-      repeating-linear-gradient(
-        180deg,
+      repeating-linear-gradient(180deg,
         transparent 0px,
         transparent calc(142.12vw - 100px),
         rgba(212, 184, 150, 0.55) calc(142.12vw - 40px),
         rgba(212, 184, 150, 0.7) 142.12vw,
         rgba(212, 184, 150, 0.55) calc(142.12vw + 40px),
-        transparent calc(142.12vw + 100px)
-      );
+        transparent calc(142.12vw + 100px));
   }
 }
+
 /* --- Vintage Partners Certificate / Seal Style --- */
 .vintage-partners-header-ornate {
   display: flex;
@@ -2238,13 +2342,11 @@ body::after {
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-  background: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 5px,
-    rgba(26, 15, 0, 0.05) 5px,
-    rgba(26, 15, 0, 0.05) 10px
-  );
+  background: repeating-linear-gradient(45deg,
+      transparent,
+      transparent 5px,
+      rgba(26, 15, 0, 0.05) 5px,
+      rgba(26, 15, 0, 0.05) 10px);
 }
 
 .certificate-fallback {
@@ -2308,6 +2410,7 @@ body::after {
     margin: 0 auto;
   }
 }
+
 @media (max-width: 600px) {
   .vintage-title-partners {
     font-size: 1.5rem;
