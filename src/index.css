@@ -125,6 +125,12 @@ body::after {
   background: #c40405;
 }
 
+/* --- Rough Borders & Lines Styling --- */
+/* Add rough/noisy effect to prominent borders and lines to simulate vintage printing */
+#root > * {
+  filter: url(#roughpaper);
+}
+
 /* --- Utility --- */
 .section-wrapper {
   max-width: 1600px;
@@ -2084,6 +2090,10 @@ body::after {
   }
   .hero-logo {
     animation: none;
+  }
+  * {
+    /* Disable the rough border turbulence for accessibility */
+    filter: none !important;
   }
 }
 
