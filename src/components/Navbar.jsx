@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-scroll';
+import { motion } from 'framer-motion';
 
 const navItems = [
     { label: 'About Us', to: 'about' },
@@ -12,11 +13,16 @@ const navItems = [
     { label: 'Contact Us', to: 'footer' },
 ];
 
-export default function Navbar() {
+export default function Navbar({ isLoaded }) {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <nav className="navbar">
+        <motion.nav
+            initial={{ y: -100 }}
+            animate={isLoaded ? { y: 0 } : { y: -100 }}
+            transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
+            className="navbar"
+        >
             {/* Left Side: Logo + Title */}
             <div className="navbar-left">
                 {/* Logo and Title removed as requested */}
@@ -46,6 +52,6 @@ export default function Navbar() {
                 <div className="hamburger-line" />
                 <div className="hamburger-line" />
             </div>
-        </nav>
+        </motion.nav>
     );
 }

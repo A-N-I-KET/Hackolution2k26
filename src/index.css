@@ -138,9 +138,12 @@ html {
 }
 
 /* --- Rough Borders & Lines Styling --- */
-/* Add rough/noisy effect to prominent borders and lines to simulate vintage printing */
-#root>* {
-  /* filter: url(#roughpaper); */
+/* Add rough/noisy effect to prominent borders and text site-wide to simulate vintage printing */
+.navbar,
+.section-wrapper,
+.page-breaker,
+.footer {
+  filter: url(#roughpaper);
 }
 
 /* --- Utility --- */
@@ -454,6 +457,33 @@ html {
   height: 100vh;
   object-fit: cover;
   z-index: 0;
+  filter: sepia(0.6) contrast(1.2) saturate(0.8) brightness(0.9);
+  will-change: transform;
+}
+
+/* Vignette overlay to darken screen edges and pull focus */
+.hero-vignette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at center, transparent 30%, rgba(0, 0, 0, 0.65) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Film grain effect specifically over the video */
+.film-grain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.15;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
 /* Container for the white mask + cutout text */
@@ -472,6 +502,7 @@ html {
   /* Blends Black Text (Source) and White Mask with the Video (Backdrop). black becomes transparent, white stays opaque. */
   position: relative;
   z-index: 1;
+  will-change: opacity, transform;
 }
 
 /* The giant cutout text using modern background-clip trick */
@@ -532,11 +563,12 @@ html {
   position: relative;
   z-index: 2;
   /* Keep above the shadow gradient */
-  color: white;
-  font-family: 'Inter', sans-serif;
+  color: var(--parchment);
+  font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.1rem;
   letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 /* Align left and right text */
@@ -555,33 +587,43 @@ html {
   align-items: center;
 }
 
-/* Discord Button styling to match Devfolio button */
+/* Discord Button styling to match vintage theme */
 .discord-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
-  color: #5865F2;
-  /* Discord blurple */
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
+  background-color: transparent;
+  color: var(--parchment);
+  font-family: var(--font-heading);
+  font-weight: 800;
   font-size: 16px;
   height: 44px;
   /* matching devfolio */
   padding: 0 24px;
-  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
   text-decoration: none;
-  transition: background-color 0.2s;
-  border: 1px solid #5865F2;
+  transition: all 0.3s ease;
+  border: 2px solid var(--parchment);
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
 }
 
 .discord-button img {
   height: 20px;
   margin-right: 10px;
+  filter: brightness(0) invert(1) sepia(1) hue-rotate(5deg) saturate(2) brightness(0.9);
+  transition: all 0.3s ease;
 }
 
 .discord-button:hover {
-  background-color: #f6f6f6;
+  background-color: var(--parchment);
+  color: var(--ink-dark);
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.7);
+}
+
+.discord-button:hover img {
+  filter: brightness(0);
 }
 
 @media (max-width: 900px) {

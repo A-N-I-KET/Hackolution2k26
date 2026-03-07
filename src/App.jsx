@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import PageBreaker from './components/PageBreaker';
@@ -13,7 +13,12 @@ import Socials from './components/Socials';
 import Footer from './components/Footer';
 
 export default function App() {
+    const [isLoaded, setIsLoaded] = useState(false);
+
     useEffect(() => {
+        // Trigger entrance animations instantly since we removed the artificial black screen preloader
+        setIsLoaded(true);
+
         const handleScroll = () => {
             // Hero section is 100vh, we toggle the class when we are within it.
             if (window.scrollY < window.innerHeight - 60) {
@@ -30,8 +35,8 @@ export default function App() {
 
     return (
         <>
-            <Navbar />
-            <HeroSection />
+            <Navbar isLoaded={isLoaded} />
+            <HeroSection isLoaded={isLoaded} />
             <PageBreaker />
             <AboutUs />
             <PageBreaker />

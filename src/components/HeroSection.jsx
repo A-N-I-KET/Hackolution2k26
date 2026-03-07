@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import CountdownTimer from './CountdownTimer';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-export default function HeroSection() {
+export default function HeroSection({ isLoaded }) {
     useEffect(() => {
         const script = document.createElement('script');
         script.src = 'https://apply.devfolio.co/v2/sdk.js';
@@ -23,11 +23,42 @@ export default function HeroSection() {
     return (
         <section className="hero-revamped" id="hero">
             <motion.div style={{ scale, opacity, width: '100%', height: '100%', display: 'flex', flexDirection: 'column', position: 'absolute', top: 0, left: 0, pointerEvents: 'none' }}>
-                <video autoPlay loop muted playsInline className="hero-bg-video">
+                <motion.video
+                    initial={{ scale: 1.15 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 15, ease: "easeOut" }}
+                    autoPlay loop muted playsInline className="hero-bg-video"
+                    style={{ willChange: "transform" }}
+                >
                     <source src="/assets/video.mp4" type="video/mp4" />
-                </video>
-                <div className="hero-cutout-container">
-                    <svg width="100%" height="100%" style={{ position: 'absolute', top: 0, left: 0, pointerEvents: 'none' }}>
+                </motion.video>
+
+                {/* Constant film grain and vignette to pull focus over the video */}
+                <div className="hero-vignette"></div>
+                <div className="film-grain"></div>
+
+                {/* Dark overlay that fades out to reveal the video */}
+                <motion.div
+                    initial={{ opacity: 1 }}
+                    animate={{ opacity: isLoaded ? 0 : 1 }}
+                    transition={{ duration: 0.5, delay: 0, ease: "easeInOut" }}
+                    style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        backgroundColor: '#1a1d1a',
+                        zIndex: 0
+                    }}
+                />
+
+                <div className="hero-cutout-container" style={{ willChange: "transform, opacity" }}>
+                    <motion.svg
+                        initial={{ opacity: 0, scale: 1.5, y: -100 }}
+                        animate={isLoaded ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 1.5, y: -100 }}
+                        transition={{ duration: 0.6, delay: 0.1, type: "spring", stiffness: 120, damping: 15 }}
+                        width="100%" height="100%" style={{ position: 'absolute', top: 0, left: 0, pointerEvents: 'none', willChange: "transform, opacity" }}>
                         <defs>
                             <mask id="hero-text-mask">
                                 <rect width="100%" height="100%" fill="white" />
@@ -44,11 +75,15 @@ export default function HeroSection() {
                         <text x="50%" y="50%" dy="30px" textAnchor="middle" dominantBaseline="middle" fill="none" stroke="#000000" strokeWidth="4" filter="url(#rough-edge)" className="hero-cutout-text" style={{ transformOrigin: 'center' }}>
                             HACKOLUTION<tspan className="hero-version" dy="1.5em" dx="5px" fill="none" stroke="#000000" strokeWidth="2">2k26</tspan>
                         </text>
-                    </svg>
+                    </motion.svg>
                     {/* Hidden text for screen readers */}
                     <h1 style={{ position: 'absolute', opacity: 0, pointerEvents: 'none' }}>HACKOLUTION 2k26</h1>
                 </div>
-                <div className="hero-bottom-bar" style={{ pointerEvents: 'auto' }}>
+                <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+                    transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+                    className="hero-bottom-bar" style={{ pointerEvents: 'auto', willChange: "transform, opacity" }}>
                     <div className="hero-bottom-left">
                     </div>
                     <div className="hero-bottom-center">
@@ -66,7 +101,7 @@ export default function HeroSection() {
                     </div>
                     <div className="hero-bottom-right">
                     </div>
-                </div>
+                </motion.div>
             </motion.div>
         </section>
     );
