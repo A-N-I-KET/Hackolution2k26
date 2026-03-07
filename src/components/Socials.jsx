@@ -42,7 +42,6 @@ export default function Socials() {
                     </div>
                 </div>
 
-
                 <div className="vintage-ammo-bottom">
                     <div className="vintage-ammo-large-text">COMMUTE</div>
                     <div className="vintage-ammo-box">
