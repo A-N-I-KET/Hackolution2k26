@@ -52,6 +52,12 @@ export default function Socials() {
                     <div className="vintage-ammo-large-text" style={{ textAlign: 'right' }}>NETWORK</div>
                 </div>
 
+                <div className="vintage-archive-wrap">
+                    <a href="https://hackolution2k25.hackolution.tech" target="_blank" rel="noopener noreferrer" className="vintage-archive-link">
+                        ❖ Visit our 2K25 Archives ❖
+                    </a>
+                </div>
+
             </div>
         </section>
     );

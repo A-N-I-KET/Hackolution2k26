@@ -2151,7 +2151,7 @@ html {
 
 .vintage-socials-section {
   width: 100%;
-  padding: 60px 20px;
+  padding: 30px 20px;
   box-sizing: border-box;
   overflow: hidden;
   /* prevent any text from bleeding out */
@@ -2279,6 +2279,37 @@ html {
   white-space: nowrap;
 }
 
+/* ── 2K25 Archive Link ── */
+.vintage-archive-wrap {
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
+  position: relative;
+}
+
+.vintage-archive-link {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(0.8rem, 1.5vw, 1.1rem);
+  font-weight: 700;
+  color: var(--ink-dark);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-decoration: none;
+  border-top: 1px dashed var(--ink-dark);
+  border-bottom: 1px dashed var(--ink-dark);
+  padding: 8px 16px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.vintage-archive-link:hover {
+  background-color: var(--ink-dark);
+  color: var(--parchment);
+  letter-spacing: 4px;
+  transform: translateY(-2px);
+}
+
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .vintage-socials-section {
@@ -2345,7 +2376,7 @@ html {
 .footer {
   position: relative;
   width: 100%;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .footer-img {
