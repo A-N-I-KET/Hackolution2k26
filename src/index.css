@@ -1662,6 +1662,37 @@ body {
   top: -4px;
 }
 
+.vintage-judge-linkedin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 15px;
+  padding: 8px 12px;
+  border: 1.5px solid var(--ink-dark);
+  color: var(--ink-dark);
+  text-decoration: none;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.vintage-judge-linkedin svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.vintage-judge-linkedin:hover {
+  background-color: var(--ink-dark);
+  color: var(--parchment);
+  transform: translateY(-2px);
+}
+
 .vintage-judges-footer {
   text-align: center;
   margin-top: 15px;
@@ -1988,7 +2019,7 @@ body {
 /* --- Vintage Team Catalogue --- */
 .vintage-team-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   border-bottom: 2px solid var(--ink-dark);
   border-top: 2px solid var(--ink-dark);
 }
@@ -2002,7 +2033,7 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.vintage-team-col:nth-child(4n) {
+.vintage-team-col:nth-child(5n) {
   border-right: none;
 }
 
@@ -2011,7 +2042,7 @@ body {
   border-bottom: 2px solid var(--ink-dark);
 }
 
-.vintage-team-col:nth-last-child(-n+4) {
+.vintage-team-col:nth-last-child(-n+5) {
   border-bottom: none;
 }
 
@@ -2088,12 +2119,44 @@ body {
   top: -3px;
 }
 
+.vintage-team-socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 15px;
+  border-top: 1px dotted var(--ink-dark);
+  padding-top: 12px;
+}
+
+.vintage-team-social-icon {
+  color: var(--ink-dark);
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  filter: drop-shadow(1px 1px 0px rgba(255, 255, 255, 0.4));
+}
+
+.vintage-team-social-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.vintage-team-social-icon:hover {
+  transform: scale(1.15) translateY(-2px);
+  opacity: 0.75;
+}
+
 @media (max-width: 1024px) {
   .vintage-team-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .vintage-team-col:nth-child(4n) {
+  .vintage-team-col:nth-child(5n) {
     border-right: 2px solid var(--ink-dark);
   }
 
@@ -2101,11 +2164,12 @@ body {
     border-right: none;
   }
 
-  .vintage-team-col:nth-last-child(-n+4) {
+  .vintage-team-col:nth-last-child(-n+5) {
     border-bottom: 2px solid var(--ink-dark);
   }
 
-  .vintage-team-col:nth-last-child(-n+2) {
+  /* Since there are exactly 5 items, only the 5th item is on the last row */
+  .vintage-team-col:nth-child(5) {
     border-bottom: none;
   }
 }
