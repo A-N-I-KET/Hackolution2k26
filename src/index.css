@@ -102,40 +102,17 @@ body::after {
 }
 
 /* --- Scrollbar Styling --- */
-:root {
-  --scrollbar-track-bg: #9A0302;
-  --scrollbar-thumb-bg: #b00304;
-  --scrollbar-thumb-hover-bg: #c40405;
-}
-
-html.hero-scroll {
-  --scrollbar-track-bg: #9A0302;
-  --scrollbar-thumb-bg: #9A0302;
-  --scrollbar-thumb-hover-bg: #9A0302;
-}
-
-html {
-  scrollbar-color: var(--scrollbar-thumb-bg) transparent;
+html,
+body {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--scrollbar-track-bg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb-bg);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--scrollbar-thumb-hover-bg);
+  display: none;
+  /* Chrome, Safari, Webkit */
 }
 
 /* --- Rough Borders & Lines Styling --- */
@@ -219,9 +196,10 @@ html {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 30px;
+  padding: 0 15px;
+  /* Reduced padding from 30px to fit smaller screens better */
   height: 60px;
-  background: #9A0302;
+  background: transparent;
   /* Removed border and shadow to seamlessly merge */
 }
 
@@ -506,24 +484,27 @@ html {
     text-align: center;
   }
 
-  /* Mobile quick-links: shown directly in the navbar bar */
   .mobile-quick-links {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 4px;
+    /* Reduced gap from 8px */
     margin-right: auto;
   }
 
   .mobile-quick-link {
     font-family: 'Bebas Neue', 'Oswald', sans-serif;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
+    /* Reduced font size from 0.7rem */
     color: #D8D1B3;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
+    /* Reduced letter-spacing from 2px */
     cursor: pointer;
     white-space: nowrap;
     text-decoration: none;
-    padding: 5px 14px;
+    padding: 4px 8px;
+    /* Reduced padding from 5px 14px */
     border: 2px solid rgba(216, 209, 179, 0.7);
     border-radius: 50px;
     position: relative;

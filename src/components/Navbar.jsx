@@ -15,7 +15,6 @@ const navItems = [
 
 // Quick links shown directly in the mobile navbar (not inside hamburger)
 const mobileQuickItems = [
-    { label: 'About Us', to: 'about' },
     { label: 'Prizes', to: 'prizes' },
     { label: 'Sponsors', to: 'sponsors' },
 ];
@@ -30,6 +29,22 @@ export default function Navbar({ isLoaded }) {
             transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}
             className={`navbar${menuOpen ? ' menu-open' : ''}`}
         >
+            <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1, overflow: 'hidden', display: menuOpen ? 'none' : 'block' }}>
+                <svg width="100%" height="100%">
+                    <defs>
+                        <filter id="nav-black-clouds">
+                            <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="5" seed="5" result="noise" />
+                            <feColorMatrix type="matrix" values="
+                                0 0 0 0 0
+                                0 0 0 0 0
+                                0 0 0 0 0
+                                0 0 0 1.5 -0.2" in="noise" />
+                        </filter>
+                    </defs>
+                    <rect width="100%" height="100%" fill="#9A0302" />
+                    <rect width="100%" height="100%" filter="url(#nav-black-clouds)" opacity="0.3" style={{ mixBlendMode: 'multiply' }} />
+                </svg>
+            </div>
             {/* Left Side: Logo + Title */}
             <div className="navbar-left">
                 {/* Logo and Title removed as requested */}
@@ -52,6 +67,17 @@ export default function Navbar({ isLoaded }) {
                         </Link>
                     </li>
                 ))}
+                <li>
+                    <a
+                        href="https://hackolution2k26.devfolio.co/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="nav-link"
+                        onClick={() => setMenuOpen(false)}
+                    >
+                        REGISTER NOW
+                    </a>
+                </li>
             </ul>
 
             {/* Mobile quick-links: visible directly in navbar on small screens */}
@@ -69,6 +95,14 @@ export default function Navbar({ isLoaded }) {
                         {item.label}
                     </Link>
                 ))}
+                <a
+                    href="https://hackolution2k26.devfolio.co/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mobile-quick-link"
+                >
+                    REGISTER NOW
+                </a>
             </div>
 
             <div className={`hamburger${menuOpen ? ' active' : ''}`} onClick={() => setMenuOpen(!menuOpen)}>

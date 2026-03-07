@@ -12,9 +12,18 @@ import CommunityPartners from './components/CommunityPartners';
 import Team from './components/Team';
 import Socials from './components/Socials';
 import Footer from './components/Footer';
+import FloatingButton from './components/FloatingButton';
+import { motion, useScroll, useSpring } from 'framer-motion';
 
 export default function App() {
     const [isLoaded, setIsLoaded] = useState(false);
+
+    const { scrollYProgress } = useScroll();
+    const scaleX = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    });
 
     useEffect(() => {
         // Trigger entrance animations instantly since we removed the artificial black screen preloader
@@ -36,6 +45,19 @@ export default function App() {
 
     return (
         <>
+            <motion.div
+                style={{
+                    scaleX,
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: '5px',
+                    background: 'var(--accent-red)',
+                    transformOrigin: '0%',
+                    zIndex: 2000
+                }}
+            />
             <Navbar isLoaded={isLoaded} />
             <HeroSection isLoaded={isLoaded} />
             <StartSection />
@@ -55,6 +77,7 @@ export default function App() {
             <PageBreaker />
             <Socials />
             <Footer />
+            <FloatingButton />
         </>
     );
 }

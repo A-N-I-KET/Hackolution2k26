@@ -58,11 +58,6 @@ export default function CountdownTimer() {
                 </filter>
             </svg>
             <div className="countdown-timer-bg" style={{ filter: 'url(#torn-paper)' }}></div>
-            <div className="blood-base"></div>
-            <div className="blood-drip"></div>
-            <div className="blood-drip"></div>
-            <div className="blood-drip"></div>
-            <div className="blood-drip"></div>
 
             <div className="countdown-timer-content">
                 <div className="countdown-label">

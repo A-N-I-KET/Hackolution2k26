@@ -65,6 +65,58 @@ export default function HeroSection({ isLoaded }) {
     const scale = useTransform(scrollY, [0, 500], [1, 1.2]);
     const opacity = useTransform(scrollY, [0, 500], [1, 0]);
 
+    const introText = "INTRODUCING".split("");
+    const mainText = "HACKOLUTION".split("");
+    const subText = "2k26".split("");
+
+    const [phase, setPhase] = useState('initial');
+    const [currentTextIndex, setCurrentTextIndex] = useState(0); // 0 for intro, 1 for main
+
+    useEffect(() => {
+        if (isLoaded) {
+            // Start intros
+            setPhase('typingIntro');
+            setCurrentTextIndex(0);
+
+            // Wait for typing Intro to finish ("INTRODUCING" is 11 chars * 0.1s + 0.7s delay = ~1.8s)
+            // Add some pause, say to 2.8s
+            const t1 = setTimeout(() => {
+                setPhase('hidden'); // quickly fade out Intro
+            }, 2800);
+
+            // After fade out, switch text to "HACKOLUTION" and start typing it
+            const t2 = setTimeout(() => {
+                setCurrentTextIndex(1);
+                setPhase('typingMain');
+            }, 3000);
+
+            return () => { clearTimeout(t1); clearTimeout(t2); };
+        } else {
+            setPhase('initial');
+            setCurrentTextIndex(0);
+        }
+    }, [isLoaded]);
+
+    const svgVariants = {
+        initial: { opacity: 0, scale: 1.5, y: -100 },
+        typingIntro: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.6, delay: 0.1, type: "spring", stiffness: 120, damping: 15 } },
+        hidden: { opacity: 1, scale: 1, y: 0, transition: { duration: 0 } },
+        typingMain: { opacity: 1, scale: 1, y: 0, transition: { duration: 0 } }
+    };
+
+    const letterVariants = {
+        initial: { opacity: 0 },
+        typingIntro: (i) => ({
+            opacity: 1,
+            transition: { delay: 0.7 + i * 0.1, duration: 0.1 }
+        }),
+        hidden: { opacity: 0, transition: { duration: 0.2 } },
+        typingMain: (i) => ({
+            opacity: 1,
+            transition: { delay: 0.1 + i * 0.1, duration: 0.1 }
+        })
+    };
+
     return (
         <section className="hero-revamped" id="hero">
             <motion.div style={{ scale, opacity, width: '100%', height: '100%', display: 'flex', flexDirection: 'column', position: 'absolute', top: 0, left: 0, pointerEvents: 'none' }}>
@@ -100,25 +152,76 @@ export default function HeroSection({ isLoaded }) {
 
                 <div className="hero-cutout-container" style={{ willChange: "transform, opacity" }}>
                     <motion.svg
-                        initial={{ opacity: 0, scale: 1.5, y: -100 }}
-                        animate={isLoaded ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 1.5, y: -100 }}
-                        transition={{ duration: 0.6, delay: 0.1, type: "spring", stiffness: 120, damping: 15 }}
-                        width="100%" height="100%" style={{ position: 'absolute', top: 0, left: 0, pointerEvents: 'none', willChange: "transform, opacity" }}>
+                        initial="initial"
+                        animate={phase}
+                        variants={svgVariants}
+                        width="100%" height="100%" style={{ position: 'absolute', top: 0, left: 0, pointerEvents: 'none', willChange: "transform, opacity, filter" }}>
                         <defs>
                             <mask id="hero-text-mask">
                                 <rect width="100%" height="100%" fill="white" />
-                                <text x="50%" y="50%" dy="30px" textAnchor="middle" dominantBaseline="middle" fill="black" className="hero-cutout-text" style={{ transformOrigin: 'center' }}>
-                                    HACKOLUTION<tspan className="hero-version" dy={isMobile ? "1.33em" : "1.5em"} dx={isMobile ? "-2.5em" : "5px"} fill="black">2k26</tspan>
+                                <text x="50%" y="50%" dy="30px" textAnchor="middle" dominantBaseline="middle" className="hero-cutout-text" style={{ transformOrigin: 'center' }}>
+                                    {currentTextIndex === 0 ? (
+                                        introText.map((char, i) => (
+                                            <motion.tspan key={`mask-intro-${i}`} custom={i} variants={letterVariants} fill="black">
+                                                {char}
+                                            </motion.tspan>
+                                        ))
+                                    ) : (
+                                        <>
+                                            {mainText.map((char, i) => (
+                                                <motion.tspan key={`mask-main-${i}`} custom={i} variants={letterVariants} fill="black">
+                                                    {char}
+                                                </motion.tspan>
+                                            ))}
+                                            <tspan className="hero-version" dy={isMobile ? "1.33em" : "1.5em"} dx={isMobile ? "-2.5em" : "5px"}>
+                                                {subText.map((char, i) => (
+                                                    <motion.tspan key={`mask-sub-${i}`} custom={mainText.length + i} variants={letterVariants} fill="black">
+                                                        {char}
+                                                    </motion.tspan>
+                                                ))}
+                                            </tspan>
+                                        </>
+                                    )}
                                 </text>
                             </mask>
                             <filter id="rough-edge" x="-20%" y="-20%" width="140%" height="140%">
                                 <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
                                 <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" />
                             </filter>
+                            <filter id="black-clouds">
+                                <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="5" seed="5" result="noise" />
+                                <feColorMatrix type="matrix" values="
+                                    0 0 0 0 0
+                                    0 0 0 0 0
+                                    0 0 0 0 0
+                                    0 0 0 1.5 -0.2" in="noise" />
+                            </filter>
                         </defs>
                         <rect width="100%" height="100%" fill="#9A0302" mask="url(#hero-text-mask)" />
-                        <text x="50%" y="50%" dy="30px" textAnchor="middle" dominantBaseline="middle" fill="none" stroke="#000000" strokeWidth="4" filter="url(#rough-edge)" className="hero-cutout-text" style={{ transformOrigin: 'center' }}>
-                            HACKOLUTION<tspan className="hero-version" dy={isMobile ? "1.33em" : "1.5em"} dx={isMobile ? "-2.5em" : "5px"} fill="none" stroke="#000000" strokeWidth="2">2k26</tspan>
+                        <rect width="100%" height="100%" filter="url(#black-clouds)" opacity="0.3" style={{ mixBlendMode: 'multiply' }} mask="url(#hero-text-mask)" />
+                        <text x="50%" y="50%" dy="30px" textAnchor="middle" dominantBaseline="middle" filter="url(#rough-edge)" className="hero-cutout-text" style={{ transformOrigin: 'center' }}>
+                            {currentTextIndex === 0 ? (
+                                introText.map((char, i) => (
+                                    <motion.tspan key={`stroke-intro-${i}`} custom={i} variants={letterVariants} fill="none" stroke="#000000" strokeWidth="4">
+                                        {char}
+                                    </motion.tspan>
+                                ))
+                            ) : (
+                                <>
+                                    {mainText.map((char, i) => (
+                                        <motion.tspan key={`stroke-main-${i}`} custom={i} variants={letterVariants} fill="none" stroke="#000000" strokeWidth="4">
+                                            {char}
+                                        </motion.tspan>
+                                    ))}
+                                    <tspan className="hero-version" dy={isMobile ? "1.33em" : "1.5em"} dx={isMobile ? "-2.5em" : "5px"}>
+                                        {subText.map((char, i) => (
+                                            <motion.tspan key={`stroke-sub-${i}`} custom={mainText.length + i} variants={letterVariants} fill="none" stroke="#000000" strokeWidth="2">
+                                                {char}
+                                            </motion.tspan>
+                                        ))}
+                                    </tspan>
+                                </>
+                            )}
                         </text>
                     </motion.svg>
                     {/* Hidden text for screen readers */}
