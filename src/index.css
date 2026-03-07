@@ -2164,6 +2164,17 @@ html {
   }
 }
 
+/* --- Start Section --- */
+.start-section {
+  position: relative;
+  width: 100%;
+}
+
+.start-img {
+  width: 100%;
+  display: block;
+}
+
 /* --- Footer --- */
 .footer {
   position: relative;

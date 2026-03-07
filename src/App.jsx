@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
+import StartSection from './components/StartSection';
 import PageBreaker from './components/PageBreaker';
 import AboutUs from './components/AboutUs';
 import Prizes from './components/Prizes';
@@ -37,7 +38,7 @@ export default function App() {
         <>
             <Navbar isLoaded={isLoaded} />
             <HeroSection isLoaded={isLoaded} />
-            <PageBreaker />
+            <StartSection />
             <AboutUs />
             <PageBreaker />
             <Prizes />
