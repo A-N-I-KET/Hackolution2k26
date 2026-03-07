@@ -897,10 +897,7 @@ html {
   width: 100%;
   max-width: 320px;
   height: auto;
-  filter: sepia(0.3) contrast(1.1) saturate(0.8);
-  border: 2px solid var(--ink-brown);
-  padding: 8px;
-  transition: filter 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .newspaper-illustration:hover {
