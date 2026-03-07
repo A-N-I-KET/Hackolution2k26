@@ -2287,44 +2287,48 @@ html {
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
+  .vintage-socials-section {
+    overflow: visible;
+    padding: 40px 16px;
+  }
+
   .vintage-ammo-top {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 14px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
 
   .vintage-ammo-title-top {
-    /* on narrow screens allow it to wrap rather than truncate */
     white-space: normal;
-    font-size: clamp(0.85rem, 4vw, 1.4rem);
-  }
-
-  .vintage-ammo-bottom {
-    /* keep all three on one row as long as possible */
-    gap: 6px;
-  }
-
-  .vintage-ammo-large-text {
-    font-size: clamp(1.4rem, 7vw, 4rem);
+    font-size: clamp(0.75rem, 3.5vw, 1.3rem);
     text-align: center;
+    overflow: visible;
+    text-overflow: unset;
   }
-}
 
-@media (max-width: 540px) {
+  .vintage-ammo-icons {
+    gap: 16px;
+  }
+
   .vintage-ammo-bottom {
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
+    overflow: visible;
   }
 
   .vintage-ammo-large-text {
+    font-size: clamp(2.2rem, 12vw, 4.5rem);
     text-align: center !important;
-    font-size: clamp(2rem, 12vw, 3.5rem);
+    overflow: visible;
+    white-space: nowrap;
+    flex: none;
+    width: 100%;
   }
 
   .vintage-ammo-box {
-    width: 80%;
+    width: 70%;
   }
 
   .vintage-ammo-box-line {
