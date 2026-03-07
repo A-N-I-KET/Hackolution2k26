@@ -49,6 +49,7 @@ html {
 body {
   font-family: var(--font-body);
   color: var(--ink-brown);
+  overflow-x: hidden;
 
   /* Layered backgrounds: gradient overlays hide the tile seam.
      Image aspect ratio 2500:3553 → each tile = 142.12vw tall.
@@ -359,26 +360,45 @@ html {
   }
 }
 
-/* Hamburger */
+/* Hamburger - Vintage Stamp Button Style */
 .hamburger {
   display: none;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
   cursor: pointer;
   z-index: 1001;
-  padding: 5px;
+  padding: 8px;
+  background-color: var(--ink-dark);
+  border: 2px solid var(--parchment);
+  border-radius: 4px;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
+}
+
+.hamburger:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.4);
 }
 
 .hamburger-line {
-  width: 28px;
-  height: 3px;
-  background: #D8D1B3;
+  width: 24px;
+  height: 2px;
+  background: var(--parchment);
   transition: all 0.3s ease;
-  border-radius: 2px;
+  border-radius: 1px;
+}
+
+.hamburger.active {
+  background-color: var(--accent-red);
+  border-color: var(--ink-dark);
+}
+
+.hamburger.active .hamburger-line {
+  background: var(--ink-dark);
 }
 
 .hamburger.active .hamburger-line:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 6px);
+  transform: rotate(45deg) translate(4px, 4px);
 }
 
 .hamburger.active .hamburger-line:nth-child(2) {
@@ -386,7 +406,12 @@ html {
 }
 
 .hamburger.active .hamburger-line:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -7px);
+  transform: rotate(-45deg) translate(4px, -5px);
+}
+
+/* Mobile quick-links: hidden on desktop, shown on mobile */
+.mobile-quick-links {
+  display: none;
 }
 
 /* Mobile nav */
@@ -395,19 +420,50 @@ html {
     display: flex;
   }
 
+  /* Make the original navbar invisible when the hamburger menu is open */
+  .navbar.menu-open {
+    background: transparent !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .navbar.menu-open .mobile-quick-links {
+    opacity: 0;
+    pointer-events: none;
+  }
+
   .navbar-links {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 280px;
+    width: 300px;
     height: 100vh;
     flex-direction: column;
-    background: linear-gradient(180deg, var(--parchment), var(--parchment-dark));
-    padding: 80px 30px 30px;
-    gap: 5px;
-    transition: right 0.4s ease;
-    border-left: 3px solid var(--ink-brown);
-    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+    /* Old paper texture background */
+    background: url('/assets/BACKGROUNDIMG.jpg') center/cover;
+    background-color: var(--parchment); /* fallback */
+    padding: 100px 30px 40px;
+    gap: 0;
+    transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    /* Thick vintage catalogue double border */
+    border-left: 6px double var(--ink-dark);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.7);
+    filter: url(#rough-edge); /* Apply the global rough edge noise */
+  }
+
+  /* Decorative header inside the drawer */
+  .navbar-links::before {
+    content: 'INDEX';
+    display: block;
+    text-align: center;
+    font-family: var(--font-accent);
+    font-size: 2.5rem;
+    color: var(--ink-dark);
+    border-bottom: 2px solid var(--ink-dark);
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    letter-spacing: 2px;
   }
 
   .navbar-links.open {
@@ -415,10 +471,22 @@ html {
   }
 
   .navbar-links li .nav-link {
-    font-size: 1rem;
-    padding: 12px 0;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 15px 0;
     display: block;
-    border-bottom: 1px solid rgba(92, 64, 51, 0.3);
+    color: var(--ink-dark) !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 2px dotted var(--ink-brown);
+    transition: transform 0.2s ease, padding-left 0.2s ease, color 0.2s ease;
+  }
+
+  .navbar-links li .nav-link:hover {
+    padding-left: 10px;
+    color: var(--accent-red) !important;
+    background: transparent;
   }
 
   .nav-dropdown {
@@ -434,6 +502,49 @@ html {
     margin-top: 10px;
     display: block;
     text-align: center;
+  }
+
+  /* Mobile quick-links: shown directly in the navbar bar */
+  .mobile-quick-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: auto;
+  }
+
+  .mobile-quick-link {
+    font-family: 'Bebas Neue', 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    color: #D8D1B3;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    padding: 5px 14px;
+    border: 2px solid rgba(216, 209, 179, 0.7);
+    border-radius: 50px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  /* Inner double-border effect using box-shadow */
+  .mobile-quick-link::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border: 1px solid rgba(216, 209, 179, 0.4);
+    border-radius: 50px;
+    pointer-events: none;
+  }
+
+  .mobile-quick-link:hover,
+  .mobile-quick-link.active {
+    color: var(--accent-gold);
+    border-color: var(--accent-gold);
   }
 }
 
@@ -627,27 +738,79 @@ html {
 }
 
 @media (max-width: 900px) {
+  .hero-revamped {
+    height: 100svh; /* Use small viewport height for mobile browser chrome */
+  }
+
+  .hero-cutout-container {
+    flex: none;
+    height: 50svh;
+    min-height: 50svh;
+    padding-top: 30px;
+  }
+
+  .hero-cutout-text {
+    transform: scaleY(1.2);
+    font-size: min(12vw, 11vh);
+    letter-spacing: -1px;
+  }
+
+  .hero-version {
+    font-size: 0.12em;
+  }
+
   .hero-bottom-bar {
     flex-direction: column;
-    justify-content: center;
-    gap: 15px;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
     padding: 20px;
     height: auto;
+    min-height: auto;
+    margin-top: auto; /* Push bottom bar all the way to the bottom */
+    padding-bottom: 30px;
   }
 
   .hero-bottom-left,
   .hero-bottom-right {
-    width: auto;
-    text-align: center;
+    display: none; /* Hide empty side columns on mobile */
   }
 
   .hero-bottom-center {
     flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
   }
 
-  .hero-cutout-text {
-    transform: scaleY(1.1);
-    font-size: clamp(4rem, 15vw, 10rem);
+  /* Make the Devfolio apply button full-width on mobile */
+  .hero-bottom-center .apply-button {
+    width: 100% !important;
+    max-width: 300px;
+  }
+
+  .discord-button {
+    width: 100%;
+    max-width: 300px;
+    font-size: 14px;
+    height: 44px;
+    padding: 0 20px;
+    justify-content: center;
+  }
+
+  .discord-button img {
+    height: 18px;
+    margin-right: 8px;
+  }
+
+  /* Reduce vignette intensity on mobile */
+  .hero-vignette {
+    background: radial-gradient(circle at center, transparent 20%, rgba(0, 0, 0, 0.5) 100%);
+  }
+
+  /* Reduce film grain on mobile for perf */
+  .film-grain {
+    opacity: 0.08;
   }
 }
 

@@ -4,16 +4,52 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function HeroSection({ isLoaded }) {
     useEffect(() => {
-        const script = document.createElement('script');
-        script.src = 'https://apply.devfolio.co/v2/sdk.js';
-        script.async = true;
-        script.defer = true;
-        document.body.appendChild(script);
-        return () => {
-            if (document.body.contains(script)) {
-                document.body.removeChild(script);
-            }
+        // 1. Ensure the script is injected
+        const scriptId = 'devfolio-script';
+        let script = document.getElementById(scriptId);
+
+        if (!script) {
+            script = document.createElement('script');
+            script.id = scriptId;
+            script.src = 'https://apply.devfolio.co/v2/sdk.js';
+            script.async = true;
+            script.defer = true;
+            document.body.appendChild(script);
         }
+
+        // 2. Set up a robust initializer
+        const initDevfolio = () => {
+            if (window.devfolio && typeof window.devfolio.init === 'function') {
+                window.devfolio.init();
+            }
+        };
+
+        // If we just created the script, wait for it to load before we observe the DOM
+        script.addEventListener('load', () => {
+            initDevfolio(); // try right away just in case
+        });
+
+        // 3. Watch the DOM for the apply-button element.
+        // The Devfolio SDK fails if the script loads BEFORE the <div className="apply-button"> is in the DOM.
+        // It also fails on React hot-reloads because the script is cached but the DOM node is recreated.
+        const observer = new MutationObserver((mutations, obs) => {
+            const applyBtn = document.querySelector('.apply-button');
+            if (applyBtn && window.devfolio) {
+                // Button is in the DOM AND script is loaded! Try initializing.
+                initDevfolio();
+            }
+        });
+
+        // Start observing immediately
+        observer.observe(document.body, { childList: true, subtree: true });
+
+        // Also try immediately in case it's already there (e.g. hot reload)
+        initDevfolio();
+
+        return () => {
+            observer.disconnect();
+            // We do NOT remove the script on unmount. Let it stay cached for faster navigation.
+        };
     }, []);
 
     const { scrollY } = useScroll();
