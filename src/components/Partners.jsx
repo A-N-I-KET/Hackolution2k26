@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from 'react';
 const partnersData = [
     { name: 'Eventopia', link: 'https://eventopia.in/', imgSrc: '/assets/PARTNER/eventopia.png', title: 'Media Partner' },
     { name: 'Hacknest', link: 'https://hacknest.in/', imgSrc: '/assets/SPONSOR/hacknest.png', title: 'Technical Partner' },
+    { name: 'PixelHouse', link: 'https://pixelhouse.in/', imgSrc: '/assets/PARTNER/pixelhouse.png', title: 'Media Partner' },
    
 ];
 
