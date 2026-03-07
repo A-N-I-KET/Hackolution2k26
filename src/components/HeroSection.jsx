@@ -1,8 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import CountdownTimer from './CountdownTimer';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function HeroSection({ isLoaded }) {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth <= 900);
+        handleResize(); // Check initial size
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     useEffect(() => {
         // 1. Ensure the script is injected
         const scriptId = 'devfolio-script';
@@ -99,7 +108,7 @@ export default function HeroSection({ isLoaded }) {
                             <mask id="hero-text-mask">
                                 <rect width="100%" height="100%" fill="white" />
                                 <text x="50%" y="50%" dy="30px" textAnchor="middle" dominantBaseline="middle" fill="black" className="hero-cutout-text" style={{ transformOrigin: 'center' }}>
-                                    HACKOLUTION<tspan className="hero-version" dy="1.5em" dx="5px" fill="black">2k26</tspan>
+                                    HACKOLUTION<tspan className="hero-version" dy={isMobile ? "1.33em" : "1.5em"} dx={isMobile ? "-2.5em" : "5px"} fill="black">2k26</tspan>
                                 </text>
                             </mask>
                             <filter id="rough-edge" x="-20%" y="-20%" width="140%" height="140%">
@@ -109,7 +118,7 @@ export default function HeroSection({ isLoaded }) {
                         </defs>
                         <rect width="100%" height="100%" fill="#9A0302" mask="url(#hero-text-mask)" />
                         <text x="50%" y="50%" dy="30px" textAnchor="middle" dominantBaseline="middle" fill="none" stroke="#000000" strokeWidth="4" filter="url(#rough-edge)" className="hero-cutout-text" style={{ transformOrigin: 'center' }}>
-                            HACKOLUTION<tspan className="hero-version" dy="1.5em" dx="5px" fill="none" stroke="#000000" strokeWidth="2">2k26</tspan>
+                            HACKOLUTION<tspan className="hero-version" dy={isMobile ? "1.33em" : "1.5em"} dx={isMobile ? "-2.5em" : "5px"} fill="none" stroke="#000000" strokeWidth="2">2k26</tspan>
                         </text>
                     </motion.svg>
                     {/* Hidden text for screen readers */}

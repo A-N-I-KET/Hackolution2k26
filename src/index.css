@@ -442,14 +442,16 @@ html {
     flex-direction: column;
     /* Old paper texture background */
     background: url('/assets/BACKGROUNDIMG.jpg') center/cover;
-    background-color: var(--parchment); /* fallback */
+    background-color: var(--parchment);
+    /* fallback */
     padding: 100px 30px 40px;
     gap: 0;
     transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
     /* Thick vintage catalogue double border */
     border-left: 6px double var(--ink-dark);
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.7);
-    filter: url(#rough-edge); /* Apply the global rough edge noise */
+    filter: url(#rough-edge);
+    /* Apply the global rough edge noise */
   }
 
   /* Decorative header inside the drawer */
@@ -739,7 +741,8 @@ html {
 
 @media (max-width: 900px) {
   .hero-revamped {
-    height: 100svh; /* Use small viewport height for mobile browser chrome */
+    height: 100svh;
+    /* Use small viewport height for mobile browser chrome */
   }
 
   .hero-cutout-container {
@@ -756,7 +759,7 @@ html {
   }
 
   .hero-version {
-    font-size: 0.12em;
+    font-size: 0.45em;
   }
 
   .hero-bottom-bar {
@@ -767,13 +770,15 @@ html {
     padding: 20px;
     height: auto;
     min-height: auto;
-    margin-top: auto; /* Push bottom bar all the way to the bottom */
+    margin-top: auto;
+    /* Push bottom bar all the way to the bottom */
     padding-bottom: 30px;
   }
 
   .hero-bottom-left,
   .hero-bottom-right {
-    display: none; /* Hide empty side columns on mobile */
+    display: none;
+    /* Hide empty side columns on mobile */
   }
 
   .hero-bottom-center {
