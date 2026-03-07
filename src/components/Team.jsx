@@ -14,7 +14,6 @@ const coordinators = [
     { name: 'ASAD HUSSAIN', role: 'Sponsorship', imgSrc: '/assets/teamimage.png' },
     { name: 'MD.HAMMAD SHARIQ ', role: 'Operations', imgSrc: '/assets/teamimage.png' },
     { name: 'SIRSHA KUMAR', role: 'Content', imgSrc: '/assets/teamimage.png' },
-    { name: 'SHUBHAM RAJ', role: 'Social Media', imgSrc: '/assets/teamimage.png' },
 ];
 
 export default function Team() {
