@@ -199,7 +199,6 @@ export default function AboutUs() {
                                 {feature.icon}
                             </div>
                             <p className="about-feature-desc">{feature.desc}</p>
-                            <div className="about-feature-view">View Details</div>
                         </div>
                     ))}
                 </div>

@@ -1035,6 +1035,14 @@ html {
   background: transparent;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background-color 0.35s ease;
+}
+
+.about-feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.2);
+  background-color: rgba(212, 184, 150, 0.15);
 }
 
 /* Inner frame for the catalogue card */
@@ -1081,6 +1089,11 @@ html {
   width: 70px;
   height: 70px;
   filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.2));
+  transition: transform 0.35s ease;
+}
+
+.about-feature-card:hover .about-feature-icon svg {
+  transform: scale(1.1);
 }
 
 .about-feature-desc {
@@ -1091,25 +1104,6 @@ html {
   flex-grow: 1;
   text-align: justify;
   hyphens: auto;
-}
-
-/* Vintage "View Details" action bottom */
-.about-feature-view {
-  font-family: var(--font-heading);
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  padding: 12px;
-  border-top: 1px dashed var(--ink-brown);
-  font-weight: 700;
-  margin-top: auto;
-  cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-.about-feature-card:hover .about-feature-view {
-  background: var(--ink-dark);
-  color: var(--parchment);
 }
 
 @media (max-width: 900px) {
