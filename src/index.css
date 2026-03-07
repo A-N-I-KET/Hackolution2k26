@@ -2511,7 +2511,17 @@ body {
   }
 
   .team-subsection-title {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    text-align: center;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .team-subsection-title::before,
+  .team-subsection-title::after {
+    margin: 0 8px;
+    font-size: 0.8rem;
   }
 }
 
