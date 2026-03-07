@@ -127,7 +127,7 @@ export default function HeroSection({ isLoaded }) {
                     autoPlay loop muted playsInline className="hero-bg-video"
                     style={{ willChange: "transform" }}
                 >
-                    <source src="/assets/video.mp4" type="video/mp4" />
+                    <source src="/assets/video.webm" type="video/webm" />
                 </motion.video>
 
                 {/* Constant film grain and vignette to pull focus over the video */}
