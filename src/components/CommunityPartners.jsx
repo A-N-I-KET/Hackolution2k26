@@ -53,7 +53,7 @@ export default function CommunityPartners() {
                 </div>
 
                 <div className="vintage-judges-footer" style={{ marginTop: '25px' }}>
-                    <span>==== HACKOLUTION 2K26 ====</span>
+                    <span>==== MORE TO COME ====</span>
                 </div>
 
             </div>
