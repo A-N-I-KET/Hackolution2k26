@@ -61,6 +61,9 @@ export default function Partners() {
                         </a>
                     ))}
                 </div>
+                <div className="vintage-judges-footer">
+                    <span>==== MORE TO COME ====</span>
+                </div>
 
             </div>
         </section>

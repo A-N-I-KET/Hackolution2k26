@@ -17,7 +17,7 @@ const coordinators = [
 ];
 
 const facultyCoordinators = [
-    { name: 'Prof. Dr. Satyajit Chakrabarti', role: 'DIRECTOR OF IEM' },
+    { name: 'Dr. Satyajit Chakrabarti', role: 'DIRECTOR OF IEM' },
     { name: 'RUPAM BHATTACHARYA', role: 'HOD' },
     { name: 'KAUSTAV SARKAR', role: 'PROFESSOR' },
     { name: 'NAYANTARA MITRA', role: 'ASST HOD' },

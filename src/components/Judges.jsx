@@ -62,7 +62,7 @@ export default function Judges() {
                 </div>
 
                 <div className="vintage-judges-footer">
-                    <span>==== HACKOLUTION 2K26 ====</span>
+                    <span>==== MORE TO COME ====</span>
                 </div>
 
             </div>

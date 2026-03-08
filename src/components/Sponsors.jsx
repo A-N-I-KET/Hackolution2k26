@@ -59,7 +59,9 @@ export default function Sponsors() {
                         </a>
                     ))}
                 </div>
-
+                <div className="vintage-judges-footer">
+                    <span>==== MORE TO COME ====</span>
+                </div>
             </div>
         </section>
     );
