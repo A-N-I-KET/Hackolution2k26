@@ -5,30 +5,56 @@ export default function FloatingButton() {
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef(null);
 
-    // Attempt to auto-play on mount
     useEffect(() => {
         const audio = audioRef.current;
-        if (audio) {
-            audio.volume = 0.5; // Set an initial volume
+        if (!audio) return;
+
+        audio.volume = 0.5; // Set an initial volume
+
+        const attemptPlay = () => {
             audio.play().then(() => {
                 setIsPlaying(true);
+                removeListeners();
             }).catch((error) => {
-                // Browsers often block auto-play without user interaction
-                console.log("Auto-play prevented by browser. User interaction needed.", error);
+                console.log("Auto-play prevented. User interaction needed.", error);
                 setIsPlaying(false);
             });
-        }
+        };
+
+        const removeListeners = () => {
+            document.removeEventListener('click', attemptPlay);
+            document.removeEventListener('keydown', attemptPlay);
+            document.removeEventListener('touchstart', attemptPlay);
+            document.removeEventListener('pointerdown', attemptPlay);
+        };
+
+        // Try playing immediately
+        audio.play().then(() => {
+            setIsPlaying(true);
+        }).catch(() => {
+            setIsPlaying(false);
+            // Wait for user interaction
+            document.addEventListener('click', attemptPlay, { once: true });
+            document.addEventListener('keydown', attemptPlay, { once: true });
+            document.addEventListener('touchstart', attemptPlay, { once: true });
+            document.addEventListener('pointerdown', attemptPlay, { once: true });
+        });
+
+        return removeListeners;
     }, []);
 
-    const togglePlay = () => {
+    const togglePlay = (e) => {
+        if (e) e.stopPropagation();
         const audio = audioRef.current;
         if (audio) {
             if (isPlaying) {
                 audio.pause();
+                setIsPlaying(false);
             } else {
-                audio.play();
+                audio.play().then(() => {
+                    setIsPlaying(true);
+                }).catch(console.error);
             }
-            setIsPlaying(!isPlaying);
         }
     };
 
