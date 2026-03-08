@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 
 const judgesData = [
-    { name: 'AVIK AGARWALA', role: 'SYSTEM ENGINEER @ TCS', imgSrc: '/assets/JUDGES/AVIK.jpeg', desc: 'A recognized pioneer in the field of artificial thought. Her insights guide our technical evaluations with precise logic.', linkedin: 'https://www.linkedin.com/in/avikagarwala/' },
-    { name: 'KRISHNENDU DASGUPTA', role: 'CTO, TechVentures', imgSrc: '/assets/teamimage.png', desc: 'An experienced captain of industry, overseeing wide-scale infrastructural feats across the globe. He seeks true substance.', linkedin: '#' },
-    { name: 'SUBHAM BHATTACHARYA', role: 'SWE @ ABP', imgSrc: '/assets/JUDGES/SUBHAM.jpeg', desc: 'The remarkable mind behind some of the most reliable networks of our modern era. She honors speed and flawless execution.', linkedin: 'https://www.linkedin.com/in/subham2409/' },
+    { name: 'AVIK AGARWALA', role: 'SYSTEM ENGINEER @ TCS', imgSrc: '/assets/JUDGES/AVIK.png', desc: 'A recognized pioneer in the field of artificial thought. Her insights guide our technical evaluations with precise logic.', linkedin: 'https://www.linkedin.com/in/avikagarwala/' },
+    { name: 'KRISHNENDU DASGUPTA', role: 'CTO, TechVentures', imgSrc: '/assets/JUDGES/KRISNENDU.png', desc: 'An experienced captain of industry, overseeing wide-scale infrastructural feats across the globe. He seeks true substance.', linkedin: 'https://www.linkedin.com/in/krishnendudg/' },
+    { name: 'SUBHAM BHATTACHARYA', role: 'SWE @ ABP', imgSrc: '/assets/JUDGES/SUBHAM.png', desc: 'The remarkable mind behind some of the most reliable networks of our modern era. She honors speed and flawless execution.', linkedin: 'https://www.linkedin.com/in/subham2409/' },
 ];
 
 export default function Judges() {

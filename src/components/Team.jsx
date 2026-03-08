@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 
 const organizers = [
     { name: 'ANIKET CHAKRABORTY', role: 'Organizer', imgSrc: '/assets/teamimage.png', linkedin: 'https://www.linkedin.com/in/aniketchakrabortydev/', portfolio: 'https://www.aniketchakrabortydev.in/', instagram: 'https://www.instagram.com/its_aniket_btw' },
-    { name: 'ROHAN SINHA', role: 'Organizer', imgSrc: '/assets/teamimage.png', linkedin: '#', portfolio: '#', instagram: '#' },
+    { name: 'ROHAN SINHA', role: 'Organizer', imgSrc: '/assets/teamimage.png', linkedin: 'https://www.linkedin.com/in/rohan-sinha-0b926225a/', portfolio: '', instagram: 'https://www.instagram.com/_the_rohan_sinha' },
     { name: 'SOUMODIP DAS', role: 'Organizer', imgSrc: '/assets/teamimage.png', linkedin: '#', portfolio: '#', instagram: '#' },
     { name: 'SAIKAT DEBNATH', role: 'Organizer', imgSrc: '/assets/teamimage.png', linkedin: 'https://www.linkedin.com/in/heyysaikat/', portfolio: 'https://heyysaikat.in/', instagram: 'https://www.instagram.com/heyysaikat' },
     { name: 'SOUVIK GHOSH', role: 'Organizer', imgSrc: '/assets/teamimage.png', linkedin: 'https://www.linkedin.com/in/souvik-ghosh-1bb26a282/', portfolio: 'https://www.devsouvik.in/', instagram: 'https://www.instagram.com/souvik___05' },
