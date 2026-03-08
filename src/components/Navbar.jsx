@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
 import { motion } from 'framer-motion';
 
@@ -21,6 +21,24 @@ const mobileQuickItems = [
 
 export default function Navbar({ isLoaded }) {
     const [menuOpen, setMenuOpen] = useState(false);
+
+    useEffect(() => {
+        if (menuOpen) {
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+            document.body.classList.add('mobile-menu-open');
+        } else {
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+            document.body.classList.remove('mobile-menu-open');
+        }
+
+        return () => {
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+            document.body.classList.remove('mobile-menu-open');
+        };
+    }, [menuOpen]);
 
     return (
         <motion.nav
@@ -72,7 +90,7 @@ export default function Navbar({ isLoaded }) {
                         href="https://hackolution2k26.devfolio.co/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="nav-link"
+                        className="nav-link nav-register-btn"
                         onClick={() => setMenuOpen(false)}
                     >
                         REGISTER NOW
@@ -99,7 +117,7 @@ export default function Navbar({ isLoaded }) {
                     href="https://hackolution2k26.devfolio.co/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mobile-quick-link"
+                    className="mobile-quick-link mobile-nav-register-btn"
                 >
                     REGISTER NOW
                 </a>

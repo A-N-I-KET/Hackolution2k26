@@ -267,23 +267,17 @@ body {
 
 /* Register Now button in navbar */
 .nav-register-btn {
-  font-family: var(--font-heading);
-  font-size: 0.78rem;
-  color: var(--parchment) !important;
-  background: linear-gradient(180deg, #b00304 0%, #5c0302 100%);
-  border: 2px solid var(--ink-dark);
-  padding: 8px 20px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  cursor: pointer;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: all 0.3s ease;
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  background-color: #D8D1B3 !important;
+  color: #9A0302 !important;
+  border-color: #D8D1B3 !important;
+  transform: translateY(-1px);
+  box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.4);
 }
 
-.nav-register-btn:hover {
-  background: linear-gradient(180deg, #c40405 0%, #7e0403 100%);
+.mobile-nav-register-btn {
+  background-color: #D8D1B3 !important;
+  color: #9A0302 !important;
+  border-color: #D8D1B3 !important;
   transform: translateY(-1px);
   box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.4);
 }

@@ -88,10 +88,10 @@ export default function Team() {
 
                 <div className="vintage-judges-divider"></div>
 
-                <div className="team-subsection-title" style={{ marginTop: '40px', fontSize: '2rem' }}>ORGANIZERS</div>
+                <div className="team-subsection-title" style={{ marginTop: '40px' }}>ORGANIZERS</div>
                 {renderCards(organizers)}
 
-                <div className="team-subsection-title" style={{ marginTop: '60px', fontSize: '2rem' }}>COORDINATORS</div>
+                <div className="team-subsection-title" style={{ marginTop: '60px' }}>COORDINATORS</div>
                 {renderCards(coordinators)}
 
                 <div className="vintage-judges-footer" style={{ marginTop: '40px' }}>
