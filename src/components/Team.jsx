@@ -16,6 +16,15 @@ const coordinators = [
     { name: 'SIRSHA KUMAR', role: 'Content', imgSrc: '/assets/teamimage.png', linkedin: '#', portfolio: '#', instagram: '#' },
 ];
 
+const facultyCoordinators = [
+    { name: 'Prof. Dr. Satyajit Chakrabarti', role: 'DIRECTOR OF IEM' },
+    { name: 'RUPAM BHATTACHARYA', role: 'HOD' },
+    { name: 'KAUSTAV SARKAR', role: 'PROFESSOR' },
+    { name: 'NAYANTARA MITRA', role: 'ASST HOD' },
+    { name: 'PRITI DEB', role: 'PROFESSOR' },
+    { name: 'PRIYANKA DAS', role: 'PROFESSOR' },
+];
+
 export default function Team() {
     const ref = useRef();
 
@@ -74,6 +83,29 @@ export default function Team() {
         </div>
     );
 
+    const renderFacultyCards = (members) => (
+        <div className="vintage-team-grid" style={{ gridTemplateColumns: `repeat(${members.length}, 1fr)`, overflowX: 'auto' }}>
+            {members.map((m, index) => (
+                <div
+                    className="vintage-team-col"
+                    key={m.name}
+                    style={{
+                        justifyContent: 'space-between',
+                        minWidth: '200px',
+                        borderRight: index === members.length - 1 ? 'none' : '2px solid var(--ink-dark)'
+                    }}
+                >
+                    <div className="vintage-team-title" style={{ transform: 'none' }}>{m.name}</div>
+                    <div className="vintage-team-role" style={{ marginTop: 'auto' }}>
+                        <span>POST</span>
+                        <span className="dots"></span>
+                        <span style={{ textAlign: 'right' }}>{m.role}</span>
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
+
     return (
         <section id="team" className="team-section">
             <div className="section-wrapper fade-in" ref={ref}>
@@ -93,6 +125,9 @@ export default function Team() {
 
                 <div className="team-subsection-title" style={{ marginTop: '60px' }}>COORDINATORS</div>
                 {renderCards(coordinators)}
+
+                <div className="team-subsection-title" style={{ marginTop: '60px' }}>FACULTY COORDINATORS</div>
+                {renderFacultyCards(facultyCoordinators)}
 
                 <div className="vintage-judges-footer" style={{ marginTop: '40px' }}>
                     <span>==== HACKOLUTION 2K26 ====</span>
