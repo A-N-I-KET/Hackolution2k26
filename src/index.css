@@ -1175,6 +1175,7 @@ body {
   flex-direction: column;
   align-items: center;
   transition: transform 0.3s ease;
+  height: 100%; /* Ensure all boxes match the tallest column */
 }
 
 .vintage-prize-col:hover {
@@ -1192,21 +1193,25 @@ body {
   text-align: center;
   transform: scaleY(1.1);
   letter-spacing: -0.5px;
-}
-
-.vintage-img-wrapper {
-  flex-grow: 1;
+  min-height: 2.5em; /* Lock title height to prevent variable height shifting */
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 200px;
+}
+
+.vintage-img-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px; /* Force an exact unified height for images */
   margin-bottom: 15px;
+  width: 100%;
 }
 
 .vintage-col-img {
   width: 100%;
   max-width: 240px;
-  /* Increased size of coin images */
+  height: 100%;
   object-fit: contain;
   transition: transform 0.3s ease;
 }
@@ -1222,6 +1227,7 @@ body {
   color: var(--ink-dark);
   text-align: justify;
   margin-bottom: 20px;
+  flex-grow: 1; /* Pushes the button to the absolute bottom so all buttons align perfectly */
 }
 
 .vintage-btn-wrap {
@@ -1246,6 +1252,309 @@ body {
   background: transparent;
   /* Distressed stamp effect */
   box-shadow: inset 0 0 0 1px var(--parchment), inset 0 0 0 2px var(--ink-brown);
+}
+
+/* Gold Sponsor Overrides */
+.vintage-prize-col.gold-sponsor {
+  border-color: var(--accent-gold);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  /* subtle outer glow even when not hovered */
+  box-shadow: 0 0 10px rgba(197, 150, 58, 0.1);
+}
+
+.vintage-prize-col.gold-sponsor::before,
+.vintage-prize-col.gold-sponsor::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Diagonal sweep */
+.vintage-prize-col.gold-sponsor::before {
+  top: 0;
+  left: -200%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.4), rgba(255, 255, 255, 0.6), rgba(255, 215, 0, 0.4), transparent);
+  transform: skewX(-35deg);
+}
+
+/* Radial spotlight glow */
+.vintage-prize-col.gold-sponsor::after {
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(197, 150, 58, 0.25) 0%, transparent 60%);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  opacity: 0;
+}
+
+.vintage-prize-col.gold-sponsor .vintage-col-title,
+.vintage-prize-col.gold-sponsor .vintage-img-wrapper,
+.vintage-prize-col.gold-sponsor .vintage-col-desc,
+.vintage-prize-col.gold-sponsor .vintage-btn-wrap {
+  position: relative;
+  z-index: 1; /* Keep content above the shine */
+}
+
+.vintage-prize-col.gold-sponsor .vintage-col-title,
+.vintage-prize-col.gold-sponsor .vintage-btn {
+  transition: all 0.4s ease;
+}
+
+.vintage-prize-col.gold-sponsor:hover {
+  box-shadow: 
+    0 20px 45px rgba(197, 150, 58, 0.5), 
+    0 0 30px rgba(197, 150, 58, 0.3),
+    inset 0 0 60px rgba(197, 150, 58, 0.2);
+  background: linear-gradient(135deg, rgba(197, 150, 58, 0.15) 0%, rgba(197, 150, 58, 0.05) 100%);
+  border-color: #fce883;
+  transform: translateY(-10px) scale(1.04);
+}
+
+.vintage-prize-col.gold-sponsor:hover::before {
+  animation: sweepGoldIntense 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.vintage-prize-col.gold-sponsor:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+@keyframes sweepGoldIntense {
+  0% { left: -200%; opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { left: 200%; opacity: 0; }
+}
+
+.vintage-prize-col.gold-sponsor:hover .vintage-col-title {
+  text-shadow: 0 0 15px rgba(255, 223, 0, 0.6), 0 0 5px rgba(255, 255, 255, 0.5);
+  transform: scaleY(1.1) scale(1.05); /* Extra pop on the text */
+}
+
+/* Image float and glow */
+.vintage-prize-col.gold-sponsor:hover .vintage-col-img {
+  transform: scale(1.15) translateY(-5px);
+  filter: drop-shadow(0 10px 15px rgba(197, 150, 58, 0.6));
+}
+
+.vintage-prize-col.gold-sponsor:hover .vintage-btn {
+  color: var(--ink-dark);
+  background-color: #ffcc00; /* Solid intense gold for readability */
+  border-color: #ffcc00;
+  box-shadow: 
+    inset 0 0 0 1px #ffdf00, 
+    inset 0 0 0 2px var(--ink-dark), 
+    0 5px 20px rgba(197, 150, 58, 0.6);
+  transform: translateY(-2px);
+  font-weight: 900;
+}
+
+.vintage-prize-col.gold-sponsor:hover .vintage-btn:hover {
+  background-color: var(--accent-gold);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 204, 0, 0.8);
+}
+
+/* Silver Sponsor Overrides */
+.vintage-prize-col.silver-sponsor {
+  border-color: #8c9ea8;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(118, 137, 149, 0.1);
+}
+
+.vintage-prize-col.silver-sponsor::before,
+.vintage-prize-col.silver-sponsor::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.vintage-prize-col.silver-sponsor::before {
+  top: 0;
+  left: -200%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(160, 175, 185, 0.4), rgba(220, 225, 230, 0.8), rgba(160, 175, 185, 0.4), transparent);
+  transform: skewX(-35deg);
+}
+
+.vintage-prize-col.silver-sponsor::after {
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(140, 158, 168, 0.25) 0%, transparent 60%);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  opacity: 0;
+}
+
+.vintage-prize-col.silver-sponsor .vintage-col-title,
+.vintage-prize-col.silver-sponsor .vintage-img-wrapper,
+.vintage-prize-col.silver-sponsor .vintage-col-desc,
+.vintage-prize-col.silver-sponsor .vintage-btn-wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.vintage-prize-col.silver-sponsor .vintage-col-title,
+.vintage-prize-col.silver-sponsor .vintage-btn {
+  transition: all 0.4s ease;
+}
+
+.vintage-prize-col.silver-sponsor:hover {
+  box-shadow: 
+    0 20px 45px rgba(118, 137, 149, 0.5), 
+    0 0 30px rgba(118, 137, 149, 0.3),
+    inset 0 0 60px rgba(118, 137, 149, 0.2);
+  background: linear-gradient(135deg, rgba(140, 158, 168, 0.15) 0%, rgba(140, 158, 168, 0.05) 100%);
+  border-color: #a4b3bc;
+  transform: translateY(-10px) scale(1.04);
+}
+
+.vintage-prize-col.silver-sponsor:hover::before {
+  animation: sweepGoldIntense 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.vintage-prize-col.silver-sponsor:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.vintage-prize-col.silver-sponsor:hover .vintage-col-title {
+  text-shadow: 0 0 15px rgba(160, 175, 185, 0.6), 0 0 5px rgba(200, 210, 218, 0.5);
+  transform: scaleY(1.1) scale(1.05);
+}
+
+.vintage-prize-col.silver-sponsor:hover .vintage-col-img {
+  transform: scale(1.15) translateY(-5px);
+  filter: drop-shadow(0 10px 15px rgba(118, 137, 149, 0.6));
+}
+
+.vintage-prize-col.silver-sponsor:hover .vintage-btn {
+  color: var(--ink-dark);
+  background-color: #dbe4ea; /* Solid bright silver for readability */
+  border-color: #dbe4ea;
+  box-shadow: 
+    inset 0 0 0 1px #ffffff, 
+    inset 0 0 0 2px var(--ink-dark), 
+    0 5px 20px rgba(140, 158, 168, 0.6);
+  transform: translateY(-2px);
+  font-weight: 900;
+}
+
+.vintage-prize-col.silver-sponsor:hover .vintage-btn:hover {
+  background-color: #a4b3bc;
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(201, 211, 217, 0.8);
+}
+
+/* Bronze Sponsor Overrides */
+.vintage-prize-col.bronze-sponsor {
+  border-color: #7b4c2a; /* True deeper bronze/copper */
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(123, 76, 42, 0.15);
+}
+
+.vintage-prize-col.bronze-sponsor::before,
+.vintage-prize-col.bronze-sponsor::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.vintage-prize-col.bronze-sponsor::before {
+  top: 0;
+  left: -200%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(160, 95, 45, 0.35), rgba(205, 127, 50, 0.6), rgba(160, 95, 45, 0.35), transparent);
+  transform: skewX(-35deg);
+}
+
+.vintage-prize-col.bronze-sponsor::after {
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(123, 76, 42, 0.3) 0%, transparent 65%);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  opacity: 0;
+}
+
+.vintage-prize-col.bronze-sponsor .vintage-col-title,
+.vintage-prize-col.bronze-sponsor .vintage-img-wrapper,
+.vintage-prize-col.bronze-sponsor .vintage-col-desc,
+.vintage-prize-col.bronze-sponsor .vintage-btn-wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.vintage-prize-col.bronze-sponsor .vintage-col-title,
+.vintage-prize-col.bronze-sponsor .vintage-btn {
+  transition: all 0.4s ease;
+}
+
+.vintage-prize-col.bronze-sponsor:hover {
+  box-shadow: 
+    0 20px 45px rgba(90, 50, 25, 0.55), 
+    0 0 30px rgba(123, 76, 42, 0.45),
+    inset 0 0 60px rgba(139, 90, 43, 0.2);
+  background: linear-gradient(135deg, rgba(123, 76, 42, 0.2) 0%, rgba(90, 50, 25, 0.05) 100%);
+  border-color: #a56834;
+  transform: translateY(-10px) scale(1.04);
+}
+
+.vintage-prize-col.bronze-sponsor:hover::before {
+  animation: sweepGoldIntense 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.vintage-prize-col.bronze-sponsor:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.vintage-prize-col.bronze-sponsor:hover .vintage-col-title {
+  text-shadow: 0 0 15px rgba(160, 95, 45, 0.6), 0 0 8px rgba(205, 127, 50, 0.4);
+  transform: scaleY(1.1) scale(1.05);
+}
+
+.vintage-prize-col.bronze-sponsor:hover .vintage-col-img {
+  transform: scale(1.15) translateY(-5px);
+  filter: drop-shadow(0 10px 15px rgba(90, 50, 25, 0.7));
+}
+
+.vintage-prize-col.bronze-sponsor:hover .vintage-btn {
+  color: var(--parchment-light);
+  background-color: #c46b28; /* Solid, rich bronze for readability */
+  border-color: #c46b28;
+  box-shadow: 
+    inset 0 0 0 1px #df9758, 
+    inset 0 0 0 2px var(--ink-dark), 
+    0 5px 20px rgba(123, 76, 42, 0.7);
+  transform: translateY(-2px);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5); /* Enhance text on copper bg */
+  font-weight: 900;
+}
+
+.vintage-prize-col.bronze-sponsor:hover .vintage-btn:hover {
+  background-color: #8a4816;
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(196, 107, 40, 0.8);
 }
 
 .vintage-btn:hover {
