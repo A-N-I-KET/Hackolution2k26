@@ -453,7 +453,9 @@ body {
     color: var(--ink-dark) !important;
     text-transform: uppercase;
     letter-spacing: 2px;
+    border: none;
     border-bottom: 2px dotted var(--ink-brown);
+    border-radius: 0;
     transition: transform 0.2s ease, padding-left 0.2s ease, color 0.2s ease;
   }
 
@@ -473,9 +475,14 @@ body {
   }
 
   .nav-register-btn {
-    margin-top: 10px;
+    margin-top: 15px;
     display: block;
     text-align: center;
+    border: 2px solid var(--ink-brown) !important;
+    border-radius: 0 !important;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.4) !important;
+    background-color: var(--parchment-light) !important;
+    padding: 12px 0 !important;
   }
 
   .mobile-quick-links {
@@ -1169,7 +1176,8 @@ body {
   flex-direction: column;
   align-items: center;
   transition: transform 0.3s ease;
-  height: 100%; /* Ensure all boxes match the tallest column */
+  height: 100%;
+  /* Ensure all boxes match the tallest column */
 }
 
 .vintage-prize-col:hover {
@@ -1187,7 +1195,8 @@ body {
   text-align: center;
   transform: scaleY(1.1);
   letter-spacing: -0.5px;
-  min-height: 2.5em; /* Lock title height to prevent variable height shifting */
+  min-height: 2.5em;
+  /* Lock title height to prevent variable height shifting */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1197,7 +1206,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 200px; /* Force an exact unified height for images */
+  height: 200px;
+  /* Force an exact unified height for images */
   margin-bottom: 15px;
   width: 100%;
 }
@@ -1221,7 +1231,8 @@ body {
   color: var(--ink-dark);
   text-align: justify;
   margin-bottom: 20px;
-  flex-grow: 1; /* Pushes the button to the absolute bottom so all buttons align perfectly */
+  flex-grow: 1;
+  /* Pushes the button to the absolute bottom so all buttons align perfectly */
 }
 
 .vintage-btn-wrap {
@@ -1293,7 +1304,8 @@ body {
 .vintage-prize-col.gold-sponsor .vintage-col-desc,
 .vintage-prize-col.gold-sponsor .vintage-btn-wrap {
   position: relative;
-  z-index: 1; /* Keep content above the shine */
+  z-index: 1;
+  /* Keep content above the shine */
 }
 
 .vintage-prize-col.gold-sponsor .vintage-col-title,
@@ -1302,8 +1314,8 @@ body {
 }
 
 .vintage-prize-col.gold-sponsor:hover {
-  box-shadow: 
-    0 20px 45px rgba(197, 150, 58, 0.5), 
+  box-shadow:
+    0 20px 45px rgba(197, 150, 58, 0.5),
     0 0 30px rgba(197, 150, 58, 0.3),
     inset 0 0 60px rgba(197, 150, 58, 0.2);
   background: linear-gradient(135deg, rgba(197, 150, 58, 0.15) 0%, rgba(197, 150, 58, 0.05) 100%);
@@ -1321,15 +1333,29 @@ body {
 }
 
 @keyframes sweepGoldIntense {
-  0% { left: -200%; opacity: 0; }
-  20% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { left: 200%; opacity: 0; }
+  0% {
+    left: -200%;
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 200%;
+    opacity: 0;
+  }
 }
 
 .vintage-prize-col.gold-sponsor:hover .vintage-col-title {
   text-shadow: 0 0 15px rgba(255, 223, 0, 0.6), 0 0 5px rgba(255, 255, 255, 0.5);
-  transform: scaleY(1.1) scale(1.05); /* Extra pop on the text */
+  transform: scaleY(1.1) scale(1.05);
+  /* Extra pop on the text */
 }
 
 /* Image float and glow */
@@ -1340,11 +1366,12 @@ body {
 
 .vintage-prize-col.gold-sponsor:hover .vintage-btn {
   color: var(--ink-dark);
-  background-color: #ffcc00; /* Solid intense gold for readability */
+  background-color: #ffcc00;
+  /* Solid intense gold for readability */
   border-color: #ffcc00;
-  box-shadow: 
-    inset 0 0 0 1px #ffdf00, 
-    inset 0 0 0 2px var(--ink-dark), 
+  box-shadow:
+    inset 0 0 0 1px #ffdf00,
+    inset 0 0 0 2px var(--ink-dark),
     0 5px 20px rgba(197, 150, 58, 0.6);
   transform: translateY(-2px);
   font-weight: 900;
@@ -1407,8 +1434,8 @@ body {
 }
 
 .vintage-prize-col.silver-sponsor:hover {
-  box-shadow: 
-    0 20px 45px rgba(118, 137, 149, 0.5), 
+  box-shadow:
+    0 20px 45px rgba(118, 137, 149, 0.5),
     0 0 30px rgba(118, 137, 149, 0.3),
     inset 0 0 60px rgba(118, 137, 149, 0.2);
   background: linear-gradient(135deg, rgba(140, 158, 168, 0.15) 0%, rgba(140, 158, 168, 0.05) 100%);
@@ -1437,11 +1464,12 @@ body {
 
 .vintage-prize-col.silver-sponsor:hover .vintage-btn {
   color: var(--ink-dark);
-  background-color: #dbe4ea; /* Solid bright silver for readability */
+  background-color: #dbe4ea;
+  /* Solid bright silver for readability */
   border-color: #dbe4ea;
-  box-shadow: 
-    inset 0 0 0 1px #ffffff, 
-    inset 0 0 0 2px var(--ink-dark), 
+  box-shadow:
+    inset 0 0 0 1px #ffffff,
+    inset 0 0 0 2px var(--ink-dark),
     0 5px 20px rgba(140, 158, 168, 0.6);
   transform: translateY(-2px);
   font-weight: 900;
@@ -1455,7 +1483,8 @@ body {
 
 /* Bronze Sponsor Overrides */
 .vintage-prize-col.bronze-sponsor {
-  border-color: #7b4c2a; /* True deeper bronze/copper */
+  border-color: #7b4c2a;
+  /* True deeper bronze/copper */
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   overflow: hidden;
@@ -1504,8 +1533,8 @@ body {
 }
 
 .vintage-prize-col.bronze-sponsor:hover {
-  box-shadow: 
-    0 20px 45px rgba(90, 50, 25, 0.55), 
+  box-shadow:
+    0 20px 45px rgba(90, 50, 25, 0.55),
     0 0 30px rgba(123, 76, 42, 0.45),
     inset 0 0 60px rgba(139, 90, 43, 0.2);
   background: linear-gradient(135deg, rgba(123, 76, 42, 0.2) 0%, rgba(90, 50, 25, 0.05) 100%);
@@ -1534,14 +1563,16 @@ body {
 
 .vintage-prize-col.bronze-sponsor:hover .vintage-btn {
   color: var(--parchment-light);
-  background-color: #c46b28; /* Solid, rich bronze for readability */
+  background-color: #c46b28;
+  /* Solid, rich bronze for readability */
   border-color: #c46b28;
-  box-shadow: 
-    inset 0 0 0 1px #df9758, 
-    inset 0 0 0 2px var(--ink-dark), 
+  box-shadow:
+    inset 0 0 0 1px #df9758,
+    inset 0 0 0 2px var(--ink-dark),
     0 5px 20px rgba(123, 76, 42, 0.7);
   transform: translateY(-2px);
-  text-shadow: 0 1px 2px rgba(0,0,0,0.5); /* Enhance text on copper bg */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  /* Enhance text on copper bg */
   font-weight: 900;
 }
 
