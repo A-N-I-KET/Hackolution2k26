@@ -2740,7 +2740,9 @@ body {
 /* --- Start Section --- */
 .start-section {
   position: relative;
-  width: 100%;
+  width: 95%;
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
 .start-img {
@@ -2751,8 +2753,9 @@ body {
 /* --- Footer --- */
 .footer {
   position: relative;
-  width: 100%;
-  margin-top: 10px;
+  width: 95%;
+  max-width: 1600px;
+  margin: 10px auto 30px auto;
 }
 
 .footer-img {
