@@ -18,11 +18,11 @@ const coordinators = [
 
 const facultyCoordinators = [
     { name: 'Dr. Satyajit Chakrabarti', role: 'DIRECTOR OF IEM' },
-    { name: 'RUPAM BHATTACHARYA', role: 'HOD' },
+    { name: 'Dr. RUPAM BHATTACHARYA', role: 'HOD' },
     { name: 'KAUSTAV SARKAR', role: 'PROFESSOR' },
     { name: 'NAYANTARA MITRA', role: 'ASST HOD' },
-    { name: 'PRITI DEB', role: 'PROFESSOR' },
-    { name: 'PRIYANKA DAS', role: 'PROFESSOR' },
+    { name: 'Dr. PRITI DEB', role: 'PROFESSOR' },
+    { name: 'Dr. PRIYANKA DAS', role: 'PROFESSOR' },
 ];
 
 export default function Team() {
