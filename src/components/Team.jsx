@@ -1,19 +1,19 @@
 import React, { useEffect, useRef } from 'react';
 
 const organizers = [
-    { name: 'ANIKET CHAKRABORTY', role: 'Organizer', imgSrc: '/assets/teamimage.png', linkedin: 'https://www.linkedin.com/in/aniketchakrabortydev/', portfolio: 'https://www.aniketchakrabortydev.in/', instagram: 'https://www.instagram.com/its_aniket_btw' },
-    { name: 'ROHAN SINHA', role: 'Organizer', imgSrc: '/assets/teamimage.png', linkedin: 'https://www.linkedin.com/in/rohan-sinha-0b926225a/', portfolio: '', instagram: 'https://www.instagram.com/_the_rohan_sinha' },
     { name: 'SOUMODIP DAS', role: 'Organizer', imgSrc: '/assets/teamimage.png', linkedin: '#', portfolio: '#', instagram: '#' },
+    { name: 'ROHAN SINHA', role: 'Organizer', imgSrc: '/assets/teamimage.png', linkedin: 'https://www.linkedin.com/in/rohan-sinha-0b926225a/', portfolio: '', instagram: 'https://www.instagram.com/_the_rohan_sinha' },
+    { name: 'ANIKET CHAKRABORTY', role: 'Organizer', imgSrc: '/assets/teamimage.png', linkedin: 'https://www.linkedin.com/in/aniketchakrabortydev/', portfolio: 'https://www.aniketchakrabortydev.in/', instagram: 'https://www.instagram.com/its_aniket_btw' },
     { name: 'SAIKAT DEBNATH', role: 'Organizer', imgSrc: '/assets/teamimage.png', linkedin: 'https://www.linkedin.com/in/heyysaikat/', portfolio: 'https://heyysaikat.in/', instagram: 'https://www.instagram.com/heyysaikat' },
     { name: 'SOUVIK GHOSH', role: 'Organizer', imgSrc: '/assets/teamimage.png', linkedin: 'https://www.linkedin.com/in/souvik-ghosh-1bb26a282/', portfolio: 'https://www.devsouvik.in/', instagram: 'https://www.instagram.com/souvik___05' },
 ];
 
 const coordinators = [
     { name: 'ANIRBAN DAS', role: 'GRAPHICS LEAD', imgSrc: '/assets/teamimage.png', linkedin: 'https://www.linkedin.com/in/anirban-das-croundous/', portfolio: 'https://anirbandev.vercel.app/', instagram: 'https://www.instagram.com/anirbananimates/' },
+    { name: 'SIRSHA KUMAR', role: 'Content', imgSrc: '/assets/teamimage.png', linkedin: '#', portfolio: '#', instagram: '#' },
     { name: 'SUBHRADEEP ROY CHOWDHURY', role: 'Marketing', imgSrc: '/assets/teamimage.png', linkedin: '#', portfolio: '#', instagram: '#' },
     { name: 'ASAD HUSSAIN', role: 'Sponsorship', imgSrc: '/assets/teamimage.png', linkedin: '#', portfolio: '#', instagram: '#' },
     { name: 'MD.HAMMAD SHARIQ ', role: 'Operations', imgSrc: '/assets/teamimage.png', linkedin: '#', portfolio: '#', instagram: '#' },
-    { name: 'SIRSHA KUMAR', role: 'Content', imgSrc: '/assets/teamimage.png', linkedin: '#', portfolio: '#', instagram: '#' },
 ];
 
 const facultyCoordinators = [
