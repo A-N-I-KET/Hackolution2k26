@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 const navItems = [
     { label: 'About Us', to: 'about' },
     { label: 'Prizes', to: 'prizes' },
+    // { label: 'Itinerary', to: 'schedule' },
     { label: 'Sponsors', to: 'sponsors' },
     { label: 'Partners', to: 'partners' },
     { label: 'Judges', to: 'judges' },

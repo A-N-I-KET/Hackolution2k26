@@ -11,6 +11,7 @@ import Judges from './components/Judges';
 import CommunityPartners from './components/CommunityPartners';
 import Team from './components/Team';
 import Venue from './components/Venue';
+import Timeline from './components/Timeline';
 import Socials from './components/Socials';
 import Footer from './components/Footer';
 import FloatingButton from './components/FloatingButton';
@@ -65,6 +66,8 @@ export default function App() {
             <AboutUs />
             <PageBreaker />
             <Prizes />
+            {/* <PageBreaker /> */}
+            {/* <Timeline /> */}
             <PageBreaker />
             <Sponsors />
             <PageBreaker />
