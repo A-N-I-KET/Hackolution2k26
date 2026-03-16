@@ -66,8 +66,8 @@ export default function App() {
             <AboutUs />
             <PageBreaker />
             <Prizes />
-            {/* <PageBreaker /> */}
-            {/* <Timeline /> */}
+            <PageBreaker />
+            <Timeline />
             <PageBreaker />
             <Sponsors />
             <PageBreaker />

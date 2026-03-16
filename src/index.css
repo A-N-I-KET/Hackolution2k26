@@ -2207,6 +2207,46 @@ body {
   text-align: justify;
 }
 
+.timeline-tick {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--accent-red);
+  background: var(--parchment, #f5f0e1);
+  border: 3px solid var(--accent-red);
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-8deg);
+  z-index: 5;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  line-height: 1;
+}
+
+.vintage-timeline-item.ongoing .vintage-timeline-content {
+  animation: timeline-blink 1.8s ease-in-out infinite;
+}
+
+.vintage-timeline-item.ongoing .vintage-timeline-time {
+  animation: timeline-blink 1.8s ease-in-out infinite;
+}
+
+@keyframes timeline-blink {
+  0%, 100% {
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+    border-color: var(--ink-dark);
+  }
+  50% {
+    box-shadow: 0 0 12px 3px rgba(151, 5, 3, 0.5), 3px 3px 0 rgba(0, 0, 0, 0.2);
+    border-color: var(--accent-red);
+  }
+}
+
 @media (max-width: 900px) {
   .vintage-timeline-container {
     grid-template-columns: repeat(2, 1fr);

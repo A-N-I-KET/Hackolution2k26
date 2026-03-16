@@ -1,15 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 
 const timelineEvents = [
-    { time: "Day 1 - 09:00 AM", title: "Gates Open & Registration", desc: "Saddle up and check-in at the frontier post. Grab your Hackolution gear and find your crew." },
-    { time: "Day 1 - 10:30 AM", title: "Opening Ceremony", desc: "A grand ol' welcome from the organizers. Rule the roost, understand the bounties, and get fired up!" },
-    { time: "Day 1 - 11:45 AM", title: "Hacking Commences", desc: "The gold rush begins! Start building your projects. May the best outlaws strike gold." },
-    { time: "Day 1 - 03:00 PM", title: "Mentorship Round 1", desc: "Veterans of the trail will come by to inspect your blueprints and point you in the right direction." },
-    { time: "Day 1 - 08:00 PM", title: "Dinner & Saloon Games", desc: "Take a load off, grab some grub, and enjoy some mini-games to refresh the mind before the long night." },
-    { time: "Day 2 - 08:30 AM", title: "Breakfast at the Camp", desc: "Fuel up for the final stretch. Coffee and bacon for the weary travelers." },
-    { time: "Day 2 - 11:30 AM", title: "Hacking Concludes", desc: "Pencils down! The sheriff's calling time. Submit your final projects for inspection." },
-    { time: "Day 2 - 01:00 PM", title: "Judging Commences", desc: "Present your bounties to the esteemed judges. Show 'em what you've built on the frontier." },
-    { time: "Day 2 - 04:30 PM", title: "Closing Ceremony & Awards", desc: "The final showdown. We crown the biggest outlaws of Hackolution 2k26 and distribute the loot." },
+    { time: "28th January - 25th March", title: "Registration Ongoing", desc: "Dont miss out on this opportunity to showcase your skills and creativity Register Now.", completed: false, ongoing: true },
+    { time: "26th March - 31st March", title: "Idea Submission & Selection Round", desc: "Submit your ideas and let the selection begin!"},
+    { time: "1st April - 5th April", title: "Offline Selected Team Approval", desc: "Selected Teams will be announced and they will appear in the hackathon." },
+    { time: "8th May", title: "Hackolution Day 1", desc: "First day of hackolution 2k26 is here!" },
+    { time: "9th May", title: "Hackolution Day 2", desc: "Final day of hackolution 2k26 is here!" },
 ];
 
 export default function Timeline() {
@@ -40,18 +36,19 @@ export default function Timeline() {
 
                 <div className="vintage-timeline-container">
                     {timelineEvents.map((event, index) => (
-                        <div key={index} className="vintage-timeline-item">
+                        <div key={index} className={`vintage-timeline-item ${event.completed ? 'completed' : ''} ${event.ongoing ? 'ongoing' : ''}`}>
                             <div className="vintage-timeline-time">{event.time}</div>
                             <div className="vintage-timeline-content">
                                 <h4 className="vintage-timeline-title">{event.title}</h4>
                                 <p className="vintage-timeline-desc">{event.desc}</p>
                             </div>
+                            {event.completed && <span className="timeline-tick">✓</span>}
                         </div>
                     ))}
                 </div>
 
                 <div className="vintage-judges-footer">
-                    <span>==== SUBJECT TO CHANGE IN THE WILD WEST ====</span>
+                    <span>==== MORE TO COME IN THE WILD WEST ====</span>
                 </div>
             </div>
         </section>
