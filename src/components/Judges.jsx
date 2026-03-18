@@ -4,6 +4,7 @@ const judgesData = [
     { name: 'AVIK AGARWALA', role: "SYSTEMS ENGINEER @ TCS", imgSrc: '/assets/JUDGES/AVIK.png', desc: 'A recognized pioneer in the field of artificial thought. He insights guide our technical evaluations with precise logic.', linkedin: 'https://www.linkedin.com/in/avikagarwala/' },
     { name: 'KRISHNENDU DASGUPTA', role: 'Ex Backend Developer @Altor', imgSrc: '/assets/JUDGES/KRISNENDU.png', desc: 'An experienced captain of industry, overseeing wide-scale infrastructural feats across the globe. He seeks true substance.', linkedin: 'https://www.linkedin.com/in/krishnendudg/' },
     { name: 'SUBHAM BHATTACHARYA', role: 'SWE @ ABP', imgSrc: '/assets/JUDGES/SUBHAM.png', desc: 'The remarkable mind behind some of the most reliable networks of our modern era. He honors speed and flawless execution.', linkedin: 'https://www.linkedin.com/in/subham2409/' },
+    { name: 'NANDA DAS', role: 'Ex Full Stack Developer @ CyberPeak', imgSrc: '/assets/JUDGES/nanda.png', desc: 'He has a deep understanding of the latest web technologies and is passionate about building scalable and secure applications.', linkedin: 'https://www.linkedin.com/in/nanda-das/' },
 ];
 
 export default function Judges() {
