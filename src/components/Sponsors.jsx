@@ -10,7 +10,7 @@ const sponsorsData = [
     { name: 'Mastra.ai', link: 'https://mastra.ai/', imgSrc: '/assets/SPONSOR/mastra.png', tier: 'The Bronze Sponsor', desc: 'The open-source TypeScript AI agent framework. Build, test, and deploy AI agents with ease.', style: { transform: 'scale(1.5)' } },
     { name: 'XYZ', link: 'https://gen.xyz/', imgSrc: '/assets/SPONSOR/xyz.png', tier: 'The Bronze Sponsor', desc: 'The domain for the next generation of internet users. Affordable, memorable, and perfect for your next big idea.', style: { transform: 'scale(1.0)' } },
     { name: 'Appwrite', link: 'https://appwrite.io/', imgSrc: '/assets/SPONSOR/appwrite.png', tier: 'The Bronze Sponsor', desc: 'An open-source backend platform for building secure web and mobile apps with auth, databases, and storage.', style: { transform: 'scale(1.0)' } },
-    { name: 'Navam Ai', link: 'https://navam.ai/', imgSrc: '/assets/SPONSOR/navam.png', tier: 'The Bronze Sponsor', desc: 'Navam is a full-stack AI development platform that helps you build, deploy, and scale AI applications.', style: { transform: 'scale(1.0)' } },
+    { name: 'Navan Ai', link: 'https://navan.ai/', imgSrc: '/assets/SPONSOR/navam.png', tier: 'The Bronze Sponsor', desc: 'Navan is a full-stack AI development platform that helps you build, deploy, and scale AI applications.', style: { transform: 'scale(1.0)' } },
 ];
 
 export default function Sponsors() {
