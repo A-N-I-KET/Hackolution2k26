@@ -9,7 +9,7 @@ const organizers = [
 ];
 
 const coordinators = [
-    { name: 'ANIRBAN DAS', role: 'GRAPHICS LEAD', imgSrc: '/assets/teamimage.png', linkedin: 'https://www.linkedin.com/in/anirban-das-croundous/', portfolio: 'https://anirbandev.vercel.app/', instagram: 'https://www.instagram.com/anirbananimates/' },
+    { name: 'ANIRBAN DAS', role: 'GRAPHICS LEAD', imgSrc: '/assets/teamimage.png', linkedin: 'https://www.linkedin.com/in/anirban-das-croundous/', portfolio: 'https://www.anirbandasdev.in/', instagram: 'https://www.instagram.com/anirbananimates/' },
     { name: 'SIRSHA KUMAR', role: 'Content', imgSrc: '/assets/teamimage.png', linkedin: '#', portfolio: '#', instagram: '#' },
     { name: 'SUBHRADEEP ROY CHOWDHURY', role: 'Marketing', imgSrc: '/assets/teamimage.png', linkedin: '#', portfolio: '#', instagram: '#' },
     { name: 'ASAD HUSSAIN', role: 'Sponsorship', imgSrc: '/assets/teamimage.png', linkedin: '#', portfolio: '#', instagram: '#' },
