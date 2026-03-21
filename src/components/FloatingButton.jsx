@@ -83,7 +83,7 @@ export default function FloatingButton() {
                 </div>
 
                 {/* Lizard sitting on button */}
-                <img src="/assets/floating.png" alt="Lizard Decoration" className="lizard-overlay" />
+                <img src="/assets/floating.avif" alt="Lizard Decoration" className="lizard-overlay" />
             </button>
 
             {/* Scroll to Top Button */}

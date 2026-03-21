@@ -24,7 +24,7 @@ export default function Timeline() {
         <section id="schedule">
             <div className="section-wrapper fade-in" ref={ref}>
 
-                <img src="/assets/stamp.png" alt="Stamp" className="timeline-stamp-corner" />
+                <img src="/assets/stamp.png" alt="Stamp" className="timeline-stamp-corner" loading="lazy" />
 
                 <div className="vintage-catalogue-header">
                     <h2 className="vintage-title-main">THE DAY'S MANIFEST</h2>

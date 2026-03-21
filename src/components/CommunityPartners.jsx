@@ -42,7 +42,7 @@ export default function CommunityPartners() {
                         >
                             <div className="vintage-partner-img-wrap">
                                 {p.imgSrc ? (
-                                    <img src={p.imgSrc} alt={p.name} className="vintage-partner-img" />
+                                    <img src={p.imgSrc} alt={p.name} className="vintage-partner-img" loading="lazy" />
                                 ) : (
                                     <div className="vintage-partner-fallback">{p.name.charAt(0)}</div>
                                 )}

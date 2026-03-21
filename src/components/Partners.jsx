@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 
 const partnersData = [
     { name: 'Eventopia', link: 'https://eventopia.in/', imgSrc: '/assets/PARTNER/eventopia.png', title: 'Media Partner' },
-    { name: 'Hacknest', link: 'https://hacknest.in/', imgSrc: '/assets/SPONSOR/hacknest.png', title: 'Technical Partner' },
+    { name: 'Hacknest', link: 'https://hacknest.in/', imgSrc: '/assets/SPONSOR/hacknest.avif', title: 'Technical Partner' },
     { name: 'PixelHouse', link: 'https://pixelhouse.in/', imgSrc: '/assets/PARTNER/pixelhouse.png', title: 'Media Partner' },
    
 ];
@@ -48,7 +48,7 @@ export default function Partners() {
                             {/* Logo area */}
                             <div className="partner-logo-area">
                                 {p.imgSrc ? (
-                                    <img src={p.imgSrc} alt={p.name} className="partner-logo-img" />
+                                    <img src={p.imgSrc} alt={p.name} className="partner-logo-img" loading="lazy" />
                                 ) : (
                                     <div className="partner-logo-fallback">{p.name.charAt(0)}</div>
                                 )}

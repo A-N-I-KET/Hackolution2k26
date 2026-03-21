@@ -92,7 +92,7 @@ export default function Venue() {
                         <div className="newspaper-col-illustration" style={{ flex: '1', display: 'flex', alignItems: 'center' }}>
                             <img
                                 className="venue-illustration"
-                                src="/assets/ashram.png"
+                                src="/assets/ashram.avif"
                                 alt="IEM Ashram Campus"
                                 style={{
                                     width: '100%',

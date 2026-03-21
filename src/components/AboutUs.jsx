@@ -172,7 +172,7 @@ export default function AboutUs() {
                         <div className="newspaper-col-illustration">
                             <img
                                 className="newspaper-illustration"
-                                src="/assets/hackolutionbiglogo.png"
+                                src="/assets/hackolutionbiglogo.avif"
                                 alt="Hackolution 2K26"
                             />
                         </div>

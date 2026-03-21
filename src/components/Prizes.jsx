@@ -29,7 +29,7 @@ export default function Prizes() {
                     <div className="vintage-prize-col">
                         <div className="vintage-col-title">2ND PLACE &ndash; SILVER</div>
                         <div className="vintage-img-wrapper">
-                            <img src="/assets/silver.png" alt="Silver Medal" className="vintage-col-img" />
+                            <img src="/assets/silver.avif" alt="Silver Medal" className="vintage-col-img" />
                         </div>
                         <p className="vintage-col-desc">
                             An invaluable reward for any and all coding challenges. Serves as a testament to your team's ingenuity and endurance. A true technological wonder that cures bugs when they will not subdue.
@@ -43,7 +43,7 @@ export default function Prizes() {
                     <div className="vintage-prize-col">
                         <div className="vintage-col-title">1ST PLACE &ndash; GOLD</div>
                         <div className="vintage-img-wrapper">
-                            <img src="/assets/gold.png" alt="Gold Medal" className="vintage-col-img" />
+                            <img src="/assets/gold.avif" alt="Gold Medal" className="vintage-col-img" />
                         </div>
                         <p className="vintage-col-desc">
                             Take the Grand Prize for a feeling of ultimate triumph and vigor for the whole team, and give yourself the cold dead focus and dangerous speed of a master hacker. 100% pure gold standard innovation.
@@ -57,7 +57,7 @@ export default function Prizes() {
                     <div className="vintage-prize-col">
                         <div className="vintage-col-title">3RD PLACE &ndash; BRONZE</div>
                         <div className="vintage-img-wrapper">
-                            <img src="/assets/bronze.png" alt="Bronze Medal" className="vintage-col-img" />
+                            <img src="/assets/bronze.avif" alt="Bronze Medal" className="vintage-col-img" />
                         </div>
                         <p className="vintage-col-desc">
                             Thousands are being benefited where basic skills and logic have failed. This remarkable bronze reward treats code fatigue, cures compiler errors and quickly renews vigor.

@@ -1,21 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import StartSection from './components/StartSection';
-import PageBreaker from './components/PageBreaker';
-import AboutUs from './components/AboutUs';
-import Prizes from './components/Prizes';
-import Sponsors from './components/Sponsors';
-import Partners from './components/Partners';
-import Judges from './components/Judges';
-import CommunityPartners from './components/CommunityPartners';
-import Team from './components/Team';
-import Venue from './components/Venue';
-import Timeline from './components/Timeline';
-import Socials from './components/Socials';
-import Footer from './components/Footer';
-import FloatingButton from './components/FloatingButton';
 import { motion, useScroll, useSpring } from 'framer-motion';
+
+const PageBreaker = lazy(() => import('./components/PageBreaker'));
+const AboutUs = lazy(() => import('./components/AboutUs'));
+const Prizes = lazy(() => import('./components/Prizes'));
+const Sponsors = lazy(() => import('./components/Sponsors'));
+const Partners = lazy(() => import('./components/Partners'));
+const Judges = lazy(() => import('./components/Judges'));
+const CommunityPartners = lazy(() => import('./components/CommunityPartners'));
+const Team = lazy(() => import('./components/Team'));
+const Venue = lazy(() => import('./components/Venue'));
+const Timeline = lazy(() => import('./components/Timeline'));
+const Socials = lazy(() => import('./components/Socials'));
+const Footer = lazy(() => import('./components/Footer'));
+const FloatingButton = lazy(() => import('./components/FloatingButton'));
 
 export default function App() {
     const [isLoaded, setIsLoaded] = useState(false);
@@ -63,27 +64,29 @@ export default function App() {
             <Navbar isLoaded={isLoaded} />
             <HeroSection isLoaded={isLoaded} />
             <StartSection />
-            <AboutUs />
-            <PageBreaker />
-            <Prizes />
-            <PageBreaker />
-            <Timeline />
-            <PageBreaker />
-            <Sponsors />
-            <PageBreaker />
-            <Partners />
-            <PageBreaker />
-            <Judges />
-            <PageBreaker />
-            <CommunityPartners />
-            <PageBreaker />
-            <Team />
-            <PageBreaker />
-            <Venue />
-            <PageBreaker />
-            <Socials />
-            <Footer />
-            <FloatingButton />
+            <Suspense fallback={null}>
+                <AboutUs />
+                <PageBreaker />
+                <Prizes />
+                <PageBreaker />
+                <Timeline />
+                <PageBreaker />
+                <Sponsors />
+                <PageBreaker />
+                <Partners />
+                <PageBreaker />
+                <Judges />
+                <PageBreaker />
+                <CommunityPartners />
+                <PageBreaker />
+                <Team />
+                <PageBreaker />
+                <Venue />
+                <PageBreaker />
+                <Socials />
+                <Footer />
+                <FloatingButton />
+            </Suspense>
         </>
     );
 }

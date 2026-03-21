@@ -413,7 +413,7 @@ body {
     height: 100vh;
     flex-direction: column;
     /* Old paper texture background */
-    background: url('/assets/BACKGROUNDIMG.jpg') center/cover;
+    background: url('/assets/BACKGROUNDIMG.avif') center/cover;
     background-color: var(--parchment);
     /* fallback */
     padding: 100px 30px 40px;
