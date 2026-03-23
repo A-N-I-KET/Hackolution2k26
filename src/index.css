@@ -1697,8 +1697,10 @@ body {
 }
 
 .partner-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
   gap: 24px;
   max-width: 1200px;
   margin: 25px auto 0;
@@ -1717,6 +1719,9 @@ body {
   padding: 0;
   overflow: visible;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: calc(33.333% - 16px);
+  min-width: 260px;
+  max-width: 320px;
 }
 
 .partner-card::before {
@@ -1744,6 +1749,10 @@ body {
   text-align: center;
   position: relative;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
 }
 
 .partner-ribbon::before,
@@ -1839,16 +1848,20 @@ body {
 
 /* --- Responsive --- */
 @media (max-width: 900px) {
+  .partner-card {
+    width: calc(50% - 12px);
+  }
   .partner-cards-grid {
-    grid-template-columns: repeat(2, 1fr);
     gap: 18px;
   }
 }
 
 @media (max-width: 550px) {
-  .partner-cards-grid {
-    grid-template-columns: 1fr;
+  .partner-card {
+    width: 100%;
     max-width: 320px;
+  }
+  .partner-cards-grid {
     gap: 16px;
   }
 }
