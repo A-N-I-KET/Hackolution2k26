@@ -6,6 +6,7 @@ const judgesData = [
     { name: 'SUBHAM BHATTACHARYA', role: 'SWE @ ABP', imgSrc: '/assets/JUDGES/SUBHAM.avif', desc: 'The remarkable mind behind some of the most reliable networks of our modern era. He honors speed and flawless execution.', linkedin: 'https://www.linkedin.com/in/subham2409/' },
     { name: 'NANDA DAS', role: 'Ex Full Stack Developer @ CyberPeak', imgSrc: '/assets/JUDGES/narendra.avif', desc: 'He has a deep understanding of the latest web technologies and is passionate about building scalable and secure applications.', linkedin: 'https://www.linkedin.com/in/nanda-das/' },
     { name: 'Narendra Nath Chatterjee', role: 'SENIOR ANDROID DEVELOPER @ Ajaib', imgSrc: '/assets/JUDGES/nanda.avif', desc: 'A seasoned architect of mobile experiences, he has crafted some of the most seamless and intuitive applications in the market. He values clean code and user-centric design.', linkedin: 'https://www.linkedin.com/in/narendra-nath-chatterjee-8a7651133/' },
+    { name: 'Souradip Pal', role: 'AI Engineer & 5x Hackathon Winner', imgSrc: '/assets/JUDGES/Souradip.avif', desc: 'AI Engineer focused on building agentic AI systems and real-world automation solutions & 5× hackathon winner with a track record of turning ideas into impactful, working products.', linkedin: 'https://www.linkedin.com/in/souradip-pal-codes/' },
 ];
 
 export default function Judges() {
