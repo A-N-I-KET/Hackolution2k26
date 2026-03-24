@@ -1,4 +1,5 @@
 import React, { useEffect, useState, Suspense, lazy } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import StartSection from './components/StartSection';
@@ -87,6 +88,7 @@ export default function App() {
                 <Footer />
                 <FloatingButton />
             </Suspense>
+            <Analytics />
         </>
     );
 }
