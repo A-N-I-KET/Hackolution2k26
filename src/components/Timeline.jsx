@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 
 const timelineEvents = [
-    { time: "28th January - 25th March", title: "Registration Ongoing", desc: "Dont miss out on this opportunity to showcase your skills and creativity Register Now.", completed: false, ongoing: true },
-    { time: "26th March - 31st March", title: "Idea Submission & Selection Round", desc: "Submit your ideas and let the selection begin!"},
+    { time: "28th January - 25th March", title: "Registration Ongoing", desc: "Dont miss out on this opportunity to showcase your skills and creativity Register Now.", completed: true, ongoing: false },
+    { time: "26th March - 31st March", title: "Idea Submission & Selection Round", desc: "Submit your ideas and let the selection begin!",completed: false, ongoing: true},
     { time: "1st April - 5th April", title: "Offline Selected Team Approval", desc: "Selected Teams will be announced and they will appear in the hackathon." },
     { time: "8th May", title: "Hackolution Day 1", desc: "First day of hackolution 2k26 is here!" },
     { time: "9th May", title: "Hackolution Day 2", desc: "Final day of hackolution 2k26 is here!" },
