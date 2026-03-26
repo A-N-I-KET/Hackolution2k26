@@ -5,6 +5,7 @@ const API_BASE = API_BASE_RAW ? API_BASE_RAW.replace(/\/$/, '') : '';
 const INTEGRATION_SECRET = (import.meta.env.VITE_HACKNEST_INTEGRATION_SECRET || '').trim();
 const FRONTEND_BASE_RAW = import.meta.env.VITE_HACKNEST_FRONTEND_URL;
 const FRONTEND_BASE = FRONTEND_BASE_RAW ? FRONTEND_BASE_RAW.replace(/\/$/, '') : '';
+const HACKNEST_LOGO_URL = FRONTEND_BASE ? `${FRONTEND_BASE}/hacknest-logo.png` : '';
 
 function isIntegrationSecretMismatch(response, data) {
   return response?.status === 403 && String(data?.detail || '').toLowerCase().includes('integration secret');
@@ -16,6 +17,13 @@ function redirectToHacknestOriginalPortal(token) {
   }
   window.location.assign(`${FRONTEND_BASE}/team-portal/${encodeURIComponent(token)}`);
   return true;
+}
+
+function getOriginalPortalUrl(token) {
+  if (!FRONTEND_BASE || !token) {
+    return '';
+  }
+  return `${FRONTEND_BASE}/team-portal/${encodeURIComponent(token)}`;
 }
 
 function handleMissingIntegrationSecret(token, source) {
@@ -132,6 +140,13 @@ export default function HacknestTeamPortal() {
   const searchParams = useMemo(() => new URLSearchParams(window.location.search), []);
   const token = searchParams.get('hn_token') || '';
   const isTestMode = searchParams.get('hn_test_mode') === '1';
+  const originalPortalUrl = getOriginalPortalUrl(token);
+
+  const openOriginalPortal = () => {
+    if (originalPortalUrl) {
+      window.location.assign(originalPortalUrl);
+    }
+  };
 
   const hasAnyRsvpConfirmed =
     (portalData?.team?.leader?.rsvp || false) ||
@@ -409,6 +424,19 @@ export default function HacknestTeamPortal() {
       <section className="section-wrapper team-portal-shell">
         <div className="portal-card">
           <h1 className="section-heading">Loading Team Portal...</h1>
+          {originalPortalUrl && (
+            <div style={{ marginTop: '14px' }}>
+              <p className="portal-fallback-note">
+                If this page is not working properly, please continue from the native HackNest Team Portal.
+              </p>
+              <div className="portal-actions" style={{ marginTop: '8px' }}>
+                <button className="portal-doc-link portal-native-btn" onClick={openOriginalPortal}>
+                  <img src={HACKNEST_LOGO_URL} alt="HackNest" className="portal-native-logo-img" />
+                  <span>Open HackNest Team Portal</span>
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </section>
     );
@@ -420,6 +448,19 @@ export default function HacknestTeamPortal() {
         <div className="portal-card">
           <h1 className="section-heading">Team Portal Error</h1>
           <p className="portal-error">{error}</p>
+          {originalPortalUrl && (
+            <div style={{ marginTop: '14px' }}>
+              <p className="portal-fallback-note">
+                If this page is not working properly, please continue from the native HackNest Team Portal.
+              </p>
+              <div className="portal-actions" style={{ marginTop: '8px' }}>
+                <button className="portal-doc-link portal-native-btn" onClick={openOriginalPortal}>
+                  <img src={HACKNEST_LOGO_URL} alt="HackNest" className="portal-native-logo-img" />
+                  <span>Open HackNest Team Portal</span>
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </section>
     );
@@ -443,6 +484,17 @@ export default function HacknestTeamPortal() {
         <header className="portal-header" style={{ borderColor: accent }}>
           <div className="portal-brand-row">
             <div className="portal-brand-left">Hackolution x HackNest</div>
+            {originalPortalUrl && (
+              <div className="portal-fallback-inline">
+                <p className="portal-fallback-note">
+                  If this page is not working properly, use native HackNest Team Portal.
+                </p>
+                <button className="portal-doc-link portal-native-btn" onClick={openOriginalPortal}>
+                  <img src={HACKNEST_LOGO_URL} alt="HackNest" className="portal-native-logo-img" />
+                  <span>Open HackNest Team Portal</span>
+                </button>
+              </div>
+            )}
           </div>
 
           <h1 className="section-heading">{portalData.hackathon.name} Team Portal</h1>

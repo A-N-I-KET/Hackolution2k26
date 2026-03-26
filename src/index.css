@@ -312,6 +312,8 @@ body {
 
 .portal-doc-link {
   display: inline-flex;
+  align-items: center;
+  gap: 8px;
   border: 2px solid var(--card-border);
   border-radius: 999px;
   padding: 6px 12px;
@@ -319,6 +321,32 @@ body {
   color: var(--ink-dark);
   background: var(--parchment-light);
   font-weight: 700;
+}
+
+.portal-native-btn {
+  border: 1px solid #93c5fd;
+  background: #ffffff;
+  color: #1d4ed8;
+}
+
+.portal-native-logo-img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.portal-fallback-inline {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.portal-fallback-note {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #1d4ed8;
+  font-weight: 600;
 }
 
 .portal-logo-strip {
