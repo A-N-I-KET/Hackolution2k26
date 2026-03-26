@@ -15,7 +15,9 @@ function redirectToHacknestOriginalPortal(token) {
   if (!FRONTEND_BASE || !token) {
     return false;
   }
-  window.location.assign(`${FRONTEND_BASE}/team-portal/${encodeURIComponent(token)}`);
+  let url = `${FRONTEND_BASE}/team-portal/${encodeURIComponent(token)}`;
+  url += '?force_native=1';
+  window.location.assign(url);
   return true;
 }
 
@@ -144,7 +146,13 @@ export default function HacknestTeamPortal() {
 
   const openOriginalPortal = () => {
     if (originalPortalUrl) {
-      window.location.assign(originalPortalUrl);
+      let url = originalPortalUrl;
+      if (url.includes('?')) {
+        url += '&force_native=1';
+      } else {
+        url += '?force_native=1';
+      }
+      window.location.assign(url);
     }
   };
 
