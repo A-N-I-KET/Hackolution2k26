@@ -68,6 +68,59 @@ export default function Prizes() {
                     </div>
                 </div>
 
+                {/* Tracks of Honour Section */}
+                <div className="vintage-catalogue-header" style={{ marginTop: '5rem' }}>
+                    <h2 className="vintage-title-main">TRACKS OF HONOUR (COMMING SOON)</h2>
+                    <h3 className="vintage-title-sub">
+                        <span className="vintage-sub-left">FOR THE MOST</span>
+                        <span className="vintage-sub-large">INNOVATIVE SOLUTIONS</span>
+                    </h3>
+                </div>
+
+                <div className="vintage-prizes-grid">
+                    {/* Track 1 */}
+                    <div className="vintage-prize-col">
+                        <div className="vintage-col-title">WEB3 & BLOCKCHAIN</div>
+                        <div className="vintage-img-wrapper">
+                            <img src="/assets/gold.avif" alt="Web3 Track" className="vintage-col-img" />
+                        </div>
+                        <p className="vintage-col-desc">
+                            Build decentralized applications, smart contracts, or innovative solutions on the blockchain. Showcase the future of trustless and decentralized technology.
+                        </p>
+                        <div className="vintage-btn-wrap">
+                            <div className="vintage-btn">PRIZE: ₹ XX,XXX</div>
+                        </div>
+                    </div>
+
+                    {/* Track 2 */}
+                    <div className="vintage-prize-col">
+                        <div className="vintage-col-title">AI & MACHINE LEARNING</div>
+                        <div className="vintage-img-wrapper">
+                            <img src="/assets/silver.avif" alt="AI Track" className="vintage-col-img" />
+                        </div>
+                        <p className="vintage-col-desc">
+                            Leverage artificial intelligence and machine learning to solve real-world problems. Create intelligent systems that learn and adapt.
+                        </p>
+                        <div className="vintage-btn-wrap">
+                            <div className="vintage-btn">PRIZE: ₹ XX,XXX</div>
+                        </div>
+                    </div>
+
+                    {/* Track 3 */}
+                    <div className="vintage-prize-col">
+                        <div className="vintage-col-title">OPEN INNOVATION</div>
+                        <div className="vintage-img-wrapper">
+                            <img src="/assets/bronze.avif" alt="Open Innovation Track" className="vintage-col-img" />
+                        </div>
+                        <p className="vintage-col-desc">
+                            Have an idea that doesn't fit into a specific category? Build any software or hardware solution that pushes the boundaries of technology.
+                        </p>
+                        <div className="vintage-btn-wrap">
+                            <div className="vintage-btn">PRIZE: ₹ XX,XXX</div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
     );
