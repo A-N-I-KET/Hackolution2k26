@@ -3,6 +3,7 @@ import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import StartSection from './components/StartSection';
+import HacknestTeamPortal from './components/HacknestTeamPortal';
 import { motion, useScroll, useSpring } from 'framer-motion';
 
 const PageBreaker = lazy(() => import('./components/PageBreaker'));
@@ -21,6 +22,7 @@ const FloatingButton = lazy(() => import('./components/FloatingButton'));
 
 export default function App() {
     const [isLoaded, setIsLoaded] = useState(false);
+    const [pathname, setPathname] = useState(window.location.pathname);
 
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, {
@@ -44,8 +46,22 @@ export default function App() {
 
         handleScroll();
         window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
+        const handlePathChange = () => setPathname(window.location.pathname);
+        window.addEventListener('popstate', handlePathChange);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('popstate', handlePathChange);
+        };
     }, []);
+
+    if (pathname === '/hacknest-team-portal') {
+        return (
+            <>
+                <HacknestTeamPortal />
+                <Analytics />
+            </>
+        );
+    }
 
     return (
         <>
