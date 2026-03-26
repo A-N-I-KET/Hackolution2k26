@@ -15,7 +15,9 @@ function redirectToHacknestOriginalPortal(token) {
   if (!FRONTEND_BASE || !token) {
     return false;
   }
-  window.location.assign(`${FRONTEND_BASE}/team-portal/${encodeURIComponent(token)}`);
+  let url = `${FRONTEND_BASE}/team-portal/${encodeURIComponent(token)}`;
+  url += '?force_native=1';
+  window.location.assign(url);
   return true;
 }
 
