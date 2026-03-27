@@ -504,9 +504,13 @@ export default function HacknestTeamPortal() {
               <img src={HACKNEST_LOGO_URL} alt="HackNest" className="header-hacknest-img" />
             </div>
             <div className="header-title-center">
-              <h1 className="header-main-title">{portalData.hackathon.name}</h1>
-              <p className="header-subtitle">Team Portal</p>
-            </div>
+            <img 
+              src="/assets/hackolutionbiglogo2.png" 
+              alt={portalData.hackathon.name} 
+              className="header-main-title-img" 
+            />
+            <p className="header-subtitle">Team Portal</p>
+          </div>
             <div className="header-logo-right">
               {portalData.hackathon.institute_logo_url ? (
                 <img src={portalData.hackathon.institute_logo_url} alt="Institute logo" className="header-institute-img" />

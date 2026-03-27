@@ -378,6 +378,14 @@ body {
   text-shadow: 1px 1px 0 rgba(255,255,255,0.6);
 }
 
+.header-main-title-img {
+  max-width: 100%;
+  height: clamp(60px, 8vw, 100px);
+  object-fit: contain;
+  margin-bottom: 5px;
+  filter: drop-shadow(1px 1px 0 rgba(255,255,255,0.6));
+}
+
 .header-subtitle {
   font-family: var(--font-body);
   font-size: 1.1rem;
