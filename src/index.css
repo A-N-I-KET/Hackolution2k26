@@ -756,6 +756,33 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  .portal-leather-book {
+    padding: 24px;
+    border-width: 8px;
+  }
+  .portal-parchment-page {
+    padding: 24px;
+  }
+  .header-logo-left {
+    top: -20px;
+    left: -20px;
+    width: 100px;
+    height: 120px;
+  }
+  .header-title-center {
+    padding: 0 80px;
+  }
+  .header-institute-img {
+    height: 70px;
+    width: 70px;
+  }
+  .team-portal-shell {
+    padding-top: 80px;
+    padding-bottom: 40px;
+  }
+}
+
 @media (max-width: 600px) {
   .portal-header-modern {
     flex-direction: column;
@@ -774,6 +801,59 @@ body {
 
   .portal-panel {
     padding: 16px;
+  }
+
+  .header-logo-left, .header-logo-right {
+    position: static;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
+    clip-path: none;
+    background: none;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+  }
+  
+  .header-logo-left::after {
+    display: none;
+  }
+  
+  .header-title-center {
+    padding: 0;
+  }
+  
+  .header-hacknest-img {
+    width: 80px;
+    margin-top: 0;
+  }
+
+  .portal-leather-book {
+    padding: 16px;
+    border-width: 6px;
+  }
+
+  .portal-parchment-page {
+    padding: 16px;
+  }
+
+  .portal-leather-book::before,
+  .portal-leather-book::after,
+  .portal-leather-book-inner::before,
+  .portal-leather-book-inner::after {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .team-info-block {
+    padding: 12px 0;
+  }
+
+  .portal-btn-full {
+    font-size: 1.05rem;
+    padding: 12px;
   }
 }
 
