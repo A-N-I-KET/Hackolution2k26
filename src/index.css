@@ -829,6 +829,75 @@ body {
   background: rgba(89, 37, 37, 0.05);
 }
 
+/* --- Portal RSVP & Submission (moved from inline styles for responsive control) --- */
+.portal-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  height: 100%;
+}
+
+.portal-rsvp-list {
+  background: transparent;
+  border: 2px solid #592525;
+}
+
+.portal-rsvp-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  gap: 12px;
+  border-bottom: 1px solid #592525;
+}
+
+.portal-rsvp-row:last-child {
+  border-bottom: none;
+}
+
+.portal-rsvp-row.clickable {
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.portal-rsvp-row.clickable:hover {
+  background: rgba(89, 37, 37, 0.06);
+}
+
+.portal-rsvp-row.selected {
+  background: rgba(89, 37, 37, 0.08);
+}
+
+.portal-rsvp-row input[type="checkbox"] {
+  accent-color: #592525;
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  cursor: pointer;
+}
+
+.portal-submission-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.portal-pill {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border: 1px solid #592525;
+  border-radius: 3px;
+  color: #2c1a10;
+  white-space: nowrap;
+}
+
+.pill-success { background: rgba(76, 122, 76, 0.2); }
+.pill-muted { background: rgba(89, 37, 37, 0.08); }
+
 .portal-footer-modern {
   text-align: center;
   font-family: var(--font-body);
@@ -885,6 +954,26 @@ body {
   .team-portal-shell {
     padding-top: 80px;
     padding-bottom: 40px;
+    width: 98%;
+  }
+
+  .portal-panel h2 {
+    font-size: 1.4rem;
+    gap: 8px;
+  }
+
+  .info-value-large {
+    font-size: 1.4rem;
+  }
+
+  .portal-rsvp-row {
+    padding: 10px 12px;
+  }
+
+  .portal-message-card-modern {
+    font-size: 1rem;
+    padding: 10px 14px;
+    gap: 10px;
   }
 }
 
@@ -898,6 +987,7 @@ body {
     flex-direction: column;
     text-align: center;
     gap: 10px;
+    padding: 14px 16px;
   }
 
   .portal-card-top {
@@ -905,7 +995,7 @@ body {
   }
 
   .portal-panel {
-    padding: 16px;
+    padding: 10px;
   }
 
   .header-logo-left, .header-logo-right {
@@ -936,12 +1026,12 @@ body {
   }
 
   .portal-leather-book {
-    padding: 16px;
+    padding: 14px;
     border-width: 6px;
   }
 
   .portal-parchment-page {
-    padding: 16px;
+    padding: 14px;
   }
 
   .portal-leather-book::before,
@@ -957,7 +1047,7 @@ body {
   }
 
   .portal-btn-full {
-    font-size: 1.05rem;
+    font-size: 1rem;
     padding: 12px;
   }
 
@@ -977,6 +1067,262 @@ body {
   .countdown-sep {
     font-size: 1.4rem;
     margin-top: -12px;
+  }
+
+  .portal-panel h2 {
+    font-size: 1.3rem;
+    padding-bottom: 10px;
+  }
+
+  .portal-panel-inner {
+    padding: 12px 10px;
+  }
+
+  .team-member-row strong {
+    font-size: 1.05rem;
+  }
+
+  .email-text {
+    font-size: 0.85rem;
+  }
+
+  .portal-rsvp-row {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .portal-upload-box-modern {
+    padding: 20px 14px;
+  }
+
+  .portal-upload-box-modern h3 {
+    font-size: 1.2rem;
+  }
+
+  .portal-native-btn {
+    font-size: 0.95rem;
+    padding: 10px 16px;
+  }
+
+  .status-icon {
+    font-size: 2.2rem;
+  }
+
+  .status-text h2 {
+    font-size: 1.15rem;
+  }
+
+  .status-text p {
+    font-size: 0.9rem;
+  }
+
+  .team-portal-shell {
+    padding-top: 75px;
+    padding-bottom: 30px;
+    width: 100%;
+  }
+
+  .portal-right-column {
+    gap: 20px;
+  }
+}
+
+/* Very small phones (iPhone SE, Galaxy Fold, etc.) */
+@media (max-width: 400px) {
+  .portal-leather-book {
+    padding: 10px;
+    border-width: 5px;
+    border-radius: 8px;
+  }
+
+  .portal-parchment-page {
+    padding: 10px;
+  }
+
+  .portal-leather-book::before,
+  .portal-leather-book::after,
+  .portal-leather-book-inner::before,
+  .portal-leather-book-inner::after {
+    width: 22px;
+    height: 22px;
+  }
+
+  .portal-panel h2 {
+    font-size: 1.15rem;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+  }
+
+  .portal-panel-inner {
+    padding: 8px 6px;
+  }
+
+  .portal-panel {
+    padding: 6px;
+  }
+
+  .portal-panel::after {
+    display: none;
+  }
+
+  .portal-panel::before {
+    outline-offset: -4px;
+  }
+
+  .info-value-large {
+    font-size: 1.2rem;
+  }
+
+  .countdown-clock {
+    gap: 5px;
+  }
+
+  .countdown-block {
+    min-width: 42px;
+    padding: 5px 6px;
+  }
+
+  .countdown-num {
+    font-size: 1.15rem;
+  }
+
+  .countdown-unit {
+    font-size: 0.65rem;
+  }
+
+  .countdown-sep {
+    font-size: 1.15rem;
+    margin-top: -10px;
+  }
+
+  .countdown-title {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+
+  .portal-countdown-container {
+    padding: 10px 8px;
+    margin-bottom: 16px;
+  }
+
+  .portal-btn-full {
+    font-size: 0.9rem;
+    padding: 10px;
+    letter-spacing: 1px;
+  }
+
+  .portal-status-banner-wide {
+    padding: 12px 10px;
+    margin-bottom: 16px;
+  }
+
+  .status-icon {
+    font-size: 1.8rem;
+  }
+
+  .status-text h2 {
+    font-size: 1.05rem;
+  }
+
+  .status-text p {
+    font-size: 0.85rem;
+  }
+
+  .portal-upload-box-modern {
+    padding: 16px 10px;
+    outline-offset: -3px;
+  }
+
+  .portal-upload-box-modern h3 {
+    font-size: 1.1rem;
+  }
+
+  .portal-small-note {
+    font-size: 0.85rem;
+  }
+
+  .upload-icon-wrapper {
+    font-size: 2.2rem;
+  }
+
+  .portal-submission-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .portal-submission-actions .portal-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .portal-rsvp-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 10px 8px;
+  }
+
+  .portal-rsvp-row input[type="checkbox"] {
+    align-self: flex-end;
+    margin-top: -20px;
+  }
+
+  .portal-pill {
+    font-size: 0.8rem;
+    padding: 3px 8px;
+  }
+
+  .portal-message-card-modern {
+    font-size: 0.9rem;
+    padding: 10px 12px;
+    gap: 8px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .portal-requirement-note-modern {
+    font-size: 0.85rem;
+    padding: 10px;
+  }
+
+  .portal-native-btn {
+    font-size: 0.85rem;
+    padding: 8px 14px;
+    gap: 8px;
+  }
+
+  .portal-footer-modern {
+    font-size: 0.85rem;
+    margin-top: 25px;
+  }
+
+  .powered-by {
+    font-size: 0.85rem;
+  }
+
+  .header-hacknest-img {
+    width: 60px;
+  }
+
+  .header-institute-img {
+    height: 55px;
+    width: 55px;
+  }
+
+  .header-main-title-img {
+    height: clamp(40px, 12vw, 70px);
+  }
+
+  .header-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .portal-grid {
+    gap: 20px;
+  }
+
+  .portal-right-column {
+    gap: 16px;
   }
 }
 

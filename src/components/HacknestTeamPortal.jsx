@@ -606,7 +606,7 @@ export default function HacknestTeamPortal() {
             </section>
 
             {/* RIGHT COLUMN: DYNAMIC (Submission, RSVP, Waitlisted, Rejected) */}
-            <div style={{display: 'flex', flexDirection: 'column', gap: '30px', height: '100%'}}>
+            <div className="portal-right-column">
               {isRejected && (
                 <section className="portal-panel" style={{height: 'auto'}}>
                   <div className="portal-panel-inner">
@@ -650,11 +650,11 @@ export default function HacknestTeamPortal() {
                         <p style={{margin: 0, fontFamily: 'var(--font-body)', color: '#3d1414'}}>RSVP window is closed. Check back later.</p>
                       </div>
                     ) : hasAnyRsvpConfirmed ? (
-                      <div className="portal-rsvp-list" style={{background: 'transparent', border: '2px solid #592525'}}>
+                      <div className="portal-rsvp-list">
                         <div className="team-info-block" style={{background: 'rgba(89, 37, 37, 0.1)', border: 'none', margin: 0, borderRadius: 0}}>
                           <p style={{margin: 0, fontFamily: 'var(--font-body)', fontSize: '0.85rem', color: '#2c1a10'}}>RSVP submitted. Portal edits locked.</p>
                         </div>
-                        <div className="portal-rsvp-row" style={{borderBottom: '1px solid #592525'}}>
+                        <div className="portal-rsvp-row">
                           <div>
                             <strong style={{fontFamily: 'var(--font-heading)', color: '#2c1a10'}}>{portalData.team.leader.name}</strong><br/>
                             <span className="email-text" style={{fontSize: '0.8rem'}}>{portalData.team.leader.email}</span>
@@ -664,7 +664,7 @@ export default function HacknestTeamPortal() {
                           </span>
                         </div>
                         {portalData.team.members.map((member) => (
-                          <div key={member.id} className="portal-rsvp-row" style={{borderBottom: '1px solid #592525'}}>
+                          <div key={member.id} className="portal-rsvp-row">
                             <div>
                               <strong style={{fontFamily: 'var(--font-heading)', color: '#2c1a10'}}>{member.name}</strong><br/>
                               <span className="email-text" style={{fontSize: '0.8rem'}}>{member.email}</span>
@@ -677,21 +677,21 @@ export default function HacknestTeamPortal() {
                       </div>
                     ) : (
                       <>
-                        <div className="portal-rsvp-list" style={{background: 'transparent', border: '2px solid #592525'}}>
-                          <label className={`portal-rsvp-row clickable ${rsvpSelections.leader ? 'selected' : ''}`} style={{borderBottom: '1px solid #592525'}}>
+                        <div className="portal-rsvp-list">
+                          <label className={`portal-rsvp-row clickable ${rsvpSelections.leader ? 'selected' : ''}`}>
                             <div>
                               <strong style={{fontFamily: 'var(--font-heading)', color: '#2c1a10'}}>{portalData.team.leader.name}</strong><br/>
                               <span className="email-text" style={{fontSize: '0.8rem'}}>{portalData.team.leader.email}</span>
                             </div>
-                            <input type="checkbox" checked={!!rsvpSelections.leader} onChange={(e) => setRsvpSelections((prev) => ({ ...prev, leader: e.target.checked }))} style={{accentColor: '#592525', width: '18px', height: '18px'}} />
+                            <input type="checkbox" checked={!!rsvpSelections.leader} onChange={(e) => setRsvpSelections((prev) => ({ ...prev, leader: e.target.checked }))} />
                           </label>
                           {portalData.team.members.map((member) => (
-                            <label key={member.id} className={`portal-rsvp-row clickable ${rsvpSelections[member.id] ? 'selected' : ''}`} style={{borderBottom: '1px solid #592525'}}>
+                            <label key={member.id} className={`portal-rsvp-row clickable ${rsvpSelections[member.id] ? 'selected' : ''}`}>
                               <div>
                                  <strong style={{fontFamily: 'var(--font-heading)', color: '#2c1a10'}}>{member.name}</strong><br/>
                                  <span className="email-text" style={{fontSize: '0.8rem'}}>{member.email}</span>
                               </div>
-                              <input type="checkbox" checked={!!rsvpSelections[member.id]} onChange={(e) => setRsvpSelections((prev) => ({ ...prev, [member.id]: e.target.checked }))} style={{accentColor: '#592525', width: '18px', height: '18px'}} />
+                              <input type="checkbox" checked={!!rsvpSelections[member.id]} onChange={(e) => setRsvpSelections((prev) => ({ ...prev, [member.id]: e.target.checked }))} />
                             </label>
                           ))}
                         </div>
@@ -739,7 +739,7 @@ export default function HacknestTeamPortal() {
                           {uploading ? 'Uploading...' : 'Choose File'}
                         </label>
                         {portalData.team.has_submission && (
-                           <div style={{marginTop: '20px', display: 'flex', gap: '10px', justifyContent: 'center'}}>
+                           <div className="portal-submission-actions">
                              <button className="portal-btn secondary" onClick={downloadSubmission}>Download</button>
                              <button className="portal-btn danger" onClick={deleteSubmission} disabled={deleting}>
                                {deleting ? 'Deleting...' : 'Delete'}
