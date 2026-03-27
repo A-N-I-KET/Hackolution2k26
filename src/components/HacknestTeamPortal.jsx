@@ -665,10 +665,10 @@ export default function HacknestTeamPortal() {
               {showSubmissionSection && (
                 <section className="portal-panel">
                   <div className="portal-panel-inner">
-                    <h2>💡 Idea Submission <span style={{marginLeft: 'auto', fontSize: '2rem', filter: 'sepia(1) drop-shadow(1px 1px 1px rgba(0,0,0,0.5))'}}>💡</span></h2>
+                    <h2>💡 Idea Submission <span style={{marginLeft: 'auto', fontSize: '2rem', filter: 'sepia(1) drop-shadow(1px 1px 1px rgba(0,0,0,0.5))'}}></span></h2>
                     
                     <div className={`portal-message-card-modern ${portalData.hackathon.is_submission_open ? 'tone-info-soft' : 'tone-danger-soft'}`}>
-                       <span style={{fontSize: '2rem', filter: 'drop-shadow(2px 2px 2px rgba(0,0,0,0.4))'}}>🏮</span>
+                       <span style={{fontSize: '2rem', filter: 'drop-shadow(2px 2px 2px rgba(0,0,0,0.4))'}}></span>
                        <span>Submission Window {portalData.hackathon.is_submission_open ? 'OPEN' : 'CLOSED'}</span>
                     </div>
 
