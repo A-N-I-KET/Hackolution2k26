@@ -488,8 +488,8 @@ export default function HacknestTeamPortal() {
 
   return (
     <section className="section-wrapper team-portal-shell">
-      <div className="portal-card" style={{ borderColor: accent }}>
-        <header className="portal-header" style={{ borderColor: accent }}>
+      <div className="portal-card">
+        <header className="portal-header">
           <div className="portal-brand-row">
             <div className="portal-brand-left">Hackolution x HackNest</div>
             {originalPortalUrl && (
