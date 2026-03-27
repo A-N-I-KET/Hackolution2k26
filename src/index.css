@@ -426,6 +426,74 @@ body {
   letter-spacing: 1px;
 }
 
+/* Countdown Timer */
+.portal-countdown-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  padding: 15px;
+  background: linear-gradient(to bottom, rgba(89, 37, 37, 0.05), rgba(61, 20, 20, 0.1));
+  border: 1px dashed #8b4513;
+  border-radius: 4px;
+}
+
+.countdown-title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: #592525;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.countdown-clock {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.countdown-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, #4a2114, #2a110a);
+  border: 2px solid #2e0c0c;
+  border-radius: 6px;
+  min-width: 60px;
+  padding: 8px 10px;
+  box-shadow: inset 0 2px 5px rgba(255,255,255,0.1), 0 4px 6px rgba(0,0,0,0.4);
+}
+
+.countdown-num {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #fcebd0;
+  line-height: 1;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+.countdown-unit {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: #d4b896;
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.countdown-sep {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: #592525;
+  font-weight: 900;
+  margin-top: -15px;
+}
+
 /* Status Banner */
 .portal-status-banner-wide {
   display: flex;
@@ -891,6 +959,24 @@ body {
   .portal-btn-full {
     font-size: 1.05rem;
     padding: 12px;
+  }
+
+  .countdown-clock {
+    gap: 8px;
+  }
+
+  .countdown-block {
+    min-width: 50px;
+    padding: 6px 8px;
+  }
+
+  .countdown-num {
+    font-size: 1.4rem;
+  }
+
+  .countdown-sep {
+    font-size: 1.4rem;
+    margin-top: -12px;
   }
 }
 

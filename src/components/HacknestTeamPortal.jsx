@@ -138,6 +138,37 @@ export default function HacknestTeamPortal() {
   const [deleting, setDeleting] = useState(false);
   const [submittingRsvp, setSubmittingRsvp] = useState(false);
   const [rsvpSelections, setRsvpSelections] = useState({});
+  const [timeLeft, setTimeLeft] = useState({ days: '00', hours: '00', minutes: '00', seconds: '00' });
+
+  useEffect(() => {
+    const targetDate = new Date('2026-03-31T23:59:00+05:30').getTime();
+
+    const updateTimer = () => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        setTimeLeft({ days: '00', hours: '00', minutes: '00', seconds: '00' });
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      setTimeLeft({
+        days: days.toString().padStart(2, '0'),
+        hours: hours.toString().padStart(2, '0'),
+        minutes: minutes.toString().padStart(2, '0'),
+        seconds: seconds.toString().padStart(2, '0')
+      });
+    };
+
+    updateTimer();
+    const timerInterval = setInterval(updateTimer, 1000);
+    return () => clearInterval(timerInterval);
+  }, []);
 
   const searchParams = useMemo(() => new URLSearchParams(window.location.search), []);
   const token = searchParams.get('hn_token') || '';
@@ -506,6 +537,31 @@ export default function HacknestTeamPortal() {
               ) : <div style={{width: '90px'}}></div>}
             </div>
           </header>
+
+          <div className="portal-countdown-container">
+            <p className="countdown-title">Idea Submission Ends In</p>
+            <div className="countdown-clock">
+              <div className="countdown-block">
+                <span className="countdown-num">{timeLeft.days}</span>
+                <span className="countdown-unit">Days</span>
+              </div>
+              <span className="countdown-sep">:</span>
+              <div className="countdown-block">
+                <span className="countdown-num">{timeLeft.hours}</span>
+                <span className="countdown-unit">Hrs</span>
+              </div>
+              <span className="countdown-sep">:</span>
+              <div className="countdown-block">
+                <span className="countdown-num">{timeLeft.minutes}</span>
+                <span className="countdown-unit">Mins</span>
+              </div>
+              <span className="countdown-sep">:</span>
+              <div className="countdown-block">
+                <span className="countdown-num">{timeLeft.seconds}</span>
+                <span className="countdown-unit">Secs</span>
+              </div>
+            </div>
+          </div>
 
           {isTestMode && <p className="portal-test-badge">Test Mode Preview</p>}
 
