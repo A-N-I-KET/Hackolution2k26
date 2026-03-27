@@ -535,7 +535,7 @@ export default function HacknestTeamPortal() {
             {/* LEFT COLUMN: TEAM DETAILS */}
             <section className="portal-panel">
               <div className="portal-panel-inner">
-                <h2>👥 Team Details <span style={{marginLeft: 'auto', fontSize: '1.8rem', filter: 'sepia(1) opacity(0.8)'}}>🧑‍🤝‍🧑</span></h2>
+                <h2>Team Details </h2>
                 
                 <div className="team-info-block">
                   <span className="info-label">Team Name</span>
@@ -543,7 +543,7 @@ export default function HacknestTeamPortal() {
                 </div>
 
                 <div className="team-info-block">
-                  <div className="info-label">🔨 Team Leader</div>
+                  <div className="info-label">Team Leader</div>
                   <div className="team-member-row" style={{border: 'none', padding: 0}}>
                      <strong>{portalData.team.leader.name}</strong>
                      <span className="email-text">{portalData.team.leader.email}</span>
@@ -551,7 +551,7 @@ export default function HacknestTeamPortal() {
                 </div>
 
                 <div className="team-info-block">
-                  <div className="info-label">👥 Team Members ({portalData.team.members.length})</div>
+                  <div className="info-label">Team Members ({portalData.team.members.length})</div>
                   {portalData.team.members.map((member) => (
                     <div key={member.id} className="team-member-row">
                        <strong>{member.name}</strong>
