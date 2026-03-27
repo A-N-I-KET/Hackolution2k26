@@ -32,14 +32,14 @@
 
 
 .countdown-label {
-    color: #5c1e16;
+    color: #ffffff;
     font-size: 0.65rem;
     font-weight: 800;
     letter-spacing: 1.5px;
     margin-bottom: 6px;
     text-transform: uppercase;
     font-family: 'Special Elite', cursive;
-    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 .countdown-blocks {
@@ -56,17 +56,17 @@
 }
 
 .countdown-value {
-    color: #2b1a10;
+    color: #ffffff;
     font-size: 1.5rem;
     font-weight: 800;
     font-variant-numeric: tabular-nums;
     line-height: 1;
     font-family: 'Special Elite', cursive;
-    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
 }
 
 .countdown-unit {
-    color: #5c1e16;
+    color: #ffffff;
     font-size: 0.55rem;
     font-weight: 700;
     margin-top: 4px;
@@ -75,7 +75,7 @@
 }
 
 .countdown-separator {
-    color: #2b1a10;
+    color: #ffffff;
     font-size: 1.2rem;
     font-weight: 800;
     opacity: 0.8;

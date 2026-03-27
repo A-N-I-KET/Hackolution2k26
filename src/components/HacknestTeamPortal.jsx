@@ -736,7 +736,7 @@ export default function HacknestTeamPortal() {
                             onChange={handleFileUpload}
                             disabled={uploading}
                           />
-                          {uploading ? 'Uploading...' : 'Choose File'}
+                          {uploading ? 'Uploading...' : portalData.team.has_submission ? 'Update' : 'Choose File'}
                         </label>
                         {portalData.team.has_submission && (
                            <div className="portal-submission-actions">
