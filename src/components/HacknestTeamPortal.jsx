@@ -430,7 +430,7 @@ export default function HacknestTeamPortal() {
   if (loading) {
     return (
       <section className="section-wrapper team-portal-shell">
-        <div className="portal-card">
+        <div className="portal-card-top">
           <h1 className="section-heading">Loading Team Portal...</h1>
           {originalPortalUrl && (
             <div style={{ marginTop: '14px' }}>
@@ -453,7 +453,7 @@ export default function HacknestTeamPortal() {
   if (error) {
     return (
       <section className="section-wrapper team-portal-shell">
-        <div className="portal-card">
+        <div className="portal-card-top">
           <h1 className="section-heading">Team Portal Error</h1>
           <p className="portal-error">{error}</p>
           {originalPortalUrl && (
@@ -488,76 +488,70 @@ export default function HacknestTeamPortal() {
 
   return (
     <section className="section-wrapper team-portal-shell">
-      <div className="portal-card">
-        <header className="portal-header">
-          <div className="portal-brand-row">
-            <div className="portal-brand-left">Hackolution x HackNest</div>
-            {originalPortalUrl && (
-              <div className="portal-fallback-inline">
-                <p className="portal-fallback-note">
-                  If this page is not working properly, use native HackNest Team Portal.
-                </p>
-                <button className="portal-doc-link portal-native-btn" onClick={openOriginalPortal}>
-                  <img src={HACKNEST_LOGO_URL} alt="HackNest" className="portal-native-logo-img" />
-                  <span>Open HackNest Team Portal</span>
-                </button>
-              </div>
-            )}
+      {/* TOP CARD */}
+      <div className="portal-card-top">
+        <header className="portal-header-modern">
+          <div className="header-logo-left">
+            <img src={HACKNEST_LOGO_URL} alt="HackNest" className="header-hacknest-img" />
           </div>
-
-          <h1 className="section-heading">{portalData.hackathon.name} Team Portal</h1>
-          <p className="portal-subtitle">Team: {portalData.team.name}</p>
-
-          {(portalData.hackathon.hackathon_logo_url || portalData.hackathon.institute_logo_url) && (
-            <div className="portal-logo-strip">
-              {portalData.hackathon.hackathon_logo_url && (
-                <img
-                  src={portalData.hackathon.hackathon_logo_url}
-                  alt="Hackathon logo"
-                  className="portal-logo"
-                />
-              )}
-              {portalData.hackathon.institute_logo_url && (
-                <img
-                  src={portalData.hackathon.institute_logo_url}
-                  alt="Institute logo"
-                  className="portal-logo"
-                />
-              )}
-            </div>
-          )}
-
-          {isTestMode && <p className="portal-test-badge">Test Mode Preview</p>}
+          <div className="header-title-center">
+            <h1 className="header-main-title">{portalData.hackathon.name}</h1>
+            <p className="header-subtitle">Team Portal</p>
+          </div>
+          <div className="header-logo-right">
+            {portalData.hackathon.institute_logo_url ? (
+              <img src={portalData.hackathon.institute_logo_url} alt="Institute logo" className="header-institute-img" />
+            ) : portalData.hackathon.hackathon_logo_url ? (
+              <img src={portalData.hackathon.hackathon_logo_url} alt="Hackathon logo" className="header-institute-img" />
+            ) : <div style={{width: '60px'}}></div>}
+          </div>
         </header>
 
-        <section className={`portal-status-banner tone-${statusMeta.tone}`}>
-          <p className="portal-status-kicker">{statusMeta.badge}</p>
-          <h2>{statusMeta.title}</h2>
-          <p>{statusMeta.subtitle}</p>
+        {isTestMode && <p className="portal-test-badge" style={{textAlign: 'center', display: 'block'}}>Test Mode Preview</p>}
+
+        <section className={`portal-status-banner-wide tone-${statusMeta.tone}`}>
+          <div className="status-icon">📝</div>
+          <div className="status-text">
+            <h2>{statusMeta.title}</h2>
+            <p>{statusMeta.subtitle}</p>
+          </div>
+        </section>
+      </div>
+
+      {/* BOTTOM GRID */}
+      <div className="portal-grid">
+        {/* LEFT COLUMN: TEAM DETAILS */}
+        <section className="portal-panel">
+          <h2>👥 Team Details</h2>
+          
+          <div className="team-info-block">
+            <span className="info-label">Team Name</span>
+            <span className="info-value-large">{portalData.team.name}</span>
+          </div>
+
+          <div className="team-info-block">
+            <div className="info-label">👤 Team Leader</div>
+            <div className="team-member-row" style={{border: 'none', padding: 0}}>
+               <strong>{portalData.team.leader.name}</strong>
+               <span className="email-text">{portalData.team.leader.email}</span>
+            </div>
+          </div>
+
+          <div className="team-info-block">
+            <div className="info-label">👥 Team Members ({portalData.team.members.length})</div>
+            {portalData.team.members.map((member) => (
+              <div key={member.id} className="team-member-row">
+                 <strong>{member.name}</strong>
+                 <span className="email-text">{member.email}</span>
+               </div>
+            ))}
+          </div>
         </section>
 
-        <div className="portal-grid">
-          <section className="portal-panel">
-            <h2>Team Details</h2>
-            <p><strong>Status:</strong> {portalData.team.status || 'pending'}</p>
-            <div className="portal-people-list">
-              <article className="portal-person-card">
-                <p className="portal-person-role">Team Leader</p>
-                <p className="portal-person-name">{portalData.team.leader.name}</p>
-                <p className="portal-person-email">{portalData.team.leader.email}</p>
-              </article>
-              {portalData.team.members.map((member) => (
-                <article key={member.id} className="portal-person-card">
-                  <p className="portal-person-role">Team Member</p>
-                  <p className="portal-person-name">{member.name}</p>
-                  <p className="portal-person-email">{member.email}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-
+        {/* RIGHT COLUMN: DYNAMIC (Submission, RSVP, Waitlisted, Rejected) */}
+        <div style={{display: 'flex', flexDirection: 'column', gap: '30px', height: '100%'}}>
           {isRejected && (
-            <section className="portal-panel">
+            <section className="portal-panel" style={{height: 'auto'}}>
               <h2>Application Update</h2>
               <div className="portal-message-card tone-danger-soft">
                 <p>
@@ -569,7 +563,7 @@ export default function HacknestTeamPortal() {
           )}
 
           {isWaitlisted && (
-            <section className="portal-panel">
+            <section className="portal-panel" style={{height: 'auto'}}>
               <h2>Waitlist Update</h2>
               <div className="portal-message-card tone-warning-soft">
                 <p>
@@ -581,27 +575,27 @@ export default function HacknestTeamPortal() {
           )}
 
           {isShortlisted && (
-            <section className="portal-panel portal-span-2">
-              <h2>RSVP Confirmation</h2>
-              <div className="portal-message-card tone-success-soft">
-                <p>
-                  Congratulations. Your team is shortlisted. Confirm attendees between {portalData.hackathon.min_team_size} and {portalData.hackathon.max_team_size}.
-                </p>
+            <section className="portal-panel" style={{height: 'auto'}}>
+              <h2>✅ RSVP Confirmation</h2>
+              <div className={`portal-message-card-modern ${portalData.hackathon.is_rsvp_open ? 'tone-info-soft' : 'tone-danger-soft'}`} style={{marginBottom: '10px'}}>
+                 <span className="status-dot"></span>
+                 <span>RSVP Window {portalData.hackathon.is_rsvp_open ? 'OPEN' : 'CLOSED'}</span>
               </div>
+              <p style={{fontFamily: 'var(--font-body)', fontSize: '0.9rem', marginBottom: '15px'}}>Confirm attendees between {portalData.hackathon.min_team_size} and {portalData.hackathon.max_team_size}.</p>
 
               {!portalData.hackathon.is_rsvp_open && !hasAnyRsvpConfirmed ? (
-                <div className="portal-message-card tone-muted-soft">
-                  <p>RSVP window is currently closed. Check back later or contact organizers.</p>
+                <div className="team-info-block" style={{background: 'rgba(26, 15, 0, 0.05)'}}>
+                  <p style={{margin: 0, fontFamily: 'var(--font-body)'}}>RSVP window is closed. Check back later.</p>
                 </div>
               ) : hasAnyRsvpConfirmed ? (
-                <div className="portal-rsvp-list">
-                  <div className="portal-message-card tone-info-soft">
-                    <p>RSVP is already submitted. Portal edits are locked; ask organizers for changes.</p>
+                <div className="portal-rsvp-list" style={{background: 'var(--card-bg)'}}>
+                  <div className="team-info-block" style={{background: 'rgba(92, 64, 51, 0.1)', border: 'none', margin: 0, borderRadius: 0}}>
+                    <p style={{margin: 0, fontFamily: 'var(--font-body)', fontSize: '0.85rem'}}>RSVP submitted. Portal edits locked.</p>
                   </div>
                   <div className="portal-rsvp-row">
                     <div>
-                      <p className="portal-person-name">{portalData.team.leader.name}</p>
-                      <p className="portal-person-email">{portalData.team.leader.email}</p>
+                      <strong style={{fontFamily: 'var(--font-heading)'}}>{portalData.team.leader.name}</strong><br/>
+                      <span className="email-text" style={{fontSize: '0.8rem'}}>{portalData.team.leader.email}</span>
                     </div>
                     <span className={`portal-pill ${portalData.team.leader.rsvp ? 'pill-success' : 'pill-muted'}`}>
                       {portalData.team.leader.rsvp ? 'Attending' : 'Not Attending'}
@@ -610,8 +604,8 @@ export default function HacknestTeamPortal() {
                   {portalData.team.members.map((member) => (
                     <div key={member.id} className="portal-rsvp-row">
                       <div>
-                        <p className="portal-person-name">{member.name}</p>
-                        <p className="portal-person-email">{member.email}</p>
+                        <strong style={{fontFamily: 'var(--font-heading)'}}>{member.name}</strong><br/>
+                        <span className="email-text" style={{fontSize: '0.8rem'}}>{member.email}</span>
                       </div>
                       <span className={`portal-pill ${member.rsvp ? 'pill-success' : 'pill-muted'}`}>
                         {member.rsvp ? 'Attending' : 'Not Attending'}
@@ -621,112 +615,98 @@ export default function HacknestTeamPortal() {
                 </div>
               ) : (
                 <>
-                  <div className="portal-rsvp-list">
+                  <div className="portal-rsvp-list" style={{background: 'var(--card-bg)'}}>
                     <label className={`portal-rsvp-row clickable ${rsvpSelections.leader ? 'selected' : ''}`}>
                       <div>
-                        <p className="portal-person-name">{portalData.team.leader.name}</p>
-                        <p className="portal-person-email">{portalData.team.leader.email}</p>
+                        <strong style={{fontFamily: 'var(--font-heading)'}}>{portalData.team.leader.name}</strong><br/>
+                        <span className="email-text" style={{fontSize: '0.8rem'}}>{portalData.team.leader.email}</span>
                       </div>
-                      <input
-                        type="checkbox"
-                        checked={!!rsvpSelections.leader}
-                        onChange={(event) => setRsvpSelections((prev) => ({ ...prev, leader: event.target.checked }))}
-                      />
+                      <input type="checkbox" checked={!!rsvpSelections.leader} onChange={(e) => setRsvpSelections((prev) => ({ ...prev, leader: e.target.checked }))} style={{accentColor: 'var(--ink-dark)', width: '18px', height: '18px'}} />
                     </label>
                     {portalData.team.members.map((member) => (
                       <label key={member.id} className={`portal-rsvp-row clickable ${rsvpSelections[member.id] ? 'selected' : ''}`}>
                         <div>
-                          <p className="portal-person-name">{member.name}</p>
-                          <p className="portal-person-email">{member.email}</p>
+                           <strong style={{fontFamily: 'var(--font-heading)'}}>{member.name}</strong><br/>
+                           <span className="email-text" style={{fontSize: '0.8rem'}}>{member.email}</span>
                         </div>
-                        <input
-                          type="checkbox"
-                          checked={!!rsvpSelections[member.id]}
-                          onChange={(event) =>
-                            setRsvpSelections((prev) => ({ ...prev, [member.id]: event.target.checked }))
-                          }
-                        />
+                        <input type="checkbox" checked={!!rsvpSelections[member.id]} onChange={(e) => setRsvpSelections((prev) => ({ ...prev, [member.id]: e.target.checked }))} style={{accentColor: 'var(--ink-dark)', width: '18px', height: '18px'}} />
                       </label>
                     ))}
                   </div>
-                  <div className="portal-requirement-note">
-                    <p>
-                      Requirement: Select {portalData.hackathon.min_team_size} to {portalData.hackathon.max_team_size} attendees.
-                      Leader attendance is optional.
-                    </p>
-                    <p>Selected attendees: {selectedCount}</p>
-                  </div>
-                  <div className="portal-actions">
-                    <button
-                      className="portal-btn"
-                      onClick={handleRsvpSubmit}
-                      disabled={submittingRsvp || selectedCount === 0}
-                    >
-                      {submittingRsvp ? 'Submitting...' : 'Confirm RSVP'}
-                    </button>
-                  </div>
+                  <p style={{fontFamily: 'var(--font-body)', fontSize: '0.85rem', marginTop: '10px', color: 'var(--ink-brown)'}}>Selected: {selectedCount}</p>
+                  <button className="portal-btn-full magenta-btn" style={{marginTop: '15px', marginBottom: 0}} onClick={handleRsvpSubmit} disabled={submittingRsvp || selectedCount === 0}>
+                    {submittingRsvp ? 'Submitting...' : 'Confirm RSVP'}
+                  </button>
                 </>
               )}
             </section>
           )}
 
           {showSubmissionSection && (
-            <section className="portal-panel portal-span-2">
-              <h2>Idea Submission</h2>
-              <div className={`portal-message-card ${portalData.hackathon.is_submission_open ? 'tone-info-soft' : 'tone-danger-soft'}`}>
-                <p>
-                  Submission window: {portalData.hackathon.is_submission_open ? 'OPEN' : 'CLOSED'}.
-                  {portalData.hackathon.is_submission_open
-                    ? ' Upload or replace your file during the open window.'
-                    : ' Upload is disabled when the window is closed.'}
-                </p>
+            <section className="portal-panel">
+              <h2>💡 Idea Submission</h2>
+              
+              <div className={`portal-message-card-modern ${portalData.hackathon.is_submission_open ? 'tone-info-soft' : 'tone-danger-soft'}`}>
+                 <span className="status-dot"></span>
+                 <span>Submission Window {portalData.hackathon.is_submission_open ? 'OPEN' : 'CLOSED'}</span>
               </div>
 
-              <div className="portal-actions">
-                {portalData.hackathon.template_url && (
-                  <button className="portal-btn secondary" onClick={downloadTemplate}>Download Template</button>
-                )}
-                {portalData.team.has_submission && (
-                  <button className="portal-btn secondary" onClick={downloadSubmission}>Download Submission</button>
-                )}
-                {portalData.team.has_submission && portalData.hackathon.is_submission_open && (
-                  <button className="portal-btn danger" onClick={deleteSubmission} disabled={deleting}>
-                    {deleting ? 'Deleting...' : 'Delete Submission'}
-                  </button>
-                )}
-              </div>
+              {portalData.hackathon.template_url && (
+                <button className="portal-btn-full magenta-btn" onClick={downloadTemplate}>
+                  ⬇️ Download Submission Template
+                </button>
+              )}
 
               {portalData.hackathon.is_submission_open ? (
-                <div className="portal-upload-box">
-                  <p>{portalData.team.has_submission ? 'Replace your existing PDF submission' : 'Upload your PDF submission'}.</p>
-                  <p className="portal-small-note">Accepted format: PDF. Max file size: 10MB.</p>
-                  <label className="portal-upload-label">
+                <div className="portal-upload-box-modern">
+                  <div className="upload-icon-wrapper">
+                     📤
+                  </div>
+                  <h3>Upload Your PDF</h3>
+                  <p className="portal-small-note">PDF files only (.pdf) • Max 10MB</p>
+                  
+                  <label className="portal-upload-label-modern">
                     <input
                       type="file"
                       accept=".pdf,application/pdf"
                       onChange={handleFileUpload}
                       disabled={uploading}
                     />
-                    {uploading ? 'Uploading...' : portalData.team.has_submission ? 'Replace File' : 'Choose File'}
+                    {uploading ? 'Uploading...' : 'Choose File'}
                   </label>
-                  {uploadSuccess && <p className="portal-small-note success">Upload successful.</p>}
+                  {portalData.team.has_submission && (
+                     <div style={{marginTop: '20px', display: 'flex', gap: '10px', justifyContent: 'center'}}>
+                       <button className="portal-btn secondary" onClick={downloadSubmission}>Download</button>
+                       <button className="portal-btn danger" onClick={deleteSubmission} disabled={deleting}>
+                         {deleting ? 'Deleting...' : 'Delete'}
+                       </button>
+                     </div>
+                  )}
+                  {uploadSuccess && <p className="portal-small-note success" style={{marginTop: '15px', display: 'inline-block'}}>Upload successful.</p>}
                 </div>
               ) : (
-                <div className="portal-upload-box muted">
-                  <p>Submission is closed right now.</p>
+                <div className="portal-upload-box-modern muted">
+                  <div className="upload-icon-wrapper" style={{filter: 'grayscale(1)', opacity: 0.5}}>🔒</div>
+                  <h3 style={{opacity: 0.7}}>Submission Closed</h3>
                   {portalData.team.has_submission && (
-                    <p className="portal-small-note">Your existing submission can still be downloaded.</p>
+                     <button className="portal-btn secondary" style={{marginTop: '15px'}} onClick={downloadSubmission}>Download Existing Submission</button>
                   )}
                 </div>
               )}
 
-              <div className="portal-requirement-note">
-                <p>Each new upload replaces the previous submission. Deletion is irreversible.</p>
+              <div className="portal-requirement-note-modern">
+                <p style={{margin: 0}}>📌 <strong>Note:</strong> You can upload your PDF multiple times. Each new upload will replace the previous one.</p>
               </div>
             </section>
           )}
         </div>
       </div>
+
+      <div className="portal-footer-modern">
+         <p style={{margin: 0}}>For any questions or issues, please contact the hackathon organizers.</p>
+         <p className="powered-by">Powered by <img src={HACKNEST_LOGO_URL} alt="HackNest" /> <strong>HackNest</strong></p>
+      </div>
+
     </section>
   );
 }
