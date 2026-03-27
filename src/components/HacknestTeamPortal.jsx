@@ -434,19 +434,6 @@ export default function HacknestTeamPortal() {
           <div className="portal-leather-book-inner"></div>
           <div className="portal-parchment-page">
             <h1 className="section-heading" style={{color: '#2c1a10', fontFamily: 'var(--font-heading)'}}>Loading Team Portal...</h1>
-            {originalPortalUrl && (
-              <div style={{ marginTop: '14px' }}>
-                <p className="portal-fallback-note" style={{color: '#592525', fontFamily: 'var(--font-body)'}}>
-                  If this page is not working properly, please continue from the native HackNest Team Portal.
-                </p>
-                <div className="portal-actions" style={{ marginTop: '8px' }}>
-                  <button className="portal-doc-link portal-native-btn" onClick={openOriginalPortal}>
-                    <img src={HACKNEST_LOGO_URL} alt="HackNest" className="portal-native-logo-img" style={{filter: 'sepia(1) contrast(1.5)'}} />
-                    <span>Open HackNest Team Portal</span>
-                  </button>
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </section>
@@ -724,6 +711,20 @@ export default function HacknestTeamPortal() {
             </div>
           </div>
           
+          {originalPortalUrl && (
+            <div style={{ marginTop: '30px', textAlign: 'center', marginBottom: '10px' }}>
+              <p className="portal-fallback-note" style={{color: '#592525', fontFamily: 'var(--font-body)', fontSize: '0.9rem', marginBottom: '8px', textShadow: 'none'}}>
+                If this page is not working properly, please continue from the native HackNest Team Portal.
+              </p>
+              <div className="portal-actions" style={{ justifyContent: 'center' }}>
+                <button className="portal-doc-link portal-native-btn" onClick={openOriginalPortal} style={{margin: '0 auto'}}>
+                  <img src={HACKNEST_LOGO_URL} alt="HackNest" className="portal-native-logo-img" style={{filter: 'sepia(1) contrast(1.5)'}} />
+                  <span>Open HackNest Team Portal</span>
+                </button>
+              </div>
+            </div>
+          )}
+
           <div className="portal-footer-modern">
              <p style={{margin: 0, color: '#3d1414', textShadow: 'none'}}>For any questions or issues, please contact the hackathon organizers.</p>
              <p className="powered-by" style={{color: '#3d1414'}}>Powered by <img src={HACKNEST_LOGO_URL} alt="HackNest" /> <strong>HackNest</strong></p>
