@@ -473,25 +473,27 @@ export default function HacknestTeamPortal() {
 
   if (error) {
     return (
-      <section className="section-wrapper team-portal-shell">
-        <div className="portal-leather-book">
+      <section className="section-wrapper team-portal-shell" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh', padding: '20px' }}>
+        <div className="portal-leather-book" style={{ width: '100%', maxWidth: '650px', margin: '0 auto' }}>
           <div className="portal-leather-book-inner"></div>
-          <div className="portal-parchment-page">
-            <h1 className="section-heading" style={{color: '#7a1f1f', fontFamily: 'var(--font-heading)'}}>Team Portal Error</h1>
-            <p className="portal-error" style={{color: '#a83232'}}>{error}</p>
-            {originalPortalUrl && (
-              <div style={{ marginTop: '14px' }}>
-                <p className="portal-fallback-note" style={{color: '#592525'}}>
-                  If this page is not working properly, please continue from the native HackNest Team Portal.
-                </p>
-                <div className="portal-actions" style={{ marginTop: '8px' }}>
-                  <button className="portal-doc-link portal-native-btn" onClick={openOriginalPortal}>
-                    <img src={HACKNEST_LOGO_URL} alt="HackNest" className="portal-native-logo-img" style={{filter: 'sepia(1) contrast(1.5)'}} />
-                    <span>Open HackNest Team Portal</span>
-                  </button>
-                </div>
-              </div>
-            )}
+          <div className="portal-parchment-page" style={{ textAlign: 'center', padding: '60px 30px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+            <h1 className="section-heading" style={{ color: '#7a1f1f', fontFamily: 'var(--font-heading)', fontSize: '3.5rem', marginBottom: '20px', lineHeight: '1.1' }}>
+              Caught Ya! 🤠
+            </h1>
+            <p style={{ color: '#592525', fontFamily: 'var(--font-body)', fontSize: '1.3rem', marginBottom: '40px', fontWeight: 'bold' }}>
+              Hold your horses, partner! You've wandered into restricted territory without a valid token.
+            </p>
+            <div className="portal-actions" style={{ justifyContent: 'center', width: '100%' }}>
+              <button 
+                className="portal-btn-full" 
+                onClick={() => window.location.href = '/'}
+                style={{ fontSize: '1.2rem', padding: '15px 40px', cursor: 'pointer', margin: '0 auto', display: 'inline-block', width: 'auto' }}
+              >
+                Back to Home Screen
+              </button>
+            </div>
+            {/* Hidden error for debugging */}
+            <span style={{ display: 'none' }}>{error}</span>
           </div>
         </div>
       </section>
