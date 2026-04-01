@@ -473,14 +473,124 @@ export default function HacknestTeamPortal() {
 
   if (error) {
     return (
-      <section className="section-wrapper team-portal-shell" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh', padding: '20px' }}>
-        <div className="portal-leather-book" style={{ width: '100%', maxWidth: '650px', margin: '0 auto' }}>
+      <section className="section-wrapper team-portal-shell" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh', padding: '20px', overflow: 'hidden' }}>
+        <div className="portal-leather-book portal-leather-book-shake" style={{ width: '100%', maxWidth: '650px', margin: '0 auto', position: 'relative' }}>
           <div className="portal-leather-book-inner"></div>
-          <div className="portal-parchment-page" style={{ textAlign: 'center', padding: '60px 30px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-            <h1 className="section-heading" style={{ color: '#7a1f1f', fontFamily: 'var(--font-heading)', fontSize: '3.5rem', marginBottom: '20px', lineHeight: '1.1' }}>
-              Caught Ya! 🤠
+          
+          <style>
+            {`
+              @keyframes ranga-entrance {
+                0% { transform: scale(0.3) translateY(100px); opacity: 0; }
+                60% { transform: scale(1.1) translateY(-10px); opacity: 1; }
+                100% { transform: scale(1) translateY(0); opacity: 1; }
+              }
+
+              @keyframes shoot-impact {
+                0% { transform: scale(3); opacity: 0; }
+                10% { transform: scale(1); opacity: 1; box-shadow: 0 0 30px 15px #ffaa00, inset 0 3px 5px rgba(0,0,0,0.8); background: #fff; }
+                30% { box-shadow: 0 0 10px 5px #ff3300, inset 0 3px 5px rgba(0,0,0,0.8); background: #000; }
+                100% { transform: scale(1); opacity: 1; box-shadow: inset 0 3px 5px rgba(0,0,0,0.8), 0 1px 1px rgba(255,255,255,0.2); background: radial-gradient(circle, #0a0a0a 0%, #1a1a1a 40%, #4a2a18 60%, transparent 80%); }
+              }
+
+              .bullet-hole {
+                position: absolute;
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                opacity: 0;
+                z-index: 20;
+                pointer-events: none;
+              }
+              
+              .bullet-hole::after {
+                content: '';
+                position: absolute;
+                top: -6px; left: -6px; right: -6px; bottom: -6px;
+                background: radial-gradient(circle, transparent 40%, rgba(40, 10, 0, 0.4) 60%, transparent 80%);
+                border-radius: 50%;
+                pointer-events: none;
+              }
+
+              .hole-1 { top: 12%; left: 8%; animation: shoot-impact 0.5s ease-out forwards; animation-delay: 0.8s; }
+              .hole-2 { top: 58%; right: -2%; animation: shoot-impact 0.5s ease-out forwards; animation-delay: 1.4s; }
+              .hole-3 { top: 22%; right: 15%; animation: shoot-impact 0.5s ease-out forwards; animation-delay: 2.0s; }
+              .hole-4 { bottom: -2%; left: 18%; animation: shoot-impact 0.5s ease-out forwards; animation-delay: 2.6s; }
+              .hole-5 { top: 85%; left: 45%; animation: shoot-impact 0.5s ease-out forwards; animation-delay: 3.2s; }
+              .hole-6 { top: 18%; right: 43%; animation: shoot-impact 0.5s ease-out forwards; animation-delay: 3.8s; }
+
+              @keyframes smoke-rise {
+                0% { transform: translateY(0) scale(1); opacity: 0; }
+                20% { opacity: 0.6; }
+                100% { transform: translateY(-30px) scale(2); opacity: 0; }
+              }
+
+              .smoke {
+                position: absolute;
+                top: -5px; left: -5px; right: -5px; bottom: -5px;
+                background: radial-gradient(circle, rgba(200,200,200,0.5) 0%, transparent 60%);
+                border-radius: 50%;
+                opacity: 0;
+                animation: smoke-rise 2s ease-out forwards;
+              }
+              
+              .hole-1 .smoke { animation-delay: 0.9s; }
+              .hole-2 .smoke { animation-delay: 1.5s; }
+              .hole-3 .smoke { animation-delay: 2.1s; }
+              .hole-4 .smoke { animation-delay: 2.7s; }
+              .hole-5 .smoke { animation-delay: 3.3s; }
+              .hole-6 .smoke { animation-delay: 3.9s; }
+              
+              @keyframes book-shake {
+                0%, 100% { transform: translate(0, 0); }
+                19% { transform: translate(0, 0); }
+                20% { transform: translate(-15px, 10px) rotate(-1.5deg); }
+                22% { transform: translate(10px, -5px) rotate(1deg); }
+                25% { transform: translate(0, 0); }
+                34% { transform: translate(0, 0); }
+                35% { transform: translate(15px, 8px) rotate(1.5deg); }
+                38% { transform: translate(-10px, -5px) rotate(-1deg); }
+                40% { transform: translate(0, 0); }
+                49% { transform: translate(0, 0); }
+                50% { transform: translate(-12px, -12px) rotate(2deg); }
+                53% { transform: translate(8px, 10px) rotate(-1deg); }
+                55% { transform: translate(0, 0); }
+                64% { transform: translate(0, 0); }
+                65% { transform: translate(10px, 12px) rotate(-1.5deg); }
+                68% { transform: translate(-8px, -8px) rotate(1deg); }
+                70% { transform: translate(0, 0); }
+                79% { transform: translate(0, 0); }
+                80% { transform: translate(-15px, 15px) rotate(-2deg); }
+                83% { transform: translate(10px, -10px) rotate(1deg); }
+                85% { transform: translate(0, 0); }
+                94% { transform: translate(0, 0); }
+                95% { transform: translate(12px, -12px) rotate(1.5deg); }
+                98% { transform: translate(-10px, 8px) rotate(-0.5deg); }
+              }
+              
+              .portal-leather-book-shake {
+                animation: book-shake 4s ease-out forwards;
+              }
+            `}
+          </style>
+
+          {/* Graphical Bullet Holes across the book itself */}
+          <div className="bullet-hole hole-1"><div className="smoke"></div></div>
+          <div className="bullet-hole hole-2"><div className="smoke"></div></div>
+          <div className="bullet-hole hole-3"><div className="smoke"></div></div>
+          <div className="bullet-hole hole-4"><div className="smoke"></div></div>
+          <div className="bullet-hole hole-5"><div className="smoke"></div></div>
+          <div className="bullet-hole hole-6"><div className="smoke"></div></div>
+
+          <div className="portal-parchment-page" style={{ textAlign: 'center', padding: '60px 30px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 10 }}>
+            <img 
+              src="/assets/ranga.avif" 
+              alt="Sheriff Ranga" 
+              style={{ width: '160px', height: '160px', objectFit: 'cover', borderRadius: '50%', border: '4px solid #7a1f1f', marginBottom: '20px', boxShadow: '0 4px 10px rgba(0,0,0,0.5)', animation: 'ranga-entrance 0.5s ease-out forwards' }} 
+            />
+            <h1 className="section-heading" style={{ color: '#7a1f1f', fontFamily: 'var(--font-heading)', fontSize: '3.2rem', marginBottom: '20px', lineHeight: '1.1' }}>
+              Ranga Caught U! 🤠
             </h1>
-            <p style={{ color: '#592525', fontFamily: 'var(--font-body)', fontSize: '1.3rem', marginBottom: '40px', fontWeight: 'bold' }}>
+            <p style={{ color: '#592525', fontFamily: 'var(--font-body)', fontSize: '1.2rem', marginBottom: '40px', fontWeight: 'bold' }}>
               Hold your horses, partner! You've wandered into restricted territory without a valid token.
             </p>
             <div className="portal-actions" style={{ justifyContent: 'center', width: '100%' }}>
