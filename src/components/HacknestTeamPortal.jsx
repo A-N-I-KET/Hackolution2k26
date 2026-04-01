@@ -141,7 +141,7 @@ export default function HacknestTeamPortal() {
   const [timeLeft, setTimeLeft] = useState({ days: '00', hours: '00', minutes: '00', seconds: '00' });
 
   useEffect(() => {
-    const targetDate = new Date('2026-03-31T23:59:00+05:30').getTime();
+    const targetDate = new Date('2026-04-05T23:59:00+05:30').getTime();
 
     const updateTimer = () => {
       const now = new Date().getTime();
