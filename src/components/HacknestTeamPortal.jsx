@@ -650,6 +650,7 @@ export default function HacknestTeamPortal() {
             </div>
           </header>
 
+          {/*
           <div className="portal-countdown-container">
             <p className="countdown-title">Idea Submission Ends In</p>
             <div className="countdown-clock">
@@ -674,6 +675,7 @@ export default function HacknestTeamPortal() {
               </div>
             </div>
           </div>
+          */}
 
           {isTestMode && <p className="portal-test-badge">Test Mode Preview</p>}
 
