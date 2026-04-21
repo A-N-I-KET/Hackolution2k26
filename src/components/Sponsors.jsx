@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 
 const sponsorsData = [
     { name: 'Devfolio', link: 'https://devfolio.co', imgSrc: '/assets/SPONSOR/Devfolio.avif', tier: 'The Gold Sponsor', desc: 'An undisputed leader in hackathon commerce. They supply only the most premium robust tools.' },
+    { name: 'Miro', link: 'https://miro.com/', imgSrc: '/assets/SPONSOR/miro.avif', tier: 'The Gold Sponsor', desc: 'Miro is an online collaborative whiteboard platform that enables teams to brainstorm, plan, and design together in real-time.' },
     { name: 'ETHIndia', link: 'https://ethindia.co', imgSrc: '/assets/SPONSOR/ETHIndia.png', tier: 'The Silver Sponsor', desc: 'A marvel of the modern decentralized world. Known across the continent for their outstanding chain.' },
     { name: 'PujoPlanner', link: 'https://pujoplanner.com', imgSrc: '/assets/SPONSOR/pujoplanner.avif', tier: 'The Silver Sponsor', desc: 'Your ultimate Durga Puja companion - discover pandals with smart route planning, real-time updates, and convenient Pujo-related services all in one place', style: { transform: 'scale(1.5)' } },
     { name: 'Hacknest', link: 'https://hacknest.in/', imgSrc: '/assets/SPONSOR/hacknest.avif', tier: 'The Silver Sponsor', desc: 'A thriving community platform connecting hackers, builders, and innovators to collaborate and create together.', style: { transform: 'scale(1.0)' } },
