@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { generateQrSvgDataUrl } from '../lib/qr';
 
 const API_BASE_RAW = import.meta.env.VITE_HACKNEST_API;
 const API_BASE = API_BASE_RAW ? API_BASE_RAW.replace(/\/$/, '') : '';
@@ -138,6 +139,7 @@ export default function HacknestTeamPortal() {
   const [deleting, setDeleting] = useState(false);
   const [submittingRsvp, setSubmittingRsvp] = useState(false);
   const [rsvpSelections, setRsvpSelections] = useState({});
+  const [openQrId, setOpenQrId] = useState(null);
   const [timeLeft, setTimeLeft] = useState({ days: '00', hours: '00', minutes: '00', seconds: '00' });
 
   useEffect(() => {
@@ -190,6 +192,39 @@ export default function HacknestTeamPortal() {
   const hasAnyRsvpConfirmed =
     (portalData?.team?.leader?.rsvp || false) ||
     (portalData?.team?.members || []).some((member) => member.rsvp);
+
+  const generateQrSrc = (code) => {
+    if (!code) return null;
+    try {
+      return generateQrSvgDataUrl(code, 200);
+    } catch (e) {
+      // fallback to external service if in case generator fails
+      return `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(code)}`;
+    }
+  };
+
+  function QrToggle({ code, itemId }) {
+    if (!code) return null;
+    const qrSrc = generateQrSrc(code);
+    const show = openQrId === itemId;
+    return (
+      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <button
+          type="button"
+          onClick={() => setOpenQrId((prev) => (prev === itemId ? null : itemId))}
+          className="portal-btn-full"
+          style={{ padding: '6px 10px', fontSize: '0.9rem' }}
+        >
+          {show ? 'Hide QR' : 'Show QR'}
+        </button>
+        {show && (
+          <a href={qrSrc} target="_blank" rel="noreferrer">
+            <img src={qrSrc} alt="RSVP QR" style={{ width: 80, height: 80, objectFit: 'contain', borderRadius: 6 }} />
+          </a>
+        )}
+      </div>
+    );
+  }
 
   const fetchPortalData = async () => {
     if (!API_BASE) {
@@ -254,12 +289,14 @@ export default function HacknestTeamPortal() {
             name: data.team?.leader?.name || 'Leader',
             email: data.team?.leader?.email || 'Not available',
             rsvp: data.team?.leader?.rsvp ?? false,
+            rsvp_code: data.team?.leader?.rsvp_code || null,
           },
           members: (data.team?.members || []).map((member) => ({
             id: member.id || member.email || Math.random().toString(36).slice(2),
             name: member.name || 'Member',
             email: member.email || 'Not available',
             rsvp: member.rsvp ?? false,
+            rsvp_code: member.rsvp_code || null,
           })),
           has_submission: data.team?.has_submission ?? false,
           submission_url: data.team?.submission_path || null,
@@ -773,9 +810,17 @@ export default function HacknestTeamPortal() {
                             <strong style={{fontFamily: 'var(--font-heading)', color: '#2c1a10'}}>{portalData.team.leader.name}</strong><br/>
                             <span className="email-text" style={{fontSize: '0.8rem'}}>{portalData.team.leader.email}</span>
                           </div>
-                          <span className={`portal-pill ${portalData.team.leader.rsvp ? 'pill-success' : 'pill-muted'}`} style={{borderColor: '#592525', color: '#2c1a10'}}>
-                            {portalData.team.leader.rsvp ? 'Attending' : 'Not Attending'}
-                          </span>
+                          <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 6}}>
+                            <span className={`portal-pill ${portalData.team.leader.rsvp ? 'pill-success' : 'pill-muted'}`} style={{borderColor: '#592525', color: '#2c1a10'}}>
+                              {portalData.team.leader.rsvp ? 'Attending' : 'Not Attending'}
+                            </span>
+                            {portalData.team.leader.rsvp && portalData.team.leader.rsvp_code && (
+                              <div style={{textAlign: 'right'}}>
+                                <div className="text-sm font-medium" style={{color: '#2c1a10'}}>Code: <span className="font-mono" style={{background: '#fffbeb', border: '1px solid #f5d7a3', padding: '4px 8px', borderRadius: 6}}>{portalData.team.leader.rsvp_code}</span></div>
+                                <QrToggle code={portalData.team.leader.rsvp_code} itemId={'leader'} />
+                              </div>
+                            )}
+                          </div>
                         </div>
                         {portalData.team.members.map((member) => (
                           <div key={member.id} className="portal-rsvp-row">
@@ -783,9 +828,17 @@ export default function HacknestTeamPortal() {
                               <strong style={{fontFamily: 'var(--font-heading)', color: '#2c1a10'}}>{member.name}</strong><br/>
                               <span className="email-text" style={{fontSize: '0.8rem'}}>{member.email}</span>
                             </div>
-                            <span className={`portal-pill ${member.rsvp ? 'pill-success' : 'pill-muted'}`} style={{borderColor: '#592525', color: '#2c1a10'}}>
-                              {member.rsvp ? 'Attending' : 'Not Attending'}
-                            </span>
+                            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 6}}>
+                              <span className={`portal-pill ${member.rsvp ? 'pill-success' : 'pill-muted'}`} style={{borderColor: '#592525', color: '#2c1a10'}}>
+                                {member.rsvp ? 'Attending' : 'Not Attending'}
+                              </span>
+                              {member.rsvp && member.rsvp_code && (
+                                <div style={{textAlign: 'right'}}>
+                                  <div className="text-sm font-medium" style={{color: '#2c1a10'}}>Code: <span className="font-mono" style={{background: '#fffbeb', border: '1px solid #f5d7a3', padding: '4px 8px', borderRadius: 6}}>{member.rsvp_code}</span></div>
+                                  <QrToggle code={member.rsvp_code} itemId={`member-${member.id}`} />
+                                </div>
+                              )}
+                            </div>
                           </div>
                         ))}
                       </div>
