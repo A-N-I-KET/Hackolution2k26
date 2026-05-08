@@ -5,7 +5,7 @@ const timelineEvents = [
     { time: "26th March - 31st March", title: "Idea Submission & Selection Round", desc: "Submit your ideas and let the selection begin!", completed: true, ongoing: false },
     { time: "31st March - 5th April", title: "Idea Submission Round Extended", desc: "Submit your ideas and let the selection begin!", completed: true, ongoing: false },
     { time: "6th April - 12th April", title: "Offline Selected Team Approval", desc: "Selected Teams will be announced and they will appear in the hackathon.",completed: true, ongoing: false },
-    { time: "8th May", title: "Hackolution Day 1", desc: "First day of hackolution 2k26 is here!" },
+    { time: "8th May", title: "Hackolution Day 1", desc: "First day of hackolution 2k26 is here!" , completed: false, ongoing: true },
     { time: "9th May", title: "Hackolution Day 2", desc: "Final day of hackolution 2k26 is here!" },
 ];
 

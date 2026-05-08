@@ -59,11 +59,10 @@ function formatTime(isoStr) {
 function getTimeDiff(targetMs, nowMs) {
   let diff = targetMs - nowMs;
   if (diff < 0) diff = 0;
-  const days    = Math.floor(diff / 86400000);
-  const hours   = Math.floor((diff % 86400000) / 3600000);
+  const hours   = Math.floor(diff / 3600000);
   const minutes = Math.floor((diff % 3600000) / 60000);
   const seconds = Math.floor((diff % 60000) / 1000);
-  return { days, hours, minutes, seconds, totalMs: diff };
+  return { hours, minutes, seconds, totalMs: diff };
 }
 
 // ─── Framer Motion Variants ──────────────────────────────────
@@ -208,7 +207,7 @@ export default function TimerPage() {
 
   // Timer values
   const target = phase === 'before' ? HACKING_START : HACKING_END;
-  const { days, hours, minutes, seconds } = getTimeDiff(target, now);
+  const { hours, minutes, seconds } = getTimeDiff(target, now);
 
   // Progress (only during hacking)
   const totalDuration = HACKING_END - HACKING_START;
@@ -301,17 +300,11 @@ export default function TimerPage() {
 
         {/* Phase label */}
         <motion.div className="timer-phase-label letterpress" variants={fadeUpVariant}>
-          {phase === 'before' ? '⏳ Hacking Starts In' : '🔥 Hacking Ends In'}
+          {phase === 'before' ? ' Hacking Starts In' : ' Hacking Ends In'}
         </motion.div>
 
         {/* Countdown */}
         <motion.div className="timer-countdown" variants={fadeUpVariant}>
-          {days > 0 && (
-            <>
-              <FlipGroup valueStr={pad(days)} unit="Days" />
-              <span className="timer-separator">:</span>
-            </>
-          )}
           <FlipGroup valueStr={pad(hours)} unit="Hours" />
           <span className="timer-separator">:</span>
           <FlipGroup valueStr={pad(minutes)} unit="Minutes" />
