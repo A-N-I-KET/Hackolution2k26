@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import StartSection from './components/StartSection';
 import HacknestTeamPortal from './components/HacknestTeamPortal';
+import TimerPage from './components/TimerPage';
 import { motion, useScroll, useSpring } from 'framer-motion';
 
 const PageBreaker = lazy(() => import('./components/PageBreaker'));
@@ -58,6 +59,15 @@ export default function App() {
         return (
             <>
                 <HacknestTeamPortal />
+                <Analytics />
+            </>
+        );
+    }
+
+    if (pathname === '/timer') {
+        return (
+            <>
+                <TimerPage />
                 <Analytics />
             </>
         );
