@@ -20,9 +20,9 @@ const ORIGINAL_SCHEDULE = [
   { id: 9, name: 'Hacknest Mini Event',             start: '2026-05-08T23:00:00+05:30', end: '2026-05-08T23:30:00+05:30', day: 1 },
   { id: 10, name: 'Fun Event',                        start: '2026-05-09T00:30:00+05:30', end: '2026-05-09T01:00:00+05:30', day: 2 },
   { id: 11, name: 'Breakfast (Day-2)',               start: '2026-05-09T09:00:00+05:30', end: '2026-05-09T10:00:00+05:30', day: 2 },
-  { id: 12, name: 'Lunch (Day-2)',                    start: '2026-05-09T12:00:00+05:30', end: '2026-05-09T13:00:00+05:30', day: 2 },
-  { id: 13, name: 'Hacking Ends',                    start: '2026-05-09T14:30:00+05:30', end: null,                        day: 2, milestone: true },
-  { id: 14, name: 'Evaluation',                       start: '2026-05-09T14:30:00+05:30', end: '2026-05-09T16:15:00+05:30', day: 2 },
+  { id: 12, name: 'Lunch (Day-2)',                    start: '2026-05-09T13:00:00+05:30', end: '2026-05-09T14:00:00+05:30', day: 2 },
+  { id: 13, name: 'Hacking Ends',                    start: '2026-05-09T14:00:00+05:30', end: null,                        day: 2, milestone: true },
+  { id: 14, name: 'JUDGING',                       start: '2026-05-09T14:30:00+05:30', end: '2026-05-09T16:16:00+05:30', day: 2 },
   { id: 15, name: 'Closing Ceremony',                start: '2026-05-09T16:30:00+05:30', end: '2026-05-09T17:00:00+05:30', day: 2 },
 ];
 
