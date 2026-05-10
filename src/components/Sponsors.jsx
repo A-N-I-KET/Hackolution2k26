@@ -64,7 +64,7 @@ export default function Sponsors() {
                     ))}
                 </div>
                 <div className="vintage-judges-footer">
-                    <span>==== MORE TO COME ====</span>
+                    <span>==== HACKOLUTION 2K26 ====</span>
                 </div>
             </div>
         </section>
