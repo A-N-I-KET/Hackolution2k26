@@ -35,7 +35,7 @@ export default function Prizes() {
                             An invaluable reward for any and all coding challenges. Serves as a testament to your team's ingenuity and endurance. A true technological wonder that cures bugs when they will not subdue.
                         </p>
                         <div className="vintage-btn-wrap">
-                            <div className="vintage-btn">PRIZE: ₹ XX,XXX</div>
+                            <div className="vintage-btn">PRIZE: ₹ 10,000</div>
                         </div>
                     </div>
 
@@ -49,7 +49,7 @@ export default function Prizes() {
                             Take the Grand Prize for a feeling of ultimate triumph and vigor for the whole team, and give yourself the cold dead focus and dangerous speed of a master hacker. 100% pure gold standard innovation.
                         </p>
                         <div className="vintage-btn-wrap">
-                            <div className="vintage-btn">PRIZE: ₹ XX,XXX</div>
+                            <div className="vintage-btn">PRIZE: ₹ 15,000</div>
                         </div>
                     </div>
 
@@ -63,14 +63,14 @@ export default function Prizes() {
                             Thousands are being benefited where basic skills and logic have failed. This remarkable bronze reward treats code fatigue, cures compiler errors and quickly renews vigor.
                         </p>
                         <div className="vintage-btn-wrap">
-                            <div className="vintage-btn">PRIZE: ₹ X,XXX</div>
+                            <div className="vintage-btn">PRIZE: ₹ 5,000</div>
                         </div>
                     </div>
                 </div>
 
                 {/* Tracks of Honour Section */}
                 <div className="vintage-catalogue-header" style={{ marginTop: '5rem' }}>
-                    <h2 className="vintage-title-main">TRACKS OF HONOUR (COMMING SOON)</h2>
+                    <h2 className="vintage-title-main">TRACKS OF HONOUR</h2>
                     <h3 className="vintage-title-sub">
                         <span className="vintage-sub-left">FOR THE MOST</span>
                         <span className="vintage-sub-large">INNOVATIVE SOLUTIONS</span>

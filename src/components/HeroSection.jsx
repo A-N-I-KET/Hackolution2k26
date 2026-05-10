@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import CountdownTimer from './CountdownTimer';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function HeroSection({ isLoaded }) {
@@ -241,7 +240,6 @@ export default function HeroSection({ isLoaded }) {
                             data-button-theme="light"
                             style={{ height: '44px', width: '312px' }}
                         ></div>
-                        <CountdownTimer />
                         <a href="https://discord.gg/B4KZdv5N2P" target="_blank" rel="noopener noreferrer" className="discord-button">
                             <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" alt="Discord" />
                             JOIN OUR DISCORD
